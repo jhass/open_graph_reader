@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["me@jhass.eu"]
   spec.summary       = %q{OpenGraph protocol parser}
   spec.description   = %q{A library to fetch and parse OpenGraph properties from an URL or a given string.}
-  spec.homepage      = "https://github.com/jhass/opengraph_reader"
+  spec.homepage      = "https://github.com/jhass/open_graph_reader"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*", "spec/**/*", ".yardopts", ".rspec", ".gitmodules"]

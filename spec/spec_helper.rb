@@ -31,5 +31,9 @@ end
 
 
 def example_html example
-  File.read File.expand_path("./fixtures/examples/#{example}.html", __dir__)
+  fixture_html "examples/#{example}"
+end
+
+def fixture_html fixture
+  File.read File.expand_path("./fixtures/#{fixture}.html", __dir__)
 end
