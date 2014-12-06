@@ -60,7 +60,8 @@ module OpenGraphReader
       fetch_headers unless fetched_headers?
       response = @get_response || @head_response
       return false unless response.success?
-      response["Content-Type"].include? 'text/html'
+      return false unless response['content-type']
+      response['content-type'].include? 'text/html'
     end
 
     # Whether the target URI was fetched.
