@@ -32,15 +32,18 @@ module OpenGraphReader
         processors[name] = processor
 
         define_method(name) do |name, *args|
-          available_properties << name.to_s
           options = args.pop if args.last.is_a? Hash
           options ||= {}
 
+          available_properties << name.to_s
+          required_properties << name.to_s if options[:required]
           Registry.register [@namespace, name].join(':'), options[:to] if options[:to]
 
           if options[:verticals]
             options[:verticals].each do |vertical|
-              verticals[[@namespace, vertical].join('.')] << name
+              vertical = [@namespace, vertical].join('.')
+              verticals[vertical] << name.to_s
+              Registry.verticals <<  vertical
             end
           end
 
@@ -50,20 +53,18 @@ module OpenGraphReader
             end
 
             define_method(name) do
-              # TODO raise if required
               value = children[name.to_s].first
-              # TODO: figure out a sane way to distinguish subobject properties
+              # @todo figure out a sane way to distinguish subobject properties
               value.content if value && value.is_a?(Object)
               value || options[:default]
             end
           else
             define_method(name) do
-              # TODO raise if required
               properties[name.to_s] || options[:default]
             end
 
             define_method("#{name}=") do |value|
-              # TODO: figure out a sane way to distinguish subobject properties
+              # @todo figure out a sane way to distinguish subobject properties
               value = processor.call(value, *args, options) unless value.is_a? Object
               properties[name.to_s] = value
             end
@@ -100,6 +101,13 @@ module OpenGraphReader
       # @return [Array<String>]
       def available_properties
         @available_properties ||= []
+      end
+
+      # The list of required properties on this object.
+      #
+      # @return [Array<String]
+      def required_properties
+        @required_properties ||= []
       end
 
       # A map from type names to processing blocks.

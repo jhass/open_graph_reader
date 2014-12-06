@@ -11,6 +11,16 @@ RSpec.describe "invalid examples" do
     end
   end
 
+  # Most parsers synthesize missing required properties, however
+  # we do not (yet), making this example an invalid object
+  describe "min" do
+    it "has missing required properties" do
+      expect {
+        OpenGraphReader.parse! example_html 'min'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
+    end
+  end
+
   describe "filters/xss-image" do
     it "errors on the invaid URL" do
       expect {

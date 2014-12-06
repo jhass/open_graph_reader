@@ -1,9 +1,11 @@
 require 'singleton'
 require 'forwardable'
+require 'set'
 
 module OpenGraphReader
   module Object
     # Global registry of namespaces and their representing classes.
+    # Also tracks which verticals are defined.
     #
     # @api private
     class Registry
@@ -33,15 +35,23 @@ module OpenGraphReader
         #   @return [Class] The matching class.
         #   @raise [ArgumentError] If the given namespace wasn't registered.
         #   @api private
-        def_delegators :instance, :register, :registered?, :[]
+        # @!method verticals
+        #  All known verticals
+        #
+        #  @return [Set<String>]
+        def_delegators :instance, :register, :registered?, :[], :verticals
       end
 
       def_delegators :@namespaces, :[]=, :has_key?
       alias_method :register, :[]=
       alias_method :registered?,  :has_key?
 
+      # @see Registry.verticals
+      attr_reader :verticals
+
       def initialize
         @namespaces = {}
+        @verticals = Set.new
       end
 
       # @see Registry.[]

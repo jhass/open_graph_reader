@@ -77,7 +77,7 @@ module OpenGraphReader
           child
         }
 
-        # TODO: make stripping configurable?
+        # @todo make stripping configurable?
         node << Graph::Node.new(leaf, tag['content'].strip)
       end
 

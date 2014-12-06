@@ -1,27 +1,13 @@
 module OpenGraphReader
   # Convert a {Parser::Graph} into the right hierarchy of {Object}s attached
-  # to a {Base}.
+  # to a {Base}, then validate it.
   #
-  # @todo validate required, verticals
   # @api private
   class Builder
     # Well-known types from
     #
     # @see http://ogp.me
-    KNOWN_TYPES = %w(
-      website
-      music.song
-      music.album
-      music.playlist
-      music.radio_station
-      video.movie
-      video.episode
-      video.tv_show
-      video.other
-      article
-      book
-      profile
-    ).freeze
+    KNOWN_TYPES = %w(website article book profile).freeze
 
     # Create a new builder.
     #
@@ -50,8 +36,8 @@ module OpenGraphReader
         base[root] ||= Object::Registry[root].new
         object = resolve base[root], root, path
 
-        if object.respond_to? "#{name}s" # Collection # TODO
-          collection = object.public_send "#{name}s" #TODO
+        if object.has_property?(name) && object.respond_to?("#{name}s") # Collection
+          collection = object.public_send "#{name}s"
           if Object::Registry.registered? property.fullname # of subobjects
             object = Object::Registry[property.fullname].new
             collection << object
@@ -67,6 +53,8 @@ module OpenGraphReader
         end
       end
 
+      validate base
+
       base
     end
 
@@ -76,8 +64,8 @@ module OpenGraphReader
       return object if path.empty?
 
       next_name = path.shift
-      if object.respond_to? "#{next_name}s" # collection # TODO: do not respond_to? with user data
-        collection = object.public_send("#{next_name}s") # TODO: do not public_send with user data
+      if object.has_property?(next_name) && object.respond_to?("#{next_name}s") # collection
+        collection = object.public_send("#{next_name}s")
         next_object = collection.last
         if next_object.nil? #|| path.empty? # Final namespace or missing previous declaration, create a new collection item
           next_object = Object::Registry[[*last_namespace, next_name].join(':')].new
@@ -92,8 +80,40 @@ module OpenGraphReader
     end
 
     def validate_type type
-      unless KNOWN_TYPES.include?(type) || @additional_namespaces.include?(type)
+      unless KNOWN_TYPES.include?(type) ||
+             @additional_namespaces.include?(type) ||
+             Object::Registry.verticals.include?(type)
         raise InvalidObjectError, "Undefined type #{type}"
+      end
+    end
+
+    def validate base
+      base.each do |object|
+        validate_required object
+        validate_verticals object, base.og.type
+      end
+    end
+
+    def validate_required object
+      object.class.required_properties.each do |property|
+        if object[property].nil?
+          raise InvalidObjectError, "Missing required property #{property} on #{object.inspect}"
+        end
+      end
+    end
+
+    def validate_verticals object, type
+      return unless type.include? '.'
+      verticals = object.class.verticals
+      if verticals.has_key? type
+        valid_properties = verticals[type]
+        set_properties = object.class.available_properties.select {|property| object[property] }
+        extra_properties = set_properties-valid_properties
+
+        unless extra_properties.empty?
+          raise InvalidObjectError, "Set invalid property #{extra_properties.first} for #{type} " \
+            "in #{object.inspect}, valid properties are #{valid_properties.inspect}"
+        end
       end
     end
   end

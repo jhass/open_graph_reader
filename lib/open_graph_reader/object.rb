@@ -71,7 +71,7 @@ module OpenGraphReader
     # @return [String, Object]
     def [] name
       raise InvalidObjectError, "Undefined property #{name} on #{inspect}" unless has_property? name
-      properties[name.to_s]
+      public_send name.to_s #properties[name.to_s]
     end
 
     # Set the property to the given value.

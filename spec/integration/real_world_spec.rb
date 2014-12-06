@@ -20,4 +20,12 @@ RSpec.describe "real world examples" do
       expect(object.og.description).to eq "Ungenehmigte Bürgerinitiative will das Paket EU-Kommissionschef Juncker zum Geburtstag schenken"
     end
   end
+
+  describe "missing_image" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/missing_image'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
+    end
+  end
 end

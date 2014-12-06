@@ -19,7 +19,13 @@ module OpenGraphReader
     #   @param [String] name The name of the root namespace.
     #   @param [Object] object The corresponding root object.
     #   @api private
-    def_delegators :@bases, :[], :[]=
+    # @!method each
+    #   Traverse the available objects
+    #
+    #   @yield [Object]
+    #   @api private
+    def_delegators :@bases, :[], :[]=, :each_value
+    alias_method :each, :each_value
 
     # If available, contains the source location of the document the
     # available objects were parsed from.

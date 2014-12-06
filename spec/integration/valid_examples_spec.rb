@@ -15,7 +15,6 @@ RSpec.describe 'valid examples' do
     image-url
     image
     index
-    min
     nomedia
     profile
     required
