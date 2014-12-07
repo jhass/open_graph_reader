@@ -3,6 +3,7 @@
 * Fix a case of raising undefined property while building the object in
   normal mode.
 * Support synthesizing og:title.
+* Support absolute image paths.
 
 # 0.2.0
 

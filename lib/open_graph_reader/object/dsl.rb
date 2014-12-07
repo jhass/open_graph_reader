@@ -75,7 +75,9 @@ module OpenGraphReader
           end
         end
       end
-      singleton_class.send(:alias_method, :define_type_with_args, :define_type)
+
+      # Alias to trick YARD
+      singleton_class.send(:alias_method, :define_type_no_doc, :define_type)
 
       # @overload namespace
       #   Get the namespace of this object.

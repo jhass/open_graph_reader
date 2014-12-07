@@ -38,10 +38,12 @@ module OpenGraphReader
   # @raise [NoOpenGraphDataError] {include:NoOpenGraphDataError}
   # @raise [InvalidObjectError] {include:InvalidObjectError}
   def self.parse! html, origin=nil
+    self.current_origin = origin
     parser = Parser.new html
     raise NoOpenGraphDataError, "#{origin || html} does not contain any OpenGraph tags" unless parser.has_tags?
     Builder.new(parser).base.tap {|base|
       base.origin = origin.to_s if origin
+      self.current_origin = nil
     }
   end
 
@@ -84,6 +86,19 @@ module OpenGraphReader
   # @return [Configuration]
   def self.config
     Configuration.instance
+  end
+
+  # Thread local to retrieve the current origin if available.
+  # See {Base#origin} if you want to know the origin of a parsed object.
+  #
+  # @api private
+  # @return [String,nil]
+  def self.current_origin
+    Thread.current[:_open_graph_reader_current_origin]
+  end
+
+  def self.current_origin= value
+    Thread.current[:_open_graph_reader_current_origin] = value
   end
 
   # The target couldn't be fetched, didn't contain any HTML or

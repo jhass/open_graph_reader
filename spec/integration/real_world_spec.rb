@@ -157,4 +157,23 @@ RSpec.describe "real world examples" do
       expect(object.og.image.url).to eq "http://geekologie.com/assets_c/2014/11/crazy-lady-goes-to-the-museum-thumb-640x389-29314.jpg"
     end
   end
+
+  describe "image_path" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/image_path'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /does not start with/
+    end
+
+    it "parses with image paths turned on" do
+      OpenGraphReader.config.synthesize_image_url = true
+
+      object = OpenGraphReader.parse! fixture_html('real_world/image_path'), 'http://fritzing.org/download/'
+
+      expect(object.og.title).to     eq "Fritzing"
+      expect(object.og.type).to      eq "website"
+      expect(object.og.image.url).to eq "http://fritzing.org/static/img/fritzing.png"
+      expect(object.og.url).to       eq "http://fritzing.org/"
+    end
+  end
 end

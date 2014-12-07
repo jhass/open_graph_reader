@@ -54,7 +54,7 @@ module OpenGraphReader
       include Object
 
       namespace :og, :image
-      content :url
+      content :url, image: true
 
       url     :url
 
