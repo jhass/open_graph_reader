@@ -1,3 +1,8 @@
+# 0.2.1
+
+* Fix a case of raising undefined property while building the object in
+  normal mode.
+
 # 0.2.0
 
 * Normalize case of properties.

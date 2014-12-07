@@ -79,7 +79,7 @@ RSpec.describe "real world examples" do
   end
 
   describe "undefined_property" do
-    it "parses" do
+    it "parses (1)" do
       object = OpenGraphReader.parse! fixture_html 'real_world/undefined_property'
 
       expect(object.og.locale.to_s).to eq "es_ES"
@@ -91,11 +91,31 @@ RSpec.describe "real world examples" do
       expect(object.og.image.url).to   eq "http://regeneracion.mx/wp-content/uploads/2014/12/Infiltrados.jpg"
     end
 
-    it "does not parse in strict mode" do
+    it "does not parse in strict mode (1)" do
       OpenGraphReader.config.strict = true
 
       expect {
         OpenGraphReader.parse! fixture_html 'real_world/undefined_property'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Undefined property/
+    end
+
+    it "parses (2)" do
+      object = OpenGraphReader.parse! fixture_html 'real_world/undefined_property_2'
+
+
+      expect(object.og.title).to            eq "Emergency call system for all new cars by 2018"
+      expect(object.og.type).to             eq "article"
+      expect(object.og.description).to      eq "The European Parliament and EU member states have agreed that new cars must be fitted with an automated system to alert emergency services in event of a crash."
+      expect(object.og.site_name).to        eq "BBC News"
+      expect(object.og.url).to              eq "http://www.bbc.co.uk/news/technology-30337272"
+      expect(object.og.image.url).to        eq "http://news.bbcimg.co.uk/media/images/79520000/jpg/_79520623_79519885.jpg"
+    end
+
+    it "does not parse in strict mode (2)" do
+      OpenGraphReader.config.strict = true
+
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/undefined_property_2'
       }.to raise_error OpenGraphReader::InvalidObjectError, /Undefined property/
     end
   end

@@ -67,10 +67,10 @@ module OpenGraphReader
     # @api private
     # @param [#to_s] name
     # @todo right error?
-    # @raise [InvalidObjectError] If the requested property is undefined.
+    # @raise [UndefinedPropertyError] If the requested property is undefined.
     # @return [String, Object]
     def [] name
-      raise InvalidObjectError, "Undefined property #{name} on #{inspect}" unless has_property? name
+      raise UndefinedPropertyError, "Undefined property #{name} on #{inspect}" unless has_property? name
       public_send name.to_s #properties[name.to_s]
     end
 
@@ -79,12 +79,12 @@ module OpenGraphReader
     # @api private
     # @param [#to_s] name
     # @param [String, Object] value
-    # @raise [InvalidObjectError] If the requested property is undefined.
+    # @raise [UndefinedPropertyError] If the requested property is undefined.
     def []= name, value
       if has_property?(name)
         public_send "#{name}=", value
       elsif OpenGraphReader.config.strict
-        raise InvalidObjectError, "Undefined property #{name} on #{inspect}"
+        raise UndefinedPropertyError, "Undefined property #{name} on #{inspect}"
       end
     end
 

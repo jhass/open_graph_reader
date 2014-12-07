@@ -100,4 +100,8 @@ module OpenGraphReader
   # @api private
   class UnknownNamespaceError < StandardError
   end
+
+  # The target does not define the requested property.
+  class UndefinedPropertyError < StandardError
+  end
 end

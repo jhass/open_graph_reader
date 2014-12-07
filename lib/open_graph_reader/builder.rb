@@ -62,7 +62,7 @@ module OpenGraphReader
       else # Direct attribute
         object[name] = property.content
       end
-    rescue UnknownNamespaceError => e
+    rescue UnknownNamespaceError, UndefinedPropertyError => e
       raise InvalidObjectError, e.message if OpenGraphReader.config.strict
     end
 
