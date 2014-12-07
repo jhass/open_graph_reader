@@ -32,25 +32,7 @@ module OpenGraphReader
       validate_type type
 
       @graph.each do |property|
-        root, *path, name = property.path
-        base[root] ||= Object::Registry[root].new
-        object = resolve base[root], root, path
-
-        if object.has_property?(name) && object.respond_to?("#{name}s") # Collection
-          collection = object.public_send "#{name}s"
-          if Object::Registry.registered? property.fullname # of subobjects
-            object = Object::Registry[property.fullname].new
-            collection << object
-            object.content = property.content
-          else # of type
-            collection << property.content
-          end
-        elsif Object::Registry.registered? property.fullname # Subobject
-          object[name] ||= Object::Registry[property.fullname].new
-          object[name].content = property.content
-        else # Direct attribute
-          object[name] = property.content
-        end
+        build_property base, property
       end
 
       validate base
@@ -60,6 +42,30 @@ module OpenGraphReader
 
     private
 
+    def build_property base, property
+      root, *path, name = property.path
+      base[root] ||= Object::Registry[root].new
+      object = resolve base[root], root, path
+
+      if object.has_property?(name) && object.respond_to?("#{name}s") # Collection
+        collection = object.public_send "#{name}s"
+        if Object::Registry.registered? property.fullname # of subobjects
+          object = Object::Registry[property.fullname].new
+          collection << object
+          object.content = property.content
+        else # of type
+          collection << property.content
+        end
+      elsif Object::Registry.registered? property.fullname # Subobject
+        object[name] ||= Object::Registry[property.fullname].new
+        object[name].content = property.content
+      else # Direct attribute
+        object[name] = property.content
+      end
+    rescue UnknownNamespaceError => e
+      raise InvalidObjectError, e.message if OpenGraphReader.config.strict
+    end
+
     def resolve object, last_namespace, path
       return object if path.empty?
 
@@ -67,7 +73,7 @@ module OpenGraphReader
       if object.has_property?(next_name) && object.respond_to?("#{next_name}s") # collection
         collection = object.public_send("#{next_name}s")
         next_object = collection.last
-        if next_object.nil? #|| path.empty? # Final namespace or missing previous declaration, create a new collection item
+        if next_object.nil? # Final namespace or missing previous declaration, create a new collection item
           next_object = Object::Registry[[*last_namespace, next_name].join(':')].new
           collection << next_object
         end
@@ -80,6 +86,8 @@ module OpenGraphReader
     end
 
     def validate_type type
+      return unless OpenGraphReader.config.strict
+
       unless KNOWN_TYPES.include?(type) ||
              @additional_namespaces.include?(type) ||
              Object::Registry.verticals.include?(type)

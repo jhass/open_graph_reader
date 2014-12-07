@@ -58,4 +58,64 @@ RSpec.describe "real world examples" do
       expect(object.article.section).to     eq "Technology"
     end
   end
+
+  describe "unknown_type" do
+    it "parses" do
+      object = OpenGraphReader.parse! fixture_html 'real_world/unknown_type'
+
+      expect(object.og.url).to         eq "http://www.instructables.com/id/Building-the-Open-Knit-machine/"
+      expect(object.og.title).to       eq "Building the OpenKnit machine"
+      expect(object.og.image.url).to   eq "http://cdn.instructables.com/FI2/D7XW/I2XTQWFE/FI2D7XWI2XTQWFE.RECTANGLE1.jpg"
+      expect(object.og.description).to eq "The OpenKnit machine is an open-source, low cost, digital fabrication tool developed by Gerard Rubio.  The machine affords the user the opportunity to..."
+    end
+
+    it "does not parse in strict mode" do
+      OpenGraphReader.config.strict = true
+
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/unknown_type'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Undefined type/
+    end
+  end
+
+  describe "undefined_property" do
+    it "parses" do
+      object = OpenGraphReader.parse! fixture_html 'real_world/undefined_property'
+
+      expect(object.og.locale.to_s).to eq "es_ES"
+      expect(object.og.type).to        eq "article"
+      expect(object.og.title).to       eq "Profesores y campesinos amarran a infiltrados en marcha"
+      expect(object.og.description).to eq "Regeneración, 6 de diciembre de 2014.-Durante la marcha que realizan profesores y organizaciones campesinas sobre avenida Paseo de la Reforma, maestros de la Coordinadora Estatal de Trabajadores de la Educación en Guerrero (CETEG) ubicaron a 12 jóvenes como “infiltrados”, a quienes amarraron de las manos en una cadena humana para evitar que marchen con ellos, informó El …"
+      expect(object.og.url).to         eq "http://regeneracion.mx/sociedad/profesores-y-campesinos-amarran-a-infiltrados-en-marcha/"
+      expect(object.og.site_name).to   eq "Regeneración"
+      expect(object.og.image.url).to   eq "http://regeneracion.mx/wp-content/uploads/2014/12/Infiltrados.jpg"
+    end
+
+    it "does not parse in strict mode" do
+      OpenGraphReader.config.strict = true
+
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/undefined_property'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Undefined property/
+    end
+  end
+
+  describe "unknown_namespace" do
+    it "parses" do
+      object = OpenGraphReader.parse! fixture_html 'real_world/unknown_namespace'
+
+      expect(object.og.url).to         eq "http://www.instructables.com/id/Building-the-Open-Knit-machine/"
+      expect(object.og.title).to       eq "Building the OpenKnit machine"
+      expect(object.og.image.url).to   eq "http://cdn.instructables.com/FI2/D7XW/I2XTQWFE/FI2D7XWI2XTQWFE.RECTANGLE1.jpg"
+      expect(object.og.description).to eq "The OpenKnit machine is an open-source, low cost, digital fabrication tool developed by Gerard Rubio.  The machine affords the user the opportunity to..."
+    end
+
+    it "does not parse in strict mode" do
+      OpenGraphReader.config.strict = true
+
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/unknown_namespace'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /is not a registered namespace/
+    end
+  end
 end

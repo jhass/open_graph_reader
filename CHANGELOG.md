@@ -6,3 +6,5 @@
 * Optional support for cookie requiring websites.
 * Support disabling required attribute validation.
 * Support disabling validating that references are an URL.
+* By default the most common errors are ignored now, they can be brought
+  back with the new `strict` configuration option.

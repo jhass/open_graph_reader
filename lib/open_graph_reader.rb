@@ -9,7 +9,6 @@ require 'open_graph_reader/object'
 require 'open_graph_reader/parser'
 require 'open_graph_reader/version'
 
-# @todo  quirks mode where invalid attributes don't raise?
 # @todo 1.1 compatibility mode?
 # This module provides the main entry to the library. Please see the
 # {file:README.md} for usage examples.
@@ -94,5 +93,11 @@ module OpenGraphReader
 
   # The target did contain OpenGraph tags, but they're not valid.
   class InvalidObjectError < StandardError
+  end
+
+  # The target defines a namespace we have no definition for
+  #
+  # @api private
+  class UnknownNamespaceError < StandardError
   end
 end

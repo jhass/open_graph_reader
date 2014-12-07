@@ -56,7 +56,7 @@ module OpenGraphReader
 
       # @see Registry.[]
       def [] namespace
-        raise ArgumentError, "#{namespace} is not a registered namespace" unless registered? namespace
+        raise UnknownNamespaceError, "#{namespace} is not a registered namespace" unless registered? namespace
         @namespaces[namespace]
       end
     end

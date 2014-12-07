@@ -61,18 +61,40 @@ RSpec.describe "invalid examples" do
   end
 
   describe "errors/geo" do
-    it "doesn't recognize the old elements" do
+    it "doesn't recognize the old elements in strict mode" do
+      OpenGraphReader.config.strict = true
+
       expect {
         OpenGraphReader.parse! example_html 'errors/geo'
       }.to raise_error OpenGraphReader::InvalidObjectError, /Undefined property/
     end
+
+    it "parses in default mode" do
+      object = OpenGraphReader.parse! example_html 'errors/geo'
+
+      expect(object.og.type).to      eq "website"
+      expect(object.og.title).to     eq "Open Graph protocol 1.0 location data"
+      expect(object.og.url).to       eq "http://examples.opengraphprotocol.us/errors/geo.html"
+      expect(object.og.image.url).to eq "http://examples.opengraphprotocol.us/media/images/50.png"
+    end
   end
 
   describe "errors/type" do
-    it "doesn't handle the unkown type" do
+    it "doesn't handle the unknown type in strict mode" do
+      OpenGraphReader.config.strict = true
+
       expect {
         OpenGraphReader.parse! example_html 'errors/type'
       }.to raise_error OpenGraphReader::InvalidObjectError, /Undefined type/
+    end
+
+    it "parses the known properties" do
+      object = OpenGraphReader.parse! example_html 'errors/type'
+
+      expect(object.og.type).to      eq "fubar"
+      expect(object.og.title).to     eq "Undefined global type"
+      expect(object.og.url).to       eq "http://examples.opengraphprotocol.us/errors/type.html"
+      expect(object.og.image.url).to eq "http://examples.opengraphprotocol.us/media/images/50.png"
     end
   end
 
