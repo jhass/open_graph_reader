@@ -1,18 +1,22 @@
 require 'spec_helper'
 
 RSpec.describe "invalid examples" do
-  %w(plain error).each do |example|
-    describe example do
-      it "says there are no tags" do
-        expect {
-          OpenGraphReader.parse! example_html 'plain'
-        }.to raise_error OpenGraphReader::NoOpenGraphDataError, /OpenGraph tags/
-      end
+  describe "plain" do
+    it "says there are no tags" do
+      expect {
+        OpenGraphReader.parse! example_html 'plain'
+      }.to raise_error OpenGraphReader::NoOpenGraphDataError, /OpenGraph tags/
+    end
+
+    it "says there are no tags with title synthesization turend on" do
+      OpenGraphReader.config.synthesize_title = true
+
+      expect {
+        OpenGraphReader.parse! example_html 'plain'
+      }.to raise_error OpenGraphReader::NoOpenGraphDataError, /OpenGraph tags/
     end
   end
 
-  # Most parsers synthesize missing required properties, however
-  # we do not (yet), making this example an invalid object
   describe "min" do
     it "has missing required properties" do
       expect {
