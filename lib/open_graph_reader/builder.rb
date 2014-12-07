@@ -27,7 +27,7 @@ module OpenGraphReader
     def base
       base = Base.new
 
-      type = @graph.fetch 'og:type', 'website'
+      type = @graph.fetch('og:type', 'website').downcase
 
       validate_type type
 

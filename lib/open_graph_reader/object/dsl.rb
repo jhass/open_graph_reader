@@ -14,6 +14,7 @@ module OpenGraphReader
       #   @option options [Class] :to This property maps to the given object (optional).
       #     belongs to the given verticals of the object (optional).
       #   @option options [Array<String>] :verticials This property
+      #   @option options [Bool] :downcase (false) Normalize the contents case to lowercase.
       #
       # @!macro property
       #   @!attribute [rw] $1
@@ -65,7 +66,10 @@ module OpenGraphReader
 
             define_method("#{name}=") do |value|
               # @todo figure out a sane way to distinguish subobject properties
-              value = processor.call(value, *args, options) unless value.is_a? Object
+              unless value.is_a? Object
+                value.downcase! if options[:downcase]
+                value = processor.call(value, *args, options)
+              end
               properties[name.to_s] = value
             end
           end
@@ -92,8 +96,16 @@ module OpenGraphReader
       # Set the type for the content attribute
       #
       # @param [Symbol] type one of the registered types.
-      def content type
-        @content_processor = DSL.processors[type]
+      # @param [Hash] options
+      # @option options [Bool] :downcase (false) Normalize the contents case to lowercase.
+      def content type, *args
+        options = args.pop if args.last.is_a? Hash
+        options ||= {}
+
+        @content_processor = proc {|value|
+          value.downcase! if options[:downcase]
+          DSL.processors[type].call(value, *args, options)
+        }
       end
 
       # The list of defined properties on this object.
@@ -123,7 +135,7 @@ module OpenGraphReader
       # @api private
       # @return [Proc]
       def content_processor
-        @content_processor || proc {|value| value }
+        @content_processor
       end
 
       # A map from vertical names to attributes that belong to them.

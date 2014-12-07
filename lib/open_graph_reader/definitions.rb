@@ -9,7 +9,7 @@ module OpenGraphReader
 
     # @!macro property
     # @return [String]
-    string :type,  required: true, default: 'website'
+    string :type,  required: true, downcase: true, default: 'website'
 
     # @!macro property
     # @return [String]

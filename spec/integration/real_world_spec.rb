@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 RSpec.describe "real world examples" do
-  describe "mixed_case" do
+  describe "mixed_case properties" do
     it "parses" do
       expect {
-        OpenGraphReader.parse! fixture_html 'real_world/mixed_case'
+        OpenGraphReader.parse! fixture_html 'real_world/mixed_case_properties'
       }.to_not raise_error
     end
 
     it "assigns the right attributes" do
-      object = OpenGraphReader.parse fixture_html 'real_world/mixed_case'
+      object = OpenGraphReader.parse fixture_html 'real_world/mixed_case_properties'
 
       expect(object.og.title).to eq "Eine Million Unterschriften gegen TTIP"
       expect(object.og.type).to eq "website"
@@ -26,6 +26,14 @@ RSpec.describe "real world examples" do
       expect {
         OpenGraphReader.parse! fixture_html 'real_world/missing_image'
       }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
+    end
+  end
+
+  describe "mixed case type" do
+    it "parses" do
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/mixed_case_type'
+      }.to_not raise_error
     end
   end
 end
