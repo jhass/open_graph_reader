@@ -19,10 +19,17 @@ RSpec.describe "invalid examples" do
         OpenGraphReader.parse! example_html 'min'
       }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
     end
+
+    it "returns what's there if required property validation is disabled" do
+      OpenGraphReader.config.validate_required = false
+      object = OpenGraphReader.parse! example_html 'min'
+      expect(object.og.site_name).to   eq "Open Graph protocol examples"
+      expect(object.og.description).to eq "Content not on page"
+    end
   end
 
   describe "filters/xss-image" do
-    it "errors on the invaid URL" do
+    it "errors on the invaid URL in strict mode" do
       expect {
         OpenGraphReader.parse! example_html 'filters/xss-image'
       }.to raise_error OpenGraphReader::InvalidObjectError, /does not start with http/

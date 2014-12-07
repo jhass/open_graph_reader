@@ -29,11 +29,33 @@ RSpec.describe "real world examples" do
     end
   end
 
-  describe "mixed case type" do
+  describe "mixed_case_type" do
     it "parses" do
       expect {
         OpenGraphReader.parse! fixture_html 'real_world/mixed_case_type'
       }.to_not raise_error
+    end
+  end
+
+  describe "not_a_reference" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/not_a_reference'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /does not start with/
+    end
+
+    it "parses with reference validation turned of" do
+      OpenGraphReader.config.validate_references = false
+      object = OpenGraphReader.parse! fixture_html 'real_world/not_a_reference'
+
+      expect(object.og.title).to            eq "Emergency call system for all new cars by 2018"
+      expect(object.og.type).to             eq "article"
+      expect(object.og.description).to      eq "The European Parliament and EU member states have agreed that new cars must be fitted with an automated system to alert emergency services in event of a crash."
+      expect(object.og.site_name).to        eq "BBC News"
+      expect(object.og.url).to              eq "http://www.bbc.co.uk/news/technology-30337272"
+      expect(object.og.image.url).to        eq "http://news.bbcimg.co.uk/media/images/79520000/jpg/_79520623_79519885.jpg"
+      expect(object.article.author.to_s).to eq "BBC News"
+      expect(object.article.section).to     eq "Technology"
     end
   end
 end

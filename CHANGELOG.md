@@ -5,3 +5,4 @@
 * Normalize case of og:type.
 * Optional support for cookie requiring websites.
 * Support disabling required attribute validation.
+* Support disabling validating that references are an URL.

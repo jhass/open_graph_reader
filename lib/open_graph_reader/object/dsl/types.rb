@@ -11,10 +11,12 @@ module OpenGraphReader
       end
 
       # @see http://ogp.me/#url
-      define_type :url do |value|
+      define_type :url do |value, options|
         value.to_s.tap {|value|
           unless value.start_with?('http://') || value.start_with?('https://')
-            raise InvalidObjectError, "URL #{value.inspect} does not start with http:// or https://"
+             if options.has_key?(:to) && OpenGraphReader.config.validate_references
+              raise InvalidObjectError, "URL #{value.inspect} does not start with http:// or https://"
+            end
           end
         }
       end

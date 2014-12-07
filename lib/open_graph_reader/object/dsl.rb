@@ -93,17 +93,21 @@ module OpenGraphReader
         Registry.register @namespace, self
       end
 
-      # Set the type for the content attribute
+      # @overload content type, *args, options={}
       #
-      # @param [Symbol] type one of the registered types.
-      # @param [Hash] options
-      # @option options [Bool] :downcase (false) Normalize the contents case to lowercase.
+      #   Set the type for the content attribute
+      #
+      #   @param [Symbol] type one of the registered types.
+      #   @param [Array<Object>] args Additional parameters for the type
+      #   @param [Hash] options
+      #   @option options [Bool] :downcase (false) Normalize the contents case to lowercase.
       def content type, *args
         options = args.pop if args.last.is_a? Hash
         options ||= {}
 
         @content_processor = proc {|value|
           value.downcase! if options[:downcase]
+          options[:to] ||= self
           DSL.processors[type].call(value, *args, options)
         }
       end
