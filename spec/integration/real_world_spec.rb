@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe "real world examples" do
-  describe "mixed_case properties" do
+  describe "mixed_case_properties" do
     it "parses" do
       expect {
         OpenGraphReader.parse! fixture_html 'real_world/mixed_case_properties'
@@ -11,12 +11,12 @@ RSpec.describe "real world examples" do
     it "assigns the right attributes" do
       object = OpenGraphReader.parse fixture_html 'real_world/mixed_case_properties'
 
-      expect(object.og.title).to eq "Eine Million Unterschriften gegen TTIP"
-      expect(object.og.type).to eq "website"
+      expect(object.og.title).to       eq "Eine Million Unterschriften gegen TTIP"
+      expect(object.og.type).to        eq "website"
       expect(object.og.locale.to_s).to eq "de_DE"
-      expect(object.og.url).to eq "http://www.heise.de/tp/artikel/43/43516/"
-      expect(object.og.site_name).to eq "Telepolis"
-      expect(object.og.image.url).to eq "http://www.heise.de/tp/artikel/43/43516/43516_1.jpg"
+      expect(object.og.url).to         eq "http://www.heise.de/tp/artikel/43/43516/"
+      expect(object.og.site_name).to   eq "Telepolis"
+      expect(object.og.image.url).to   eq "http://www.heise.de/tp/artikel/43/43516/43516_1.jpg"
       expect(object.og.description).to eq "Ungenehmigte Bürgerinitiative will das Paket EU-Kommissionschef Juncker zum Geburtstag schenken"
     end
   end

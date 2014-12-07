@@ -89,7 +89,7 @@ module OpenGraphReader
 
     def validate base
       base.each do |object|
-        validate_required object
+        validate_required object if OpenGraphReader.config.validate_required
         validate_verticals object, base.og.type
       end
     end

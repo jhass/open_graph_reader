@@ -1,11 +1,8 @@
 require 'uri'
 
-begin
-  require 'faraday_middleware/response/follow_redirects'
-rescue LoadError; end
-
 require 'open_graph_reader/base'
 require 'open_graph_reader/builder'
+require 'open_graph_reader/configuration'
 require 'open_graph_reader/definitions'
 require 'open_graph_reader/fetcher'
 require 'open_graph_reader/object'
@@ -70,6 +67,24 @@ module OpenGraphReader
   def self.parse html, origin=nil
     parse! html, origin
   rescue NoOpenGraphDataError, InvalidObjectError
+  end
+
+  # Configure the library, see {Configuration} for the list of available
+  # options and their defaults. Changing configuration at runtime is not
+  # thread safe.
+  #
+  # @yieldparam [Configuration] the configuration object
+  # @see Configuration
+  def self.configure
+    yield config
+  end
+
+  # Get the current {Configuration} instance
+  #
+  # @api private
+  # @return [Configuration]
+  def self.config
+    Configuration.instance
   end
 
   # The target couldn't be fetched, didn't contain any HTML or
