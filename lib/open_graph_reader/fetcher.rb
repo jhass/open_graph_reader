@@ -1,5 +1,13 @@
 require 'faraday'
 
+begin
+  require 'faraday_middleware/response/follow_redirects'
+rescue LoadError; end
+
+begin
+  require 'faraday/cookie_jar'
+rescue LoadError; end
+
 module OpenGraphReader
   # Fetch an URI to retrieve its HTML body, if available.
   #
@@ -14,9 +22,11 @@ module OpenGraphReader
       @connection = Faraday.default_connection.dup
 
       if defined? FaradayMiddleware
-        unless @connection.builder.handlers.include? FaradayMiddleware::FollowRedirects
-          @connection.builder.insert(0, FaradayMiddleware::FollowRedirects)
-        end
+        prepend_middleware FaradayMiddleware::FollowRedirects
+      end
+
+      if defined? Faraday::CookieJar
+        prepend_middleware Faraday::CookieJar
       end
     end
 
@@ -77,6 +87,14 @@ module OpenGraphReader
     # @return [Bool]
     def fetched_headers?
       !@get_response.nil? || !@head_response.nil?
+    end
+
+    private
+
+    def prepend_middleware middleware
+      unless @connection.builder.handlers.include? middleware
+          @connection.builder.insert(0, middleware)
+      end
     end
   end
 end

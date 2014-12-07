@@ -11,10 +11,10 @@ A library to fetch and parse OpenGraph properties from an URL or a given string.
 
 ## Anti-features
 
-* Ignores the complete object if anything is invalid.
+* Can ignore the complete object if anything is invalid.
 * Does not fall back to guess the basic attributes from regular tags.
-* Only supports the latest OpenGraph protocol as defined at http://ogp.me.
-* Properties are defined in code, not by parsing the response at the namespace identifier.
+* Only supports the latest OpenGraph protocol as defined at http://ogp.me out of the box.
+* Objects and their properties are defined in code, not by parsing the response at the namespace identifier.
 
 
 Ruby 2.0 and later are supported.
@@ -34,6 +34,12 @@ And then execute:
 Or install it yourself as:
 
     $ gem install open_graph_reader
+
+
+Install the following gems the same way for a higher success rate at fetching websites:
+
+* [faraday_middleware](https://github.com/lostisland/faraday_middleware)
+* [faraday-cookie_jar](https://github.com/miyagawa/faraday-cookie_jar)
 
 ## Usage
 
