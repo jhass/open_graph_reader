@@ -138,4 +138,23 @@ RSpec.describe "real world examples" do
       }.to raise_error OpenGraphReader::InvalidObjectError, /is not a registered namespace/
     end
   end
+
+
+  describe "missing_title" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/missing_title'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
+    end
+
+    it "does parse when synthesizing titles" do
+      OpenGraphReader.config.synthesize_title = true
+
+      object = OpenGraphReader.parse! fixture_html 'real_world/missing_title'
+
+      expect(object.og.type).to      eq "website"
+      expect(object.og.title).to     eq "Ultra Conservative Christian Lady Goes To Museum, Tries To Debunk Evolution, Fails Beyond Miserably | Geekologie"
+      expect(object.og.image.url).to eq "http://geekologie.com/assets_c/2014/11/crazy-lady-goes-to-the-museum-thumb-640x389-29314.jpg"
+    end
+  end
 end

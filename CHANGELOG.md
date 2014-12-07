@@ -1,7 +1,8 @@
-# 0.2.1
+# 0.3.0
 
 * Fix a case of raising undefined property while building the object in
   normal mode.
+* Support synthesizing og:title.
 
 # 0.2.0
 

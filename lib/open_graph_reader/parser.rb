@@ -46,6 +46,13 @@ module OpenGraphReader
       @graph ||= build_graph
     end
 
+    # The value of the title tag of the passed document.
+    #
+    # @return [String]
+    def title
+      @doc.xpath('/html/head/title').first.text
+    end
+
     private
 
     def build_graph

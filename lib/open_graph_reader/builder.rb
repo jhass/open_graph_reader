@@ -11,14 +11,11 @@ module OpenGraphReader
 
     # Create a new builder.
     #
-    # @param [Parser::Graph] graph
-    # @param [Array<String>] additional_namespaces Namespaces found in the
-    #   prefix attribute of the head tag of the HTML document
+    # @param [Parser] parser
     # @see Parser#graph
     # @see Parser#additional_namespaces
-    def initialize graph, additional_namespaces=[]
-      @graph = graph
-      @additional_namespaces = additional_namespaces
+    def initialize parser
+      @parser = parser
     end
 
     # Build and return the base.
@@ -27,14 +24,15 @@ module OpenGraphReader
     def base
       base = Base.new
 
-      type = @graph.fetch('og:type', 'website').downcase
+      type = @parser.graph.fetch('og:type', 'website').downcase
 
       validate_type type
 
-      @graph.each do |property|
+      @parser.graph.each do |property|
         build_property base, property
       end
 
+      synthesize_required_properties base
       validate base
 
       base
@@ -85,11 +83,17 @@ module OpenGraphReader
       next_object
     end
 
+    def synthesize_required_properties base
+      if OpenGraphReader.config.synthesize_title && base.og.title.nil?
+        base.og['title'] = @parser.title
+      end
+    end
+
     def validate_type type
       return unless OpenGraphReader.config.strict
 
       unless KNOWN_TYPES.include?(type) ||
-             @additional_namespaces.include?(type) ||
+             @parser.additional_namespaces.include?(type) ||
              Object::Registry.verticals.include?(type)
         raise InvalidObjectError, "Undefined type #{type}"
       end

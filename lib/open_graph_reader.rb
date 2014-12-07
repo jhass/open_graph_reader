@@ -40,7 +40,7 @@ module OpenGraphReader
   def self.parse! html, origin=nil
     parser = Parser.new html
     raise NoOpenGraphDataError, "#{origin || html} does not contain any OpenGraph tags" unless parser.has_tags?
-    Builder.new(parser.graph, parser.additional_namespaces).base.tap {|base|
+    Builder.new(parser).base.tap {|base|
       base.origin = origin.to_s if origin
     }
   end
