@@ -21,12 +21,12 @@ module OpenGraphReader
       @uri = uri
       @connection = Faraday.default_connection.dup
 
-      if defined? FaradayMiddleware
-        prepend_middleware FaradayMiddleware::FollowRedirects
-      end
-
       if defined? Faraday::CookieJar
         prepend_middleware Faraday::CookieJar
+      end
+
+      if defined? FaradayMiddleware
+        prepend_middleware FaradayMiddleware::FollowRedirects
       end
     end
 
@@ -93,7 +93,7 @@ module OpenGraphReader
 
     def prepend_middleware middleware
       unless @connection.builder.handlers.include? middleware
-          @connection.builder.insert(0, middleware)
+        @connection.builder.insert(0, middleware)
       end
     end
   end

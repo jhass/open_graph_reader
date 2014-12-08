@@ -1,3 +1,7 @@
+# 0.3.1
+
+* Correct insertion order of Faraday middlewares.
+
 # 0.3.0
 
 * Fix a case of raising undefined property while building the object in
