@@ -2,6 +2,7 @@
 
 * With image synthesization turned on, normalize the protocol hack (`//`)
   to https.
+* Swallow any exceptions raised by Faraday.
 
 # 0.3.1
 

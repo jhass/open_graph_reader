@@ -39,17 +39,19 @@ module OpenGraphReader
 
     # Fetch the full page.
     #
-    # @return [Faraday::Response]
+    # @return [Faraday::Response,nil]
     def fetch
       @get_response = @connection.get(@uri)
+    rescue Faraday::Error
     end
     alias_method :fetch_body, :fetch
 
     # Fetch just the headers
     #
-    # @return [Faraday::Response]
+    # @return [Faraday::Response,nil]
     def fetch_headers
       @head_response = @connection.head(@uri)
+    rescue Faraday::Error
     end
 
     # Retrieve the body
@@ -69,6 +71,7 @@ module OpenGraphReader
     def html?
       fetch_headers unless fetched_headers?
       response = @get_response || @head_response
+      return false unless response
       return false unless response.success?
       return false unless response['content-type']
       response['content-type'].include? 'text/html'
