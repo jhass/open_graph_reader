@@ -176,4 +176,24 @@ RSpec.describe "real world examples" do
       expect(object.og.url).to       eq "http://fritzing.org/"
     end
   end
+
+  describe "image_path_2" do
+     it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/image_path_2'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /does not start with/
+    end
+
+    it "parses with image paths turned on" do
+      OpenGraphReader.config.synthesize_image_url = true
+
+      object = OpenGraphReader.parse! fixture_html('real_world/image_path_2'), 'http://motherboard.vice.com/de/read/forscher-kreieren-ein-material-das-fast-so-dunkel-ist-wie-ein-schwarzes-loch?trk_source=popular'
+
+      expect(object.og.type).to      eq "article"
+      expect(object.og.title).to     eq "Forscher kreieren ein Material, das fast so dunkel ist wie ein schwarzes Loch"
+      expect(object.og.site_name).to eq "Motherboard"
+      expect(object.og.image.url).to eq "https://motherboard-images.vice.com/content-images/article/13701/1405417621515809.JPG?crop=0.75xw:1xh;*,*&resize=500:*&output-format=jpeg&output-quality=90"
+      expect(object.og.url).to       eq "http://motherboard.vice.com/de/read/forscher-kreieren-ein-material-das-fast-so-dunkel-ist-wie-ein-schwarzes-loch"
+    end
+  end
 end

@@ -25,13 +25,18 @@ module OpenGraphReader
               raise ArgumentError, "Enabled image url synthesization but didn't pass an origin"
             end
 
-            begin
-              value = "/#{value}" unless value.start_with? '/' # Normalize to absolute path
-              uri = URI.parse(OpenGraphReader.current_origin)
-              uri.path = value
-              value = uri.to_s
-            rescue
-              raise InvalidObjectError, "URL #{value.inspect} does not start with http:// or https:// and failed to synthesize a full URL"
+            # Synthesize scheme hack to https (//example.org/foo/bar.png)
+            if value.start_with?('//') && value.split('/', 4)[2] =~ URI::HOST
+              value = "https:#{value}"
+            else # Synthesize absolute path (/foo/bar.png)
+              begin
+                value = "/#{value}" unless value.start_with? '/' # Normalize to absolute path
+                uri = URI.parse(OpenGraphReader.current_origin)
+                uri.path = value
+                value = uri.to_s
+              rescue
+                raise InvalidObjectError, "URL #{value.inspect} does not start with http:// or https:// and failed to synthesize a full URL"
+              end
             end
           elsif options.has_key?(:to) && OpenGraphReader.config.validate_references
             raise InvalidObjectError, "URL #{value.inspect} does not start with http:// or https://"

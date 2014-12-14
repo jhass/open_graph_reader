@@ -1,3 +1,8 @@
+# 0.4.0
+
+* With image synthesization turned on, normalize the protocol hack (`//`)
+  to https.
+
 # 0.3.1
 
 * Correct insertion order of Faraday middlewares.
