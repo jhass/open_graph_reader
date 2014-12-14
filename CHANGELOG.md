@@ -3,6 +3,7 @@
 * With image synthesization turned on, normalize the protocol hack (`//`)
   to https.
 * Swallow any exceptions raised by Faraday.
+* Set Accept and User-Agent header.
 
 # 0.3.1
 

@@ -8,11 +8,18 @@ begin
   require 'faraday/cookie_jar'
 rescue LoadError; end
 
+require 'open_graph_reader/version'
+
 module OpenGraphReader
   # Fetch an URI to retrieve its HTML body, if available.
   #
   # @api private
   class Fetcher
+    HEADERS = {
+      'Accept'     => 'text/html',
+      'User-Agent' => "OpenGraphReader/#{OpenGraphReader::VERSION} (+https://github.com/jhass/open_graph_reader)"
+    }.freeze
+
     # Create a new fetcher.
     #
     # @param [URI] uri the URI to fetch.
@@ -20,6 +27,7 @@ module OpenGraphReader
       raise ArgumentError, "url needs to be an instance of URI" unless uri.is_a? URI
       @uri = uri
       @connection = Faraday.default_connection.dup
+      @connection.headers.replace(HEADERS)
 
       if defined? Faraday::CookieJar
         prepend_middleware Faraday::CookieJar
