@@ -241,4 +241,84 @@ More details on the vulnerability can be found in the official Git mailing list 
 DESCRIPTION
     end
   end
+
+  describe "invalid_datetime" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html 'real_world/invalid_datetime'
+      }.to raise_error OpenGraphReader::InvalidObjectError, /ISO8601 datetime expected/
+    end
+
+    it "ignores the attribute with discarding invalid optional attributes enabled" do
+      OpenGraphReader.config.discard_invalid_optional_properties = true
+
+      object = OpenGraphReader.parse! fixture_html 'real_world/invalid_datetime'
+
+
+      expect(object.article.section).to eq "blog/engineering"
+      expect(object.article.published_time).to be_nil
+      expect(object.og.site_name).to eq "GitHub"
+      expect(object.og.type).to eq "article"
+      expect(object.og.image.url).to eq "https://github.com/apple-touch-icon-144.png"
+      expect(object.og.title).to eq "Vulnerability announced: update your Git clients"
+      expect(object.og.url).to eq "https://github.com/blog/1938-vulnerability-announced-update-your-git-clients"
+      expect(object.og.description).to eq <<-DESCRIPTION.chomp
+A critical Git security vulnerability has been announced today, affecting all versions of the official Git client and all related software that interacts with Git repositories, including GitHub for Windows and GitHub for Mac. Because this is a client-side only vulnerability, github.com and GitHub Enterprise are not directly affected.
+
+The vulnerability concerns Git and Git-compatible clients that access Git repositories in a case-insensitive or case-normalizing filesystem. An attacker can craft a malicious Git tree that will cause Git to overwrite its own .git/config file when cloning or checking out a repository, leading to arbitrary command execution in the client machine. Git clients running on OS X (HFS+) or any version of Microsoft Windows (NTFS, FAT) are exploitable through this vulnerability. Linux clients are not affected if they run in a case-sensitive filesystem.
+
+We strongly encourage all users of GitHub and GitHub Enterprise to update their Git clients as soon as possible, and to be particularly careful when cloning or accessing Git repositories hosted on unsafe or untrusted hosts.
+
+Repositories hosted on github.com cannot contain any of the malicious trees that trigger the vulnerability because we now verify and block these trees on push. We have also completed an automated scan of all existing content on github.com to look for malicious content that might have been pushed to our site before this vulnerability was discovered. This work is an extension of the data-quality checks we have always performed on repositories pushed to our servers to protect our users against malformed or malicious Git data.
+
+Updated versions of GitHub for Windows and GitHub for Mac are available for immediate download, and both contain the security fix on the Desktop application itself and on the bundled version of the Git command-line client.
+
+In addition, the following updated versions of Git address this vulnerability:
+
+
+The Git core team has announced maintenance releases for all current versions of Git (v1.8.5.6, v1.9.5, v2.0.5, v2.1.4, and v2.2.1).
+Git for Windows (also known as MSysGit) has released maintenance version 1.9.5.
+The two major Git libraries, libgit2 and JGit, have released maintenance versions with the fix. Third party software using these libraries is strongly encouraged to update.
+
+
+More details on the vulnerability can be found in the official Git mailing list announcement and on the git-blame blog.
+DESCRIPTION
+    end
+
+  it "parses with datetime format parsing turned on" do
+      OpenGraphReader.config.guess_datetime_format = true
+
+      object = OpenGraphReader.parse! fixture_html 'real_world/invalid_datetime'
+
+
+      expect(object.article.section).to eq "blog/engineering"
+      expect(object.article.published_time).to eq DateTime.iso8601 "2014-12-18T21:16:27+00:00"
+      expect(object.og.site_name).to eq "GitHub"
+      expect(object.og.type).to eq "article"
+      expect(object.og.image.url).to eq "https://github.com/apple-touch-icon-144.png"
+      expect(object.og.title).to eq "Vulnerability announced: update your Git clients"
+      expect(object.og.url).to eq "https://github.com/blog/1938-vulnerability-announced-update-your-git-clients"
+      expect(object.og.description).to eq <<-DESCRIPTION.chomp
+A critical Git security vulnerability has been announced today, affecting all versions of the official Git client and all related software that interacts with Git repositories, including GitHub for Windows and GitHub for Mac. Because this is a client-side only vulnerability, github.com and GitHub Enterprise are not directly affected.
+
+The vulnerability concerns Git and Git-compatible clients that access Git repositories in a case-insensitive or case-normalizing filesystem. An attacker can craft a malicious Git tree that will cause Git to overwrite its own .git/config file when cloning or checking out a repository, leading to arbitrary command execution in the client machine. Git clients running on OS X (HFS+) or any version of Microsoft Windows (NTFS, FAT) are exploitable through this vulnerability. Linux clients are not affected if they run in a case-sensitive filesystem.
+
+We strongly encourage all users of GitHub and GitHub Enterprise to update their Git clients as soon as possible, and to be particularly careful when cloning or accessing Git repositories hosted on unsafe or untrusted hosts.
+
+Repositories hosted on github.com cannot contain any of the malicious trees that trigger the vulnerability because we now verify and block these trees on push. We have also completed an automated scan of all existing content on github.com to look for malicious content that might have been pushed to our site before this vulnerability was discovered. This work is an extension of the data-quality checks we have always performed on repositories pushed to our servers to protect our users against malformed or malicious Git data.
+
+Updated versions of GitHub for Windows and GitHub for Mac are available for immediate download, and both contain the security fix on the Desktop application itself and on the bundled version of the Git command-line client.
+
+In addition, the following updated versions of Git address this vulnerability:
+
+
+The Git core team has announced maintenance releases for all current versions of Git (v1.8.5.6, v1.9.5, v2.0.5, v2.1.4, and v2.2.1).
+Git for Windows (also known as MSysGit) has released maintenance version 1.9.5.
+The two major Git libraries, libgit2 and JGit, have released maintenance versions with the fix. Third party software using these libraries is strongly encouraged to update.
+
+
+More details on the vulnerability can be found in the official Git mailing list announcement and on the git-blame blog.
+DESCRIPTION
+    end
+  end
 end

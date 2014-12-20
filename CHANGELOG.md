@@ -2,6 +2,7 @@
 
 * Support discarding invalid optional properties instead of failing
   completely.
+* Support non ISO8601 datetimes.
 
 # 0.4.0
 

@@ -78,7 +78,11 @@ module OpenGraphReader
       # @see http://ogp.me/#datetime
       define_type :datetime do |value, options|
         begin
-          DateTime.iso8601 value
+          if OpenGraphReader.config.guess_datetime_format
+            DateTime.parse value
+          else
+            DateTime.iso8601 value
+          end
         rescue ArgumentError => e
           next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
           raise InvalidObjectError, "ISO8601 datetime expected, but was #{value.inspect}"

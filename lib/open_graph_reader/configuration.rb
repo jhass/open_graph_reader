@@ -66,6 +66,15 @@ module OpenGraphReader
     # @return [Bool]
     attr_accessor :synthesize_image_url
 
+    # Parse non ISO8601 datetimes (default: <tt>false</tt>).
+    #
+    # The standard clearly requires ISO8601 as format for
+    # datetime properties. However other formats are seen in the wild.
+    # With this setting enabled, the format is guessed.
+    #
+    # @return [Bool]
+    attr_accessor :guess_datetime_format
+
     # @private
     def initialize
       reset_to_defaults!
@@ -79,6 +88,7 @@ module OpenGraphReader
       @discard_invalid_optional_properties = false
       @synthesize_title                    = false
       @synthesize_image_url                = false
+      @guess_datetime_format               = false
     end
   end
 end
