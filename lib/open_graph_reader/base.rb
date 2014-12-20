@@ -39,6 +39,13 @@ module OpenGraphReader
     # @see #origin
     attr_writer :origin
 
+    # Return the stored root objects as a hash.
+    #
+    # @api private
+    # @return [String => Object]
+    attr_reader :bases
+    alias_method :children, :bases
+
     # @api private
     def initialize
       @bases = {}

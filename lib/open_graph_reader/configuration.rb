@@ -38,6 +38,14 @@ module OpenGraphReader
     # @return [Bool]
     attr_accessor :validate_references
 
+    # Discard invalid optional properties (default: <tt>false</tt>).
+    #
+    # Instead of rendering the entire object invalid, discard
+    # invalid optional properties.
+    #
+    # @return [Bool]
+    attr_accessor :discard_invalid_optional_properties
+
     # Fallback to the title tag if og:title is missing (default: <tt>false</tt>).
     #
     # The standard makes defining og:title required, but it's
@@ -46,7 +54,6 @@ module OpenGraphReader
     #
     # @return [Bool]
     attr_accessor :synthesize_title
-
 
     # Guess image URL when it looks like a path (default: <tt>false</tt>).
     #
@@ -66,11 +73,12 @@ module OpenGraphReader
 
     # Reset configuration to their defaults
     def reset_to_defaults!
-      @strict = false
-      @validate_required = true
-      @validate_references = true
-      @synthesize_title = false
-      @synthesize_image_url = false
+      @strict                              = false
+      @validate_required                   = true
+      @validate_references                 = true
+      @discard_invalid_optional_properties = false
+      @synthesize_title                    = false
+      @synthesize_image_url                = false
     end
   end
 end

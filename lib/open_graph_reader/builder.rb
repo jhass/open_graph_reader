@@ -33,6 +33,7 @@ module OpenGraphReader
       end
 
       synthesize_required_properties base
+      drop_empty_children base
       validate base
 
       base
@@ -86,6 +87,18 @@ module OpenGraphReader
     def synthesize_required_properties base
       if OpenGraphReader.config.synthesize_title && base.og.title.nil?
         base.og['title'] = @parser.title
+      end
+    end
+
+    def drop_empty_children base
+      base = base.children
+      base.each do |key, object|
+        [*object].each do |object|
+          if object.is_a? Object
+            drop_empty_children object
+            base.delete(key) if object.content.nil? && object.children.empty? && object.properties.empty?
+          end
+        end
       end
     end
 

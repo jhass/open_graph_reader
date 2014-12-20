@@ -1,3 +1,8 @@
+# 0.5.0
+
+* Support discarding invalid optional properties instead of failing
+  completely.
+
 # 0.4.0
 
 * With image synthesization turned on, normalize the protocol hack (`//`)
