@@ -1,7 +1,7 @@
-require 'bundler/setup'
-require 'webmock/rspec'
+require "bundler/setup"
+require "webmock/rspec"
 
-require 'open_graph_reader'
+require "open_graph_reader"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -17,11 +17,9 @@ RSpec.configure do |config|
 
   config.disable_monkey_patching!
 
-  config.warnings = true if ENV['TRAVIS']
+  config.warnings = true if ENV["TRAVIS"]
 
-  if config.files_to_run.one?
-    config.default_formatter = 'doc'
-  end
+  config.default_formatter = "doc" if config.files_to_run.one?
 
   config.profile_examples = 10
 
@@ -32,7 +30,6 @@ RSpec.configure do |config|
     OpenGraphReader.config.reset_to_defaults!
   end
 end
-
 
 def example_html example
   fixture_html "examples/#{example}"

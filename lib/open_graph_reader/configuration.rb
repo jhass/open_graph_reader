@@ -1,4 +1,4 @@
-require 'singleton'
+require "singleton"
 
 module OpenGraphReader
   # The behavior of this library can be tweaked with some parameters.

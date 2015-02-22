@@ -1,4 +1,4 @@
-require 'open_graph_reader/object/registry'
+require "open_graph_reader/object/registry"
 
 module OpenGraphReader
   module Object
@@ -36,48 +36,71 @@ module OpenGraphReader
           options = args.pop if args.last.is_a? Hash
           options ||= {}
 
-          available_properties << name.to_s
-          required_properties << name.to_s if options[:required]
-          Registry.register [@namespace, name].join(':'), options[:to] if options[:to]
-
-          if options[:verticals]
-            options[:verticals].each do |vertical|
-              vertical = [@namespace, vertical].join('.')
-              verticals[vertical] << name.to_s
-              Registry.verticals <<  vertical
-            end
-          end
+          register_property name, options
+          register_verticals name, options[:verticals]
 
           if options[:collection]
-            define_method("#{name}s") do
-              children[name.to_s]
-            end
-
-            define_method(name) do
-              value = children[name.to_s].first
-              # @todo figure out a sane way to distinguish subobject properties
-              value.content if value && value.is_a?(Object)
-              value || options[:default]
-            end
+            define_collection name, options
           else
-            define_method(name) do
-              properties[name.to_s] || options[:default]
-            end
-
-            define_method("#{name}=") do |value|
-              # @todo figure out a sane way to distinguish subobject properties
-              unless value.is_a? Object
-                value.downcase! if options[:downcase]
-                value = processor.call(value, *args, options)
-              end
-              properties[name.to_s] = value
-            end
+            define_single name, options, args, processor
           end
+        end
+      end
+
+      # @api private
+      def register_property name, options
+        available_properties << name.to_s
+        required_properties << name.to_s if options[:required]
+        Registry.register [namespace, name].join(":"), options[:to] if options[:to]
+      end
+
+      # @api private
+      def register_verticals name, assigned_verticals
+        [*assigned_verticals].each do |vertical|
+          vertical = [namespace, vertical].join(".")
+          verticals[vertical] << name.to_s
+          Registry.verticals << vertical
+        end
+      end
+
+      # @api private
+      def define_collection name, options
+        define_method("#{name}s") do
+          children[name.to_s]
+        end
+
+        define_method(name) do
+          value = children[name.to_s].first
+          # @todo figure out a sane way to distinguish subobject properties
+          value.content if value && value.is_a?(Object)
+          value || options[:default]
+        end
+      end
+
+      # @api private
+      def define_single name, options, args, processor
+        define_method(name) do
+          properties[name.to_s] || options[:default]
+        end
+
+        define_method("#{name}=") do |value|
+          # @todo figure out a sane way to distinguish subobject properties
+          unless value.is_a? Object
+            value.downcase! if options[:downcase]
+            value = processor.call(value, *args, options)
+          end
+          properties[name.to_s] = value
         end
       end
 
       # Alias to trick YARD
       singleton_class.send(:alias_method, :define_type_no_doc, :define_type)
+
+      # The processor for the content attribute.
+      #
+      # @api private
+      # @return [Proc]
+      attr_reader :content_processor
 
       # @overload namespace
       #   Get the namespace of this object.
@@ -91,7 +114,7 @@ module OpenGraphReader
       #     namespace :og, :image
       def namespace *names
         return @namespace if names.empty?
-        @namespace = names.join(':')
+        @namespace = names.join(":")
         Registry.register @namespace, self
       end
 
@@ -134,14 +157,6 @@ module OpenGraphReader
       # @return [{Symbol => Proc}]
       def self.processors
         @processors ||= {}
-      end
-
-      # The processor for the content attribute.
-      #
-      # @api private
-      # @return [Proc]
-      def content_processor
-        @content_processor
       end
 
       # A map from vertical names to attributes that belong to them.

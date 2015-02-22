@@ -1,14 +1,14 @@
-require 'faraday'
+require "faraday"
 
 begin
-  require 'faraday_middleware/response/follow_redirects'
+  require "faraday_middleware/response/follow_redirects"
 rescue LoadError; end
 
 begin
-  require 'faraday/cookie_jar'
+  require "faraday/cookie_jar"
 rescue LoadError; end
 
-require 'open_graph_reader/version'
+require "open_graph_reader/version"
 
 module OpenGraphReader
   # Fetch an URI to retrieve its HTML body, if available.
@@ -16,8 +16,8 @@ module OpenGraphReader
   # @api private
   class Fetcher
     HEADERS = {
-      'Accept'     => 'text/html',
-      'User-Agent' => "OpenGraphReader/#{OpenGraphReader::VERSION} (+https://github.com/jhass/open_graph_reader)"
+      "Accept"     => "text/html",
+      "User-Agent" => "OpenGraphReader/#{OpenGraphReader::VERSION} (+https://github.com/jhass/open_graph_reader)"
     }.freeze
 
     # Create a new fetcher.
@@ -29,13 +29,8 @@ module OpenGraphReader
       @connection = Faraday.default_connection.dup
       @connection.headers.replace(HEADERS)
 
-      if defined? Faraday::CookieJar
-        prepend_middleware Faraday::CookieJar
-      end
-
-      if defined? FaradayMiddleware
-        prepend_middleware FaradayMiddleware::FollowRedirects
-      end
+      prepend_middleware Faraday::CookieJar if defined? Faraday::CookieJar
+      prepend_middleware FaradayMiddleware::FollowRedirects if defined? FaradayMiddleware
     end
 
     # The URL to fetch
@@ -81,8 +76,8 @@ module OpenGraphReader
       response = @get_response || @head_response
       return false unless response
       return false unless response.success?
-      return false unless response['content-type']
-      response['content-type'].include? 'text/html'
+      return false unless response["content-type"]
+      response["content-type"].include? "text/html"
     end
 
     # Whether the target URI was fetched.
@@ -103,9 +98,9 @@ module OpenGraphReader
     private
 
     def prepend_middleware middleware
-      unless @connection.builder.handlers.include? middleware
-        @connection.builder.insert(0, middleware)
-      end
+      return if @connection.builder.handlers.include? middleware
+
+      @connection.builder.insert(0, middleware)
     end
   end
 end

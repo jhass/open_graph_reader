@@ -24,7 +24,7 @@ module OpenGraphReader
     def base
       base = Base.new
 
-      type = @parser.graph.fetch('og:type', 'website').downcase
+      type = @parser.graph.fetch("og:type", "website").downcase
 
       validate_type type
 
@@ -42,52 +42,88 @@ module OpenGraphReader
     private
 
     def build_property base, property
+      object, name = object_and_name base, property
+
+      if collection? object, name
+        build_collection object, property, name
+      elsif subobject? property
+        build_subobject object, property, name
+      else # Direct attribute
+        build_single object, property, name
+      end
+    rescue UnknownNamespaceError, UndefinedPropertyError => e
+      raise InvalidObjectError, e.message if OpenGraphReader.config.strict
+    end
+
+    def object_and_name base, property
       root, *path, name = property.path
       base[root] ||= Object::Registry[root].new
       object = resolve base[root], root, path
 
-      if object.has_property?(name) && object.respond_to?("#{name}s") # Collection
-        collection = object.public_send "#{name}s"
-        if Object::Registry.registered? property.fullname # of subobjects
-          object = Object::Registry[property.fullname].new
-          collection << object
-          object.content = property.content
-        else # of type
-          collection << property.content
-        end
-      elsif Object::Registry.registered? property.fullname # Subobject
-        object[name] ||= Object::Registry[property.fullname].new
-        object[name].content = property.content
-      else # Direct attribute
-        object[name] = property.content
+      [object, name]
+    end
+
+    def collection? object, name
+      object.property?(name) && object.respond_to?("#{name}s")
+    end
+
+    def build_collection object, property, name
+      collection = object.public_send "#{name}s"
+      if Object::Registry.registered? property.fullname # of subobjects
+        object = Object::Registry[property.fullname].new
+        collection << object
+        object.content = property.content
+      else # of type
+        collection << property.content
       end
-    rescue UnknownNamespaceError, UndefinedPropertyError => e
-      raise InvalidObjectError, e.message if OpenGraphReader.config.strict
+    end
+
+    def subobject? property
+      Object::Registry.registered? property.fullname
+    end
+
+    def build_subobject object, property, name
+      object[name] ||= Object::Registry[property.fullname].new
+      object[name].content = property.content
+    end
+
+    def build_single object, property, name
+      object[name] = property.content
     end
 
     def resolve object, last_namespace, path
       return object if path.empty?
 
       next_name = path.shift
-      if object.has_property?(next_name) && object.respond_to?("#{next_name}s") # collection
-        collection = object.public_send("#{next_name}s")
-        next_object = collection.last
-        if next_object.nil? # Final namespace or missing previous declaration, create a new collection item
-          next_object = Object::Registry[[*last_namespace, next_name].join(':')].new
-          collection << next_object
-        end
+      if object.property?(next_name) && object.respond_to?("#{next_name}s") # collection
+        resolve_collection object, last_namespace, next_name
       else
-        next_object = object[next_name]
-        next_object ||= Object::Registry[[*last_namespace, next_name].join(':')].new
+        resolve_property object, last_namespace, next_name
+      end
+    end
+
+    def resolve_collection object, last_namespace, next_name
+      collection = object.public_send("#{next_name}s")
+      next_object = collection.last
+      # Final namespace or missing previous declaration, create a new collection item
+      if next_object.nil?
+        next_object = Object::Registry[[*last_namespace, next_name].join(":")].new
+        collection << next_object
       end
 
       next_object
     end
 
+    def resolve_property object, last_namespace, next_name
+      next_object = object[next_name]
+      next_object || Object::Registry[[*last_namespace, next_name].join(":")].new
+    end
+
     def synthesize_required_properties base
-      if OpenGraphReader.config.synthesize_title && base.og.title.nil?
-        base.og['title'] = @parser.title
-      end
+      return unless OpenGraphReader.config.synthesize_title
+      return if base.og.title
+
+      base.og["title"] = @parser.title
     end
 
     def drop_empty_children base
@@ -105,11 +141,11 @@ module OpenGraphReader
     def validate_type type
       return unless OpenGraphReader.config.strict
 
-      unless KNOWN_TYPES.include?(type) ||
-             @parser.additional_namespaces.include?(type) ||
-             Object::Registry.verticals.include?(type)
-        raise InvalidObjectError, "Undefined type #{type}"
-      end
+      return if KNOWN_TYPES.include?(type)
+      return if @parser.additional_namespaces.include?(type)
+      return if Object::Registry.verticals.include?(type)
+
+      raise InvalidObjectError, "Undefined type #{type}"
     end
 
     def validate base
@@ -128,18 +164,21 @@ module OpenGraphReader
     end
 
     def validate_verticals object, type
-      return unless type.include? '.'
-      verticals = object.class.verticals
-      if verticals.has_key? type
-        valid_properties = verticals[type]
-        set_properties = object.class.available_properties.select {|property| object[property] }
-        extra_properties = set_properties-valid_properties
+      return unless type.include? "."
 
-        unless extra_properties.empty?
-          raise InvalidObjectError, "Set invalid property #{extra_properties.first} for #{type} " \
-            "in #{object.inspect}, valid properties are #{valid_properties.inspect}"
-        end
-      end
+      verticals = object.class.verticals
+      return unless verticals.has_key? type
+      return if extra_properties(object, type, verticals).empty?
+
+      raise InvalidObjectError, "Set invalid property #{extra_properties.first} for #{type} " \
+        "in #{object.inspect}, valid properties are #{valid_properties.inspect}"
+    end
+
+    def extra_properties object, type, verticals
+      valid_properties = verticals[type]
+      set_properties   = object.class.available_properties.select {|property| object[property] }
+
+      set_properties - valid_properties
     end
   end
 end

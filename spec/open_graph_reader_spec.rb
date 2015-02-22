@@ -1,7 +1,7 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe OpenGraphReader do
-  let (:invalid_object) { "<head><meta property='og:type' content='foobar' /></head>" }
+  let(:invalid_object) { "<head><meta property='og:type' content='foobar' /></head>" }
 
   describe "::fetch!" do
     it "raises if there's no html" do
@@ -15,7 +15,7 @@ RSpec.describe OpenGraphReader do
     it "raises if there are no tags" do
       fetcher = double(html?: true, url: "http://example.org", body: "")
       allow(OpenGraphReader::Fetcher).to receive(:new).and_return(fetcher)
-      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(has_tags?: false))
+      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
       expect {
         OpenGraphReader.fetch! "http://example.org"
       }.to raise_error OpenGraphReader::NoOpenGraphDataError
@@ -43,7 +43,7 @@ RSpec.describe OpenGraphReader do
     it "does not raise if there are no tags" do
       fetcher = double(html?: true, url: "http://example.org", body: "")
       allow(OpenGraphReader::Fetcher).to receive(:new).and_return(fetcher)
-      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(has_tags?: false))
+      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
 
       expect {
         OpenGraphReader.fetch "http://example.org"
@@ -62,7 +62,7 @@ RSpec.describe OpenGraphReader do
 
   describe "::parse!" do
     it "raises if there are no tags" do
-      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(has_tags?: false))
+      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
 
       expect {
         OpenGraphReader.parse! ""
@@ -78,7 +78,7 @@ RSpec.describe OpenGraphReader do
 
   describe "::parse" do
     it "does not raise if there are no tags" do
-      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(has_tags?: false))
+      allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
 
       expect {
         OpenGraphReader.parse ""

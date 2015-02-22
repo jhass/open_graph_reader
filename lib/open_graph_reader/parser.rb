@@ -1,6 +1,6 @@
-require 'nokogiri'
+require "nokogiri"
 
-require 'open_graph_reader/parser/graph'
+require "open_graph_reader/parser/graph"
 
 module OpenGraphReader
   # Parse OpenGraph tags in a HTML document into a graph.
@@ -8,14 +8,14 @@ module OpenGraphReader
   # @api private
   class Parser
     # Some helper methods for Nokogiri
-    XPathHelpers = Class.new do
+    module XPathHelpers
       # Helper to lowercase all given properties
-      def ci_starts_with node_set, string
+      def self.ci_starts_with node_set, string
         node_set.select {|node|
           node.to_s.downcase.start_with? string.downcase
         }
       end
-    end.new
+    end
 
     # Namespaces found in the passed documents head tag
     #
@@ -35,7 +35,7 @@ module OpenGraphReader
     # Whether there are any OpenGraph tags at all.
     #
     # @return [Bool]
-    def has_tags?
+    def any_tags?
       !graph.empty?
     end
 
@@ -50,45 +50,46 @@ module OpenGraphReader
     #
     # @return [String]
     def title
-      @doc.xpath('/html/head/title').first.text
+      @doc.xpath("/html/head/title").first.text
     end
 
     private
 
     def build_graph
       graph = Graph.new
-      head = @doc.xpath('/html/head').first
+
+      meta_tags.each do |tag|
+        *path, leaf = tag["property"].downcase.split(":")
+        node = graph.find_or_create_path path
+
+        # @todo make stripping configurable?
+        node << Graph::Node.new(leaf, tag["content"].strip)
+      end
+
+      graph
+    end
+
+    def meta_tags
+      head = @doc.xpath("/html/head").first
 
       raise NoOpenGraphDataError, "There's no head tag in #{@doc}" unless head
 
+      head.xpath("meta[#{xpath_condition(head)}]", XPathHelpers)
+    end
+
+    def xpath_condition head
       condition = "ci_starts_with(@property, 'og:')"
-      if head['prefix']
-        @additional_namespaces = head['prefix'].scan(/(\w+):\s*([^ ]+)/)
+
+      if head["prefix"]
+        @additional_namespaces = head["prefix"].scan(/(\w+):\s*([^ ]+)/)
         @additional_namespaces.map! {|prefix, _| prefix.downcase }
         @additional_namespaces.each do |additional_namespace|
-          next if additional_namespace == 'og'
+          next if additional_namespace == "og"
           condition << " or ci_starts_with(@property, '#{additional_namespace}')"
         end
       end
 
-      head.xpath("meta[#{condition}]", XPathHelpers).each do |tag|
-        *path, leaf = tag['property'].downcase.split(':')
-        node = path.inject(graph.root) {|node, name|
-          child = node.children.reverse.find {|child| child.name == name }
-
-          unless child
-            child = Graph::Node.new name
-            node << child
-          end
-
-          child
-        }
-
-        # @todo make stripping configurable?
-        node << Graph::Node.new(leaf, tag['content'].strip)
-      end
-
-      graph
+      condition
     end
 
     def to_doc html

@@ -1,9 +1,9 @@
-require 'forwardable'
+require "forwardable"
 
 module OpenGraphReader
   class Parser
     # A Graph to represent OpenGraph tags.
-   class Graph
+    class Graph
       # A node in the graph.
       Node = Struct.new(:name, :content) do
         extend Forwardable
@@ -54,14 +54,14 @@ module OpenGraphReader
         #
         # @return [Array<String>]
         def path
-          @path ||= fullname.split(':')
+          @path ||= fullname.split(":")
         end
 
         # Get node's full name.
         #
         # @return [String]
         def fullname
-          @fullname ||= [namespace, name].compact.join(':')
+          @fullname ||= [namespace, name].compact.join(":")
           @fullname unless @fullname.empty?
         end
       end
@@ -79,7 +79,6 @@ module OpenGraphReader
       #
       #   @return [Bool]
       def_delegators :root, :empty?
-
 
       # Create new graph.
       def initialize
@@ -126,10 +125,23 @@ module OpenGraphReader
         select {|node| node.fullname == property }
       end
 
+      def find_or_create_path path
+        path.inject(root) {|node, name|
+          child = node.children.reverse.find {|child| child.name == name }
+
+          unless child
+            child = Node.new name
+            node << child
+          end
+
+          child
+        }
+      end
+
       private
 
       def normalize_property property
-        property.is_a?(Enumerable) ? property.join(':') : property
+        property.is_a?(Enumerable) ? property.join(":") : property
       end
     end
   end

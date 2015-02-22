@@ -1,6 +1,6 @@
-require 'singleton'
-require 'forwardable'
-require 'set'
+require "singleton"
+require "forwardable"
+require "set"
 
 module OpenGraphReader
   module Object

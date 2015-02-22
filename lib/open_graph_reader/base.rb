@@ -1,4 +1,4 @@
-require 'forwardable'
+require "forwardable"
 
 module OpenGraphReader
   # You get an instance of this class as result of your quest to obtain
@@ -52,7 +52,7 @@ module OpenGraphReader
     end
 
     # @private
-    def respond_to_missing?(method, include_private=false)
+    def respond_to_missing?(method, _include_private=false)
       @bases.has_key? method.to_s
     end
 

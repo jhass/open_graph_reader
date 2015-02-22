@@ -1,6 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
-RSpec.describe 'valid examples' do
+RSpec.describe "valid examples" do
   %w(
     article-offset
     article-utc
@@ -33,10 +33,11 @@ RSpec.describe 'valid examples' do
 
   describe "article" do
     let(:object) { OpenGraphReader.parse! example_html "article" }
+
     it "parses" do
       expect {
-          object
-        }.to_not raise_error
+        object
+      }.to_not raise_error
     end
 
     it "allows access to the first tag" do
@@ -68,8 +69,8 @@ RSpec.describe 'valid examples' do
   describe "errors/book" do
     it "parses" do
       expect {
-          OpenGraphReader.parse! example_html "errors/book"
-        }.to_not raise_error
+        OpenGraphReader.parse! example_html "errors/book"
+      }.to_not raise_error
     end
   end
 end

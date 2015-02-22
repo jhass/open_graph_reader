@@ -1,13 +1,13 @@
-require 'uri'
+require "uri"
 
-require 'open_graph_reader/base'
-require 'open_graph_reader/builder'
-require 'open_graph_reader/configuration'
-require 'open_graph_reader/definitions'
-require 'open_graph_reader/fetcher'
-require 'open_graph_reader/object'
-require 'open_graph_reader/parser'
-require 'open_graph_reader/version'
+require "open_graph_reader/base"
+require "open_graph_reader/builder"
+require "open_graph_reader/configuration"
+require "open_graph_reader/definitions"
+require "open_graph_reader/fetcher"
+require "open_graph_reader/object"
+require "open_graph_reader/parser"
+require "open_graph_reader/version"
 
 # @todo 1.1 compatibility mode?
 # This module provides the main entry to the library. Please see the
@@ -40,7 +40,7 @@ module OpenGraphReader
   def self.parse! html, origin=nil
     self.current_origin = origin
     parser = Parser.new html
-    raise NoOpenGraphDataError, "#{origin || html} does not contain any OpenGraph tags" unless parser.has_tags?
+    raise NoOpenGraphDataError, "#{origin || html} does not contain any OpenGraph tags" unless parser.any_tags?
     Builder.new(parser).base.tap {|base|
       base.origin = origin.to_s if origin
       self.current_origin = nil
