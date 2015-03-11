@@ -21,7 +21,7 @@ module OpenGraphReader
 
         next value if value.start_with?("http://") || value.start_with?("https://")
 
-        if options[:image] && OpenGraphReader.config.synthesize_image_url
+        if options[:image] && OpenGraphReader.config.synthesize_image_url || OpenGraphReader.config.synthesize_url
           unless OpenGraphReader.current_origin
             next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
 

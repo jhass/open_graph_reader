@@ -55,13 +55,20 @@ module OpenGraphReader
     # @return [Bool]
     attr_accessor :synthesize_title
 
-    # Guess image URL when it looks like a path (default: <tt>false</tt>).
+    # Guess object URL when it looks like a path (default: <tt>false</tt>).
     #
-    # The standard requires og:image, og:image:url and og:image:secure_url
-    # to be a full URL. However it's common practice to put a path relative
+    # The standard requires the url type to point to a full http or https URL.
+    # However it's common practice to put a path relative
     # to the domain URL. When enabled, the library tries to guess the full
     # URL from such a path. Note the object can still turn invalid if it fails
     # to do so.
+    #
+    # @return [Bool]
+    attr_accessor :synthesize_url
+
+    # Guess image URL when it looks like a path (default: <tt>false</tt>).
+    #
+    # See {#synthesize_url}
     #
     # @return [Bool]
     attr_accessor :synthesize_image_url
@@ -87,6 +94,7 @@ module OpenGraphReader
       @validate_references                 = true
       @discard_invalid_optional_properties = false
       @synthesize_title                    = false
+      @synthesize_url                      = false
       @synthesize_image_url                = false
       @guess_datetime_format               = false
     end

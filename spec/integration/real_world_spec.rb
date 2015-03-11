@@ -434,4 +434,29 @@ the git-blame blog.
 DESCRIPTION
     end
   end
+
+  describe "url_path" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html "real_world/url_path"
+      }.to raise_error OpenGraphReader::InvalidObjectError, /does not start with/
+    end
+
+    it "parses with image paths turned on" do
+      OpenGraphReader.config.synthesize_url = true
+      OpenGraphReader.config.synthesize_image_url = true
+
+      object = OpenGraphReader.parse!(
+        fixture_html("real_world/url_path"),
+        "http://www.nextinpact.com/news/93425-revue-presse-cities-skylines-est-il-simcity-que-on-attendait.htm"
+      )
+
+      expect(object.og.title).to eq "Revue de presse : Cities Skylines est-il le SimCity que l'on attendait ?"
+      expect(object.og.type).to eq "article"
+      expect(object.og.image.url).to eq "https://az664837.vo.msecnd.net/images/bd/wide-linked-media/5920.jpg"
+      expect(object.og.url).to eq(
+        "http://www.nextinpact.com/news/93425-revue-presse-cities-skylines-est-il-simcity-que-on-attendait.htm"
+      )
+    end
+  end
 end

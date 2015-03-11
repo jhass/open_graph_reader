@@ -3,6 +3,8 @@
 * Support discarding invalid optional properties instead of failing
   completely.
 * Support non ISO8601 datetimes.
+* Support URL synthesization from a path for any kind of URL,
+  not just images.
 
 # 0.4.0
 
