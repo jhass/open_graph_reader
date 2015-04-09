@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/jhass/open_graph_reader"
   spec.license       = "MIT"
 
-  spec.files         = Dir["lib/**/*", "spec/**/*", ".yardopts", ".rspec", ".gitmodules"]
+  spec.files         = Dir["lib/**/*", "spec/**/*", ".yardopts", ".rspec", ".gitmodules", "README.md", "LICENSE.txt"]
   spec.executables   = spec.files.grep(/^bin\//) {|f| File.basename(f) }
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ["lib"]
