@@ -23,7 +23,7 @@ module OpenGraphReader
 
     # @!macro property
     # @return [String, nil]
-    url :url
+    url :url, required: true
 
     # @!macro property
     # @return [Audio, nil]

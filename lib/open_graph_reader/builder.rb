@@ -120,6 +120,18 @@ module OpenGraphReader
     end
 
     def synthesize_required_properties base
+      synthesize_url base
+      synthesize_title base
+    end
+
+    def synthesize_url base
+      return unless OpenGraphReader.config.synthesize_url
+      return if base.og.url
+
+      base.og["url"] = OpenGraphReader.current_origin
+    end
+
+    def synthesize_title base
       return unless OpenGraphReader.config.synthesize_title
       return if base.og.title
 

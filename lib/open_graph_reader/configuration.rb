@@ -55,6 +55,15 @@ module OpenGraphReader
     # @return [Bool]
     attr_accessor :synthesize_title
 
+    # Return request URL if og:url is missing (default: <tt>false</tt>).
+    #
+    # The standard makes defining og:url required, but it's often missing.
+    # This enables a fallback that sets the URL to the request URL if none
+    # was found.
+    #
+    # @return [Bool]
+    attr_accessor :synthesize_url
+
     # Guess object URL when it looks like a path (default: <tt>false</tt>).
     #
     # The standard requires the url type to point to a full http or https URL.
@@ -94,6 +103,7 @@ module OpenGraphReader
       @validate_references                 = true
       @discard_invalid_optional_properties = false
       @synthesize_title                    = false
+      @synthesize_url                      = false
       @synthesize_full_url                 = false
       @synthesize_image_url                = false
       @guess_datetime_format               = false

@@ -459,4 +459,26 @@ DESCRIPTION
       )
     end
   end
+
+  describe "missing_url" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html "real_world/missing_url"
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
+    end
+
+    it "parses with url synthesization turned on" do
+      OpenGraphReader.config.synthesize_url = true
+
+      object = OpenGraphReader.parse!(
+        fixture_html("real_world/missing_url"),
+        "http://taz.de/!159273"
+      )
+
+      expect(object.og.title).to eq "Wandel im Biohandel: Alnatura weitet Vertrieb im Netz aus"
+      expect(object.og.type).to eq "article"
+      expect(object.og.image.url).to eq "http://www.taz.de/uploads/images/948/0634n.jpg"
+      expect(object.og.url).to eq "http://taz.de/!159273"
+    end
+  end
 end

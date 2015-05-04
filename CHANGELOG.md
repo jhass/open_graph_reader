@@ -1,6 +1,9 @@
 # 0.6.0
 
 * Renamed synthesize_url setting to synthesize_full_url
+* Add new synthesize_url setting with a different meaning: With this setting
+  set to true, return the URL the document originated from, if available for
+  og:url if it's missing.
 
 # 0.5.0
 
