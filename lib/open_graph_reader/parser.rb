@@ -25,10 +25,8 @@ module OpenGraphReader
     # Create a new parser.
     #
     # @param [#to_s, Nokogiri::XML::Node] html the document to parse.
-    # @param [String] origin The source the document was obtained from.
-    def initialize html, origin=nil
+    def initialize html
       @doc = to_doc html
-      @origin = origin
       @additional_namespaces = []
     end
 
