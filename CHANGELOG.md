@@ -1,3 +1,7 @@
+# 0.6.0
+
+* Renamed synthesize_url setting to synthesize_full_url
+
 # 0.5.0
 
 * Support discarding invalid optional properties instead of failing

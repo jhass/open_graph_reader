@@ -64,11 +64,11 @@ module OpenGraphReader
     # to do so.
     #
     # @return [Bool]
-    attr_accessor :synthesize_url
+    attr_accessor :synthesize_full_url
 
     # Guess image URL when it looks like a path (default: <tt>false</tt>).
     #
-    # See {#synthesize_url}
+    # See {#synthesize_full_url}
     #
     # @return [Bool]
     attr_accessor :synthesize_image_url
@@ -94,7 +94,7 @@ module OpenGraphReader
       @validate_references                 = true
       @discard_invalid_optional_properties = false
       @synthesize_title                    = false
-      @synthesize_url                      = false
+      @synthesize_full_url                 = false
       @synthesize_image_url                = false
       @guess_datetime_format               = false
     end

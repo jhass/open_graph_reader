@@ -442,8 +442,8 @@ DESCRIPTION
       }.to raise_error OpenGraphReader::InvalidObjectError, /does not start with/
     end
 
-    it "parses with image paths turned on" do
-      OpenGraphReader.config.synthesize_url = true
+    it "parses with paths turned on" do
+      OpenGraphReader.config.synthesize_full_url = true
       OpenGraphReader.config.synthesize_image_url = true
 
       object = OpenGraphReader.parse!(
