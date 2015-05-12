@@ -481,4 +481,19 @@ DESCRIPTION
       expect(object.og.url).to eq "http://taz.de/!159273"
     end
   end
+
+  describe "missing_content" do
+    it "parses" do
+      object = OpenGraphReader.parse! fixture_html "real_world/missing_content"
+
+      expect(object.og.site_name).to eq "Rudaw"
+      expect(object.og.type).to eq "article"
+      expect(object.og.url).to eq "http://rudaw.net/english/kurdistan/070520155"
+      expect(object.og.title).to eq "VIDEO: Scenes from Mahabad riots in Eastern (Iran) Kurdistan"
+      expect(object.og.image.url).to eq "http://rudaw.net/ContentFiles/126638Image1.jpg"
+      expect(object.og.image.width).to eq 486
+      expect(object.og.image.height).to eq 286
+      expect(object.og.description).to be_nil
+    end
+  end
 end

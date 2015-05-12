@@ -87,7 +87,7 @@ module OpenGraphReader
         end
       end
 
-      condition
+      "(#{condition}) and @content"
     end
 
     def to_doc html
