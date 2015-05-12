@@ -1,3 +1,7 @@
+# 0.6.1
+
+* Ignore meta tags with no content attribute. [#3](https://github.com/jhass/open_graph_reader/pull/3)
+
 # 0.6.0
 
 * Renamed synthesize_url setting to synthesize_full_url
