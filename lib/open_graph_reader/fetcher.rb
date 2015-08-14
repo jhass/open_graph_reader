@@ -26,6 +26,7 @@ module OpenGraphReader
     def initialize uri
       raise ArgumentError, "url needs to be an instance of URI" unless uri.is_a? URI
       @uri = uri
+      @fetch_failed = false
       @connection = Faraday.default_connection.dup
       @connection.headers.replace(HEADERS)
 
@@ -46,6 +47,7 @@ module OpenGraphReader
     def fetch
       @get_response = @connection.get(@uri)
     rescue Faraday::Error
+      @fetch_failed = true
     end
     alias_method :fetch_body, :fetch
 
@@ -55,6 +57,7 @@ module OpenGraphReader
     def fetch_headers
       @head_response = @connection.head(@uri)
     rescue Faraday::Error
+      @fetch_failed = true
     end
 
     # Retrieve the body
@@ -64,7 +67,8 @@ module OpenGraphReader
     # @return [String]
     def body
       fetch_body unless fetched?
-      raise ArgumentError, "Did not receive a HTML site at #{@uri}" unless html?
+      raise NoOpenGraphDataError, "No response body received for #{@uri}" if fetch_failed?
+      raise NoOpenGraphDataError, "Did not receive a HTML site at #{@uri}" unless html?
       @get_response.body
     end
 
@@ -74,6 +78,7 @@ module OpenGraphReader
     def html?
       fetch_headers unless fetched_headers?
       response = @get_response || @head_response
+      return false if fetch_failed?
       return false unless response
       return false unless response.success?
       return false unless response["content-type"]
@@ -84,7 +89,7 @@ module OpenGraphReader
     #
     # @return [Bool]
     def fetched?
-      !@get_response.nil?
+      fetch_failed? || !@get_response.nil?
     end
     alias_method :fetched_body?, :fetched?
 
@@ -92,10 +97,14 @@ module OpenGraphReader
     #
     # @return [Bool]
     def fetched_headers?
-      !@get_response.nil? || !@head_response.nil?
+      fetch_failed? || !@get_response.nil? || !@head_response.nil?
     end
 
     private
+
+    def fetch_failed?
+      @fetch_failed
+    end
 
     def prepend_middleware middleware
       return if @connection.builder.handlers.include? middleware
