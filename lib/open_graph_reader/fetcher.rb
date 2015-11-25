@@ -29,6 +29,8 @@ module OpenGraphReader
       @fetch_failed = false
       @connection = Faraday.default_connection.dup
       @connection.headers.replace(HEADERS)
+      @head_response = nil
+      @get_response = nil
 
       prepend_middleware Faraday::CookieJar if defined? Faraday::CookieJar
       prepend_middleware FaradayMiddleware::FollowRedirects if defined? FaradayMiddleware
