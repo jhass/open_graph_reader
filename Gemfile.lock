@@ -122,7 +122,7 @@ DEPENDENCIES
   guard-rubocop
   guard-yard
   open_graph_reader!
-  rake (~> 10.0)
+  rake
   rspec (~> 3.1)
   rubocop
   webmock (~> 1.20)
