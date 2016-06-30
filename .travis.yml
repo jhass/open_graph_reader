@@ -2,7 +2,7 @@ language: ruby
 
 sudo: false
 cache: bundler
-bundler_args: --without development --deployment --jobs 3
+bundler_args: --without dev --deployment --jobs 3
 rvm:
   - 2.3.0
   - 2.2
