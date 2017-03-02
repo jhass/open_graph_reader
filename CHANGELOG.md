@@ -1,3 +1,8 @@
+# 0.6.2
+
+* Drop Ruby 2.0 support
+* Loosen dependencies
+
 # 0.6.1
 
 * Ignore meta tags with no content attribute. [#3](https://github.com/jhass/open_graph_reader/pull/3)
