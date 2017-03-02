@@ -4,7 +4,7 @@ sudo: false
 cache: bundler
 bundler_args: --without dev --deployment --jobs 3
 rvm:
-  - 2.4
+  - 2.4.0
   - 2.3
   - 2.2
   - 2.1
