@@ -8,7 +8,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.0)
+    addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     ast (2.3.0)
     coderay (1.1.1)
@@ -24,7 +24,7 @@ GEM
       http-cookie (~> 1.0.0)
     faraday_middleware (0.11.0.1)
       faraday (>= 0.7.4, < 1.0)
-    ffi (1.9.17)
+    ffi (1.9.18)
     formatador (0.2.5)
     guard (2.14.1)
       formatador (>= 0.2.4)
@@ -58,7 +58,7 @@ GEM
     mini_portile2 (2.1.0)
     multipart-post (2.0.0)
     nenv (0.3.0)
-    nokogiri (1.7.0.1)
+    nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -89,7 +89,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rubocop (0.47.1)
+    rubocop (0.48.0)
       parser (>= 2.3.3.1, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
@@ -129,4 +129,4 @@ DEPENDENCIES
   yard (~> 0.9.0)
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
