@@ -1,3 +1,9 @@
+# 0.7.0
+
+* Consider documents with no actual og tags but just tags from other namespaces as having no open graph data
+* Drop Ruby 2.1, 2.2, 2.3 support
+* Support Ruby 2.5, 2.6
+
 # 0.6.2
 
 * Drop Ruby 2.0 support
