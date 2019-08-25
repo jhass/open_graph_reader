@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html class='is-loading-page no-js not-showing-player top-bar-is-not-searching' data-environment='production' data-page-load-count='0' data-page-load-state='loaded' data-theme-color='#4e9bba' lang='en'>
+<head prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# playerfm: http://ogp.me/ns/fb/playerfm#'>
+<meta content='' name='theme-color'>
+<script>
+  window.playerfm = {
+    env: "production",
+    stripePubKey: "pk_live_0FvYYxRTpOMoofvBWR5dB6SD",
+    online: true,
+    readonly: false,
+    clientIDs: { facebook: '292059804171098' },
+    assetHost: '',
+    siteLocale: { language: 'en' },
+    seriesImageWidths: [32, 64, 128, 256, 512]
+  };
+  (function(){"function"!=typeof Object.assign&&(Object.assign=function(e){var a,s,t;for(a=1;a<arguments.length;){if(null!==(t=arguments[a]))for(s in t)Object.prototype.hasOwnProperty.call(t,s)&&(e[s]=t[s]);a++}return e})}).call(this),function(e,a){var s=a(e,e.document);e.lazySizes=s,"object"==typeof module&&module.exports&&(module.exports=s)}(window,function(e,a){"use strict";if(a.getElementsByClassName){var s,t,n,o,c,i,r,d,f,l=a.documentElement,b=e.Date,u=e.HTMLPictureElement,p="addEventListener",g="getAttribute",h=e[p],v=e.setTimeout,m=e.requestAnimationFrame||v,y=e.requestIdleCallback,_=/^picture$/i,w=["load","error","lazyincluded","_lazyloaded"],C={},k=Array.prototype.forEach,x=function(e,a){return C[a]||(C[a]=new RegExp("(\\s|^)"+a+"(\\s|$)")),C[a].test(e[g]("class")||"")&&C[a]},j=function(e,a){x(e,a)||e.setAttribute("class",(e[g]("class")||"").trim()+" "+a)},z=function(e,a){var s;(s=x(e,a))&&e.setAttribute("class",(e[g]("class")||"").replace(s," "))},R=function(e,a,s){var t=s?p:"removeEventListener";s&&R(e,a),w.forEach(function(s){e[t](s,a)})},q=function(e,t,n,o,c){var i=a.createEvent("CustomEvent");return n||(n={}),n.instance=s,i.initCustomEvent(t,!o,!c,n),e.dispatchEvent(i),i},E=function(a,s){var n;!u&&(n=e.picturefill||t.pf)?n({reevaluate:!0,elements:[a]}):s&&s.src&&(a.src=s.src)},A=function(e,a){return(getComputedStyle(e,null)||{})[a]},S=function(e,a,s){for(s=s||e.offsetWidth;s<t.minSize&&a&&!e._lazysizesWidth;)s=a.offsetWidth,a=a.parentNode;return s},U=(i=[],r=c=[],d=function(){var e=r;for(r=c.length?i:c,n=!0,o=!1;e.length;)e.shift()();n=!1},(f=function(e,s){n&&!s?e.apply(this,arguments):(r.push(e),o||(o=!0,(a.hidden?v:m)(d)))})._lsFlush=d,f),L=function(e,a){return a?function(){U(e)}:function(){var a=this,s=arguments;U(function(){e.apply(a,s)})}},N=function(e){var a,s=0,n=125,o=t.ricTimeout,c=function(){a=!1,s=b.now(),e()},i=y&&t.ricTimeout?function(){y(c,{timeout:o}),o!==t.ricTimeout&&(o=t.ricTimeout)}:L(function(){v(c)},!0);return function(e){var t;(e=!0===e)&&(o=33),a||(a=!0,(t=n-(b.now()-s))<0&&(t=0),e||t<9&&y?i():v(i,t))}},O=function(e){var a,s,t=99,n=function(){a=null,e()},o=function(){var e=b.now()-s;e<t?v(o,t-e):(y||n)(n)};return function(){s=b.now(),a||(a=v(o,t))}};!function(){var a,s={lazyClass:"lazyload",loadedClass:"lazyloaded",loadingClass:"lazyloading",preloadClass:"lazypreload",errorClass:"lazyerror",autosizesClass:"lazyautosizes",srcAttr:"data-src",srcsetAttr:"data-srcset",sizesAttr:"data-sizes",minSize:40,customMedia:{},init:!0,expFactor:1.5,hFac:.8,loadMode:2,loadHidden:!0,ricTimeout:300};for(a in t=e.lazySizesConfig||e.lazysizesConfig||{},s)a in t||(t[a]=s[a]);e.lazySizesConfig=t,v(function(){t.init&&we()})}();var M,P,W,F,B,I,$,T,D,H,J,Y,G,V,X,K,Q,Z,ee,ae,se,te,ne,oe,ce,ie,re,de,fe,le,be,ue,pe,ge,he,ve,me,ye=(X=/^img$/i,K=/^iframe$/i,Q="onscroll"in e&&!/glebot/.test(navigator.userAgent),Z=0,ee=0,ae=0,se=-1,te=function(e){ae--,e&&e.target&&R(e.target,te),(!e||ae<0||!e.target)&&(ae=0)},ne=function(e,s){var t,n=e,o="hidden"==A(a.body,"visibility")||"hidden"!=A(e,"visibility");for(T-=s,J+=s,D-=s,H+=s;o&&(n=n.offsetParent)&&n!=a.body&&n!=l;)(o=(A(n,"opacity")||1)>0)&&"visible"!=A(n,"overflow")&&(t=n.getBoundingClientRect(),o=H>t.left&&D<t.right&&J>t.top-1&&T<t.bottom+1);return o},ce=N(oe=function(){var e,n,o,c,i,r,d,f,b,u=s.elements;if((F=t.loadMode)&&ae<8&&(e=u.length)){n=0,se++,null==G&&("expand"in t||(t.expand=l.clientHeight>500&&l.clientWidth>500?500:370),Y=t.expand,G=Y*t.expFactor),ee<G&&ae<1&&se>2&&F>2&&!a.hidden?(ee=G,se=0):ee=F>1&&se>1&&ae<6?Y:Z;for(;n<e;n++)if(u[n]&&!u[n]._lazyRace)if(Q)if((f=u[n][g]("data-expand"))&&(r=1*f)||(r=ee),b!==r&&(I=innerWidth+r*V,$=innerHeight+r,d=-1*r,b=r),o=u[n].getBoundingClientRect(),(J=o.bottom)>=d&&(T=o.top)<=$&&(H=o.right)>=d*V&&(D=o.left)<=I&&(J||H||D||T)&&(t.loadHidden||"hidden"!=A(u[n],"visibility"))&&(P&&ae<3&&!f&&(F<3||se<4)||ne(u[n],r))){if(ue(u[n]),i=!0,ae>9)break}else!i&&P&&!c&&ae<4&&se<4&&F>2&&(M[0]||t.preloadAfterLoad)&&(M[0]||!f&&(J||H||D||T||"auto"!=u[n][g](t.sizesAttr)))&&(c=M[0]||u[n]);else ue(u[n]);c&&!i&&ue(c)}}),re=L(ie=function(e){j(e.target,t.loadedClass),z(e.target,t.loadingClass),R(e.target,de),q(e.target,"lazyloaded")}),de=function(e){re({target:e.target})},fe=function(e,a){try{e.contentWindow.location.replace(a)}catch(s){e.src=a}},le=function(e){var a,s=e[g](t.srcsetAttr);(a=t.customMedia[e[g]("data-media")||e[g]("media")])&&e.setAttribute("media",a),s&&e.setAttribute("srcset",s)},be=L(function(e,a,s,n,o){var c,i,r,d,f,l;(f=q(e,"lazybeforeunveil",a)).defaultPrevented||(n&&(s?j(e,t.autosizesClass):e.setAttribute("sizes",n)),i=e[g](t.srcsetAttr),c=e[g](t.srcAttr),o&&(d=(r=e.parentNode)&&_.test(r.nodeName||"")),l=a.firesLoad||"src"in e&&(i||c||d),f={target:e},l&&(R(e,te,!0),clearTimeout(W),W=v(te,2500),j(e,t.loadingClass),R(e,de,!0)),d&&k.call(r.getElementsByTagName("source"),le),i?e.setAttribute("srcset",i):c&&!d&&(K.test(e.nodeName)?fe(e,c):e.src=c),o&&(i||d)&&E(e,{src:c})),e._lazyRace&&delete e._lazyRace,z(e,t.lazyClass),U(function(){(!l||e.complete&&e.naturalWidth>1)&&(l?te(f):ae--,ie(f))},!0)}),pe=function(){if(!P)if(b.now()-B<999)v(pe,999);else{var e=O(function(){t.loadMode=3,ce()});P=!0,t.loadMode=3,ce(),h("scroll",function(){3==t.loadMode&&(t.loadMode=2),e()},!0)}},{_:function(){B=b.now(),s.elements=a.getElementsByClassName(t.lazyClass),M=a.getElementsByClassName(t.lazyClass+" "+t.preloadClass),V=t.hFac,h("scroll",ce,!0),h("resize",ce,!0),e.MutationObserver?new MutationObserver(ce).observe(l,{childList:!0,subtree:!0,attributes:!0}):(l[p]("DOMNodeInserted",ce,!0),l[p]("DOMAttrModified",ce,!0),setInterval(ce,999)),h("hashchange",ce,!0),["focus","mouseover","click","load","transitionend","animationend","webkitAnimationEnd"].forEach(function(e){a[p](e,ce,!0)}),/d$|^c/.test(a.readyState)?pe():(h("load",pe),a[p]("DOMContentLoaded",ce),v(pe,2e4)),s.elements.length?(oe(),U._lsFlush()):ce()},checkElems:ce,unveil:ue=function(e){var a,s=X.test(e.nodeName),n=s&&(e[g](t.sizesAttr)||e[g]("sizes")),o="auto"==n;(!o&&P||!s||!e[g]("src")&&!e.srcset||e.complete||x(e,t.errorClass)||!x(e,t.lazyClass))&&(a=q(e,"lazyunveilread").detail,o&&_e.updateElem(e,!0,e.offsetWidth),e._lazyRace=!0,ae++,be(e,a,o,n,s))}}),_e=(he=L(function(e,a,s,t){var n,o,c;if(e._lazysizesWidth=t,t+="px",e.setAttribute("sizes",t),_.test(a.nodeName||""))for(o=0,c=(n=a.getElementsByTagName("source")).length;o<c;o++)n[o].setAttribute("sizes",t);s.detail.dataAttr||E(e,s.detail)}),ve=function(e,a,s){var t,n=e.parentNode;n&&(s=S(e,n,s),(t=q(e,"lazybeforesizes",{width:s,dataAttr:!!a})).defaultPrevented||(s=t.detail.width)&&s!==e._lazysizesWidth&&he(e,n,t,s))},{_:function(){ge=a.getElementsByClassName(t.autosizesClass),h("resize",me)},checkElems:me=O(function(){var e,a=ge.length;if(a)for(e=0;e<a;e++)ve(ge[e])}),updateElem:ve}),we=function(){we.i||(we.i=!0,_e._(),ye._())};return s={cfg:t,autoSizer:_e,loader:ye,init:we,uP:E,aC:j,rC:z,hC:x,fire:q,gW:S,rAF:U}}}),function(){var e=function(e,a){return function(){return e.apply(a,arguments)}};window.log=function(){if("undefined"!=typeof console&&null!==console)return console.log.apply(console,arguments)},window.BootLoader=function(){function a(){this._calcRobustPath=e(this._calcRobustPath,this),this.fetch=e(this.fetch,this),this.runSequenceIfReady=e(this.runSequenceIfReady,this),this.updateResourceState=e(this.updateResourceState,this),this.run=e(this.run,this),this.sequence=e(this.sequence,this),this.resource=e(this.resource,this),this.resource("dom",!1),document.addEventListener("DOMContentLoaded",function(){return bootLoader.updateResourceState("dom",!0)})}return a.prototype.sequences={},a.prototype.resources={},a.prototype.resource=function(e,a){return!1===a||null!=a&&"undefined"!==a||error("URL for "+e+" is not defined - try deleting tmp/cache/assets if assets changed recently?"),this.resources[e]={id:e,url:a}},a.prototype.sequence=function(e,a,s){return this.sequences[e]={id:e,required:a,handler:s}},a.prototype.run=function(){var e,a,s,t;for(e in t=[],a=this.resources)s=a[e],log("id",e,"resource",s),null==s&&warn("resource "+e+" is empty, maybe you need to delete JS assets"),s.url?t.push(this.fetch(s,null,function(e){return function(a){return e.updateResourceState(a.resource.id,a.responseText)}}(this))):t.push(void 0);return t},a.prototype.updateResourceState=function(e,a){var s,t,n,o;for(s in this.resources[e]||(this.resources[e]={id:e}),this.resources[e],this.resources[e].state=a,n=[],t=this.sequences)o=t[s],n.push(this.runSequenceIfReady(o));return n},a.prototype.runSequenceIfReady=function(e){var a,s,t,n,o;if(e.ran)return!1;for(a=0,s=0,t=(n=e.required).length;s<t;s++)o=n[s],null==(this.resources[o]||{}).state&&null==(this.sequences[o]||{}).ran||a++;return a===e.required.length?(e.ran=!0,e.handler()):void 0},a.prototype.fetch=function(e,a,s,t){var n,o;if(null==t&&(t=new URL(location).searchParams.get("boot_tries")||3),0!==t)return(n=new XMLHttpRequest).resource=e,n.open("GET",this._calcRobustPath(e.url,t),!0),a&&n.setRequestHeader("If-None-Match",a),n.onreadystatechange=(o=this,function(){var c;if(4===n.readyState)return 200===n.status||304===n.status?s(n):(c=null!=c?2*c:1e3,warn("trying "+e.url+" again in "+c+"ms"),U.delay(c,function(){return o.fetch(e,a,s,t-1)}))}),n.send(null),n;error("Giving up on fetch of "+e)},a.prototype._calcRobustPath=function(e,a){var s;return(a=parseInt(a))>=3?e:(2===a?s="000":1===a&&(s=Math.random().toString(36).substring(7)),/http:/.test(e)||(e=""+document.location.origin+e),(e=new URL(e)).searchParams.set("bust",s),e.toString())},a}(),window.bootLoader=new BootLoader}.call(this),window.project_assets={"icons/atrousmike-faded.png":"/assets/v_20190821111955/icons/atrousmike-faded-d6237e5fbd2e4db2edbfb257f63462952513297d55129f240f66c7e2f01356e2.png","icons/atrousmike.png":"/assets/v_20190821111955/icons/atrousmike-2635520571950dbffa117e3fd8efb197de2e7b454281fbf7a4312e9ba8570f49.png","icons/atrousmike128.png":"/assets/v_20190821111955/icons/atrousmike128-a0e37620f3a86c5fa4209566d75c775191ac988c55eaf79d26bdb8013cf075a8.png","icons/atrousmike256.png":"/assets/v_20190821111955/icons/atrousmike256-e4b1f531e1affd7a737407caa8f42ee2fe44856fe0f354809f16609a061970cb.png","icons/bglist16.png":"/assets/v_20190821111955/icons/bglist16-1e5c26d95735aed5765e3cf55efa27fc83d30328c35bb71465135c6e75fc88f0.png","icons/bglist32.png":"/assets/v_20190821111955/icons/bglist32-2691133043100e226e7bb1e307b1d1c2e8612a074e7ed46e9736c9cc5033e931.png","icons/broken-tape.png":"/assets/v_20190821111955/icons/broken-tape-bbf191c8de35a08fd5cb6f9594125089b259dc5a33435b07c1e91884a663c2a3.png","icons/cast_gray.png":"/assets/v_20190821111955/icons/cast_gray-aafd330e8f7b93ff4658d8b9f872f75f8b125052a072c911dd90ec6e2465d95e.png","icons/cast_off1.png":"/assets/v_20190821111955/icons/cast_off1-1fd87eb4458321d172c6386bd552f047bbc358fea398b09d7ed271ae4314d8ed.png","icons/cast_off2.png":"/assets/v_20190821111955/icons/cast_off2-ad99dffe9e4118c2d113dd06e7c7afb5ff144bcf005edba377740dc618984d58.png","icons/cast_off3.png":"/assets/v_20190821111955/icons/cast_off3-a5248ff453d4c41947b2a02efd0109b8d686a390780841dd4357e77ccc8d8584.png","icons/cast_on1.png":"/assets/v_20190821111955/icons/cast_on1-0a47b755f20d7c171c99eda5ba4150677ef0277a30f60efaec5f5ff21cd9ceef.png","icons/cast_on1_gray.png":"/assets/v_20190821111955/icons/cast_on1_gray-882f76d6d25c87dac48224b300e24ef70e973e7c081c9254bd1edb4b21ecf167.png","icons/cast_on2.png":"/assets/v_20190821111955/icons/cast_on2-a8cd1d9131d14b89c607167e7ed93594a5b5a49662f9c4f32d9125e550222861.png","icons/cast_white.png":"/assets/v_20190821111955/icons/cast_white-95b03cfb3dcda7a877cc4ecdc053cad2709383fe1b3066c4a3bbe38f7a4c800e.png","icons/catalogue.svg":"/assets/v_20190821111955/icons/catalogue-5d92f8bfacb3a053f72a3d2ae711e20783ed37767a0c187b6bcfa102848a500b.svg","icons/cc.png":"/assets/v_20190821111955/icons/cc-09d914dd25cb0460b9042ede089b8875fdb2681390c0f365065e990cc58ce43b.png","icons/circle.png":"/assets/v_20190821111955/icons/circle-6e066896afcea8c8981d1e50b9c34289a4154c0eafb58c7844a59a08a4c63f54.png","icons/circle990000.gif":"/assets/v_20190821111955/icons/circle990000-d83b30f11346d64dfce0df7d2a81bc24dff805d433078c051963c4a2ed11c8d2.gif","icons/darkgrayquotes.png":"/assets/v_20190821111955/icons/darkgrayquotes-9600f8d6b78fcf6c08cb31d6e6600ce75a4cedf48f227eec62674b1eacc36279.png","icons/down-triangle.svg":"/assets/v_20190821111955/icons/down-triangle-f047fad36e4ec614c4933182ccfa24f7d88d721364bd4c480bfbd378d5bbfff3.svg","icons/facebook-coming-soon-256.png":"/assets/v_20190821111955/icons/facebook-coming-soon-256-ece030167ce06af6e5629f8b9afda75a7c8fdd5e603db170a4a27c26babfab15.png","icons/feed16.png":"/assets/v_20190821111955/icons/feed16-8c26b65cf3b22e0537361e135cbe35517d05b533b352a83fe301df16ef89d261.png","icons/feed32.png":"/assets/v_20190821111955/icons/feed32-7a7ff7698f9f8546778bc7360dde7bb6018815bdbc2b4a6659ea808dad97ab34.png","icons/gears.gif":"/assets/v_20190821111955/icons/gears-86da7f9608407996ce3d8ba0c0727f2fc56d07848d6491641c326dcf884cf632.gif","icons/getonplay.png":"/assets/v_20190821111955/icons/getonplay-e7c80b68ae186170def9ce02a33531dcb6b7104e1e5c402e0282441e513c8c55.png","icons/google16.png":"/assets/v_20190821111955/icons/google16-8ce7a27b53ee179f9bccc80b1feb729eae9f30f4f3972f149852853ddbd3f228.png","icons/google32.png":"/assets/v_20190821111955/icons/google32-9353838afd5f404231356a26c8475bd147b3c2704f319b03832e3cf0f138ca46.png","icons/google96.png":"/assets/v_20190821111955/icons/google96-40b9298e2e4a01b950846e97dbccf202f50000a00efbd45ae7a6674d2e119f31.png","icons/graymike128.png":"/assets/v_20190821111955/icons/graymike128-56f25fdc222127d3c3130a431befd485d59523710b80c5ed77ce6c1744cc4b9d.png","icons/graymike144-white.png":"/assets/v_20190821111955/icons/graymike144-white-57a5217e285df14cd9368fc125f138b41291e515b9b7d83326adabfee2d30a55.png","icons/graymike144.png":"/assets/v_20190821111955/icons/graymike144-b2933cf6175dffd5d5a9415cb811c67176554ba9d844535456837361256f5269.png","icons/graymike64.png":"/assets/v_20190821111955/icons/graymike64-1957ad73c10159916b038db8af5276c1a95be98ebe7805d31f20212c65505212.png","icons/grayquotes.png":"/assets/v_20190821111955/icons/grayquotes-669f62e9945bcaffefb6c280302ad605b012876e0d7dfb613a594b51baef96db.png","icons/greyball.gif":"/assets/v_20190821111955/icons/greyball-2426d0c911e926c7a1ba1617e47eeb7ba0fd39fae04f8796cef16959f4170a4d.gif","icons/itunes16.png":"/assets/v_20190821111955/icons/itunes16-ce8620a421eb4eda9996646a32ff4c8dc1bb6deeb6d019185e8b5e9bb9f38e23.png","icons/itunes256.png":"/assets/v_20190821111955/icons/itunes256-96136ccb5d61d2967a910efa54f699a1e48fc576ff01847f61580f445a04f1bf.png","icons/itunes32-full.png":"/assets/v_20190821111955/icons/itunes32-full-8793b579bad5b68968a7b0baad612193f405cca5943c9b10e6ba09ddffd72d13.png","icons/itunes32.png":"/assets/v_20190821111955/icons/itunes32-64f8022e10bbb31a6a37c465c4a2d5a0e17c0996813e5324244e4939aa1edce2.png","icons/json-full.png":"/assets/v_20190821111955/icons/json-full-a2182095cbdf60931a8394ad00de69a8a6e5dae0e41cb16a797c2b0ecb5b6491.png","icons/json-with-background.png":"/assets/v_20190821111955/icons/json-with-background-9f7153b26dfbf54d0f538f0f89a6ed5a0749b7a9e15e516c7fc2be24394241b0.png","icons/json.png":"/assets/v_20190821111955/icons/json-6c4ff2f68882992e86b2e48b6116033a39593dac82736de4c2ae951452369527.png","icons/json16.png":"/assets/v_20190821111955/icons/json16-dd2d86a9e0c0db12dba08325493630315f0dbee149cc0854e64e1c071ea93315.png","icons/json32.png":"/assets/v_20190821111955/icons/json32-bcf01155ee29831c41668a5817140a6b75a5cdbdfc0db6f51e3e07727c2e4769.png","icons/list-3-16.png":"/assets/v_20190821111955/icons/list-3-16-efa114d9909ce6e2c83dd8d49790a9979a222371c24d04c6ada000be8217d27c.png","icons/list-3-32.png":"/assets/v_20190821111955/icons/list-3-32-a04c16d7e3e244466e91b6924b42d5419d1ea6f230a3a334a2e53d7fb8f1395b.png","icons/list-3.png":"/assets/v_20190821111955/icons/list-3-4b1bc7bb649eca8fe8b9e2eedecf76534b4fb6e74916011a2dab8c80fd64271d.png","icons/list.png":"/assets/v_20190821111955/icons/list-d5ad23911f6e19c6e474ecac468e7ee49f85e948a276d00cf11bedf226fc7b23.png","icons/list16.png":"/assets/v_20190821111955/icons/list16-86560853e573d0cb55c15a4c8d3261dc304dc45f84c59fa8ffbe5b5cb163ad45.png","icons/list32.png":"/assets/v_20190821111955/icons/list32-61bc0cf8f6cbfc83cc675832244fe2663b412a70f5afbf0aa805f0d20efbc9f1.png","icons/loading.gif":"/assets/v_20190821111955/icons/loading-ccd22e0ed46305cd4ba9f7c781ead98088486c464c4115bf18e7e6600393198a.gif","icons/loadingbar.gif":"/assets/v_20190821111955/icons/loadingbar-3baa02eea9bf84ce7b30766ac096d6a2ace5d7983004f6a94c4d4cb03911730f.gif","icons/makeplayball.sh":"/assets/v_20190821111955/icons/makeplayball-7313c9829c8e86b4311f60587d732e004a2ef901b1995ab9facd62dd06fbbfbc.sh","icons/mask.png":"/assets/v_20190821111955/icons/mask-58f31694b33f33d0a03e975047e3f5e903dd99cdeadc32355ba6552b7ff857ba.png","icons/microphone-icon-64x64.png":"/assets/v_20190821111955/icons/microphone-icon-64x64-321075e28e027b354b66a53a9bbd4c9fba2c00b4ff220a7dd6cdc00a0fc7cadb.png","icons/microphone-icon.png":"/assets/v_20190821111955/icons/microphone-icon-2635520571950dbffa117e3fd8efb197de2e7b454281fbf7a4312e9ba8570f49.png","icons/mm-512.png":"/assets/v_20190821111955/icons/mm-512-330101aadb562a4bf19e5c3824f759788d0d337a8351c4c488198164e23b2df9.png","icons/mm-64.png":"/assets/v_20190821111955/icons/mm-64-83119d8b6e34c424cbc88305b0fd2d2146d3c5f79e5bdd289d4d55ed35db72d6.png","icons/mm-round-512.png":"/assets/v_20190821111955/icons/mm-round-512-cb366459baa6ff76fa737ac73e6998790e6dc0dbf4b0519ff93568b970120022.png","icons/mu3.png":"/assets/v_20190821111955/icons/mu3-7b7d9b0afe87beee130b11c271f0bafcac58eec0138b1267e9d0bd53cb2d73ec.png","icons/mu316.png":"/assets/v_20190821111955/icons/mu316-52530116e410dc02492112122f9750851912fc4d9f53173aca1914f0e7325f26.png","icons/mu332.png":"/assets/v_20190821111955/icons/mu332-77376ce2050192466b36d17ac5d78026a0177de45509296c4ed312717574cd25.png","icons/opml16.png":"/assets/v_20190821111955/icons/opml16-524a61acc3c3490dd8fb8da648ee28c65a5c30a65a6d757d938d6e969a4b1f99.png","icons/opml32.png":"/assets/v_20190821111955/icons/opml32-d6c5a7db19f7a456f2e7534a16a532a64ccaf734208d54907e6cac8b04448373.png","icons/pinkquotes.png":"/assets/v_20190821111955/icons/pinkquotes-2eeba5e1d93e910bfa79cf8b36e5a36b130c06d776d063e072c51f53b575c102.png","icons/playball-gray-32.png":"/assets/v_20190821111955/icons/playball-gray-32-c6d87e35eb7e5aec5a3da1875d4f10fdf50c7e123593ed5e9bc5e8b5073e8da2.png","icons/playball-gray-48.png":"/assets/v_20190821111955/icons/playball-gray-48-6f7a671c0136e6e737f9eca542f1e7f72e1688a7af732071a3b6379885b76c53.png","icons/playball-gray-full.png":"/assets/v_20190821111955/icons/playball-gray-full-c3b9134d007fa5a2344a663307ad96a0a1111f44a81ef534a16fe437ac3309c2.png","icons/playball-gray-pause-32.png":"/assets/v_20190821111955/icons/playball-gray-pause-32-f2ff3a1b070f94aa5abe3be762afe95f9fd8835db8520a150edbc649b2208210.png","icons/playball-gray-pause-48.png":"/assets/v_20190821111955/icons/playball-gray-pause-48-9a06300494c1ce338cb99c5adae54e7ce86543a63d68844ca8ec328c8d5c5a2a.png","icons/playball-gray-pause-full.png":"/assets/v_20190821111955/icons/playball-gray-pause-full-583eb792068f88d756365acb4707f9edeeafe79da15d7b339e0d4beb07a96835.png","icons/playball-red-32.png":"/assets/v_20190821111955/icons/playball-red-32-26827c2e1f9d13db2065069062b3941607a10cc6b2ee61737a70b0c3b1986489.png","icons/playball-red-48.png":"/assets/v_20190821111955/icons/playball-red-48-f669405fa26bf6ab19cfa9da21db453cf04677a4aceb6699f3a0ca27fa858020.png","icons/playball-red-full.png":"/assets/v_20190821111955/icons/playball-red-full-2fe4ee6a644452c8fea4030b0c89713b7b50af0a7d21c25912cf08c9eaa5b4f5.png","icons/playball-red-pause-32.png":"/assets/v_20190821111955/icons/playball-red-pause-32-2426a39a0b5ac3a3094c33ab3aa05ec9f4b5cc8f90e096249e23f43eebc40f76.png","icons/playball-red-pause-48.png":"/assets/v_20190821111955/icons/playball-red-pause-48-962cefa4038918b97933320e3d5b3379632fafd1a18f967442a3050f1bc1090b.png","icons/playball-red-pause-full.png":"/assets/v_20190821111955/icons/playball-red-pause-full-813f120c508257500f511f7958de9772ad9b476df9dccb8d1cc872c74debfc24.png","icons/player-android-earth.png":"/assets/v_20190821111955/icons/player-android-earth-e8190e09bc4dc8b169db053ab31bdb1735843ecafc99e14070130fc0cb179830.png","icons/player-android-full.png":"/assets/v_20190821111955/icons/player-android-full-6999d1bd718499538d50b7ba1fbac28136469ffdc4d9d54fa3b5e4d6f6d2ce9c.png","icons/player-android.png":"/assets/v_20190821111955/icons/player-android-3813eb581989494264d65f41e6847c5ceb7895c8bad3ea7d96abb002db51eae6.png","icons/player-android.pxm":"/assets/v_20190821111955/icons/player-android-33115a5998bf1c18036ad89c1369501b8a3008044f14457b65bf3ec104d7dbe0.pxm","icons/player-android24.png":"/assets/v_20190821111955/icons/player-android24-2eee3746b2d9506169f41fd876b3a898393588da07822d92e7485337ad5e7569.png","icons/playerwide-full-lightx40.png":"/assets/v_20190821111955/icons/playerwide-full-lightx40-87b87ea1f1f67986423a1b8f8394b763c8b6b690febf8413a0fa899ed3fd0e76.png","icons/podcast-feed.gif":"/assets/v_20190821111955/icons/podcast-feed-b05622ef2fb1fbb758ab744d067b1253dca23beae72a82455ac0182f4b1b4a78.gif","icons/podcast-feed.png":"/assets/v_20190821111955/icons/podcast-feed-93a0c97aa3fefbf84c37ef009f5ad69df591e717539d01999f7d319fa7b0dc25.png","icons/progressbig.gif":"/assets/v_20190821111955/icons/progressbig-16ea0cf66d51efdbbc2a62b11ab0419fa72fb3320844f1d0d710480245ac9925.gif","icons/promo_graphic.png":"/assets/v_20190821111955/icons/promo_graphic-95e36ee8f9a081a4dae537a02d1366821c8c6c3eabc4778754b3473fe5024170.png","icons/quotes.png":"/assets/v_20190821111955/icons/quotes-0284c6f7a73479636b9e84a477d5ff618751a098a761d9114136c3ef0a2c3798.png","icons/redquotes.png":"/assets/v_20190821111955/icons/redquotes-17851ad514f2cf91b8f1da275c115598ca5ef4c4519e76badbaf4436c7338b23.png","icons/search-orig.png":"/assets/v_20190821111955/icons/search-orig-5f996e8196c5ac04e6708c11f2fc64898d4068c3218be2020be5d81a2ac5e94a.png","icons/search.png":"/assets/v_20190821111955/icons/search-77cbd9b9fd00f6110973cff2e81f2d4d03548f8ee18273578d640532ff978fa5.png","icons/shadow-player-android.png":"/assets/v_20190821111955/icons/shadow-player-android-cc858aad33f5c36a7113ae32bf96cf70a0d1e7f791185cebfe8234fe6512bde6.png","icons/sharegray.png":"/assets/v_20190821111955/icons/sharegray-f50575f3e3a5c84a97979ad81cc220922a0028f92e9400826e7c133b5fad0a47.png","icons/sharegray45.png":"/assets/v_20190821111955/icons/sharegray45-992bf55cb9c6f1c8ed4efe7b7354e3bdb42e88f06c4d0abe0e5ca9b588abfcc2.png","icons/sharegray46.png":"/assets/v_20190821111955/icons/sharegray46-31c9555ea7e10d8b36c4419e9839ae62f92783417ab21da2526cd63534c405e9.png","icons/sharered.png":"/assets/v_20190821111955/icons/sharered-2c86bcbc184128f40744304b7d6fb7360a41646a4172f06bd2721ca86d549250.png","icons/sharered45.png":"/assets/v_20190821111955/icons/sharered45-4818145d92ff87225af844f54df6e06ba6e83733eda4877ad6657905bf8662fa.png","icons/sharered46.png":"/assets/v_20190821111955/icons/sharered46-99ab04234e3eb2b4c9ea7f7c418a40cd878e656e5b79c5b6bbdc9b4cd6848eaf.png","icons/sort.svg":"/assets/v_20190821111955/icons/sort-d2c58cbf5b3e49253aa9f71d982b9dba73d42f5a866384d01d1de3c04d170c3b.svg","icons/star.svg":"/assets/v_20190821111955/icons/star-3ed89ebb451c43402781530f896c9b09d1d7f69e28cd4e39fd91a43f9214f41d.svg","icons/tick.svg":"/assets/v_20190821111955/icons/tick-3f708bbd3b3f063952914afc4ea7208f9b8b587fb5887b8c33093e08715fbf86.svg","icons/transparent-mike.png":"/assets/v_20190821111955/icons/transparent-mike-d28ca9c7b2c0e8fa6acee64b730813c8f506d6ed9bc8145b2fd2f6d11bb16c4b.png","app.js":"/assets/v_20190821111955/app-bf1fff691ce98854f47eda95ce7d8f50956c031b55e0ef3468908d3f18c721a0.js","minimal-user.js":"/assets/v_20190821111955/minimal-user-a5883988329fef756824d44f34fe45e8780aabacb5e19a995f8302fdf920e28c.js","roles/admin.js":"/assets/v_20190821111955/roles/admin-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js","roles/manager.js":"/assets/v_20190821111955/roles/manager-618a8fff5ee2e1aafbcf3cafdb25bc87e8b5bb64d3043e6b9ee4a769d182da19.js","roles/trusted.js":"/assets/v_20190821111955/roles/trusted-174b2085762af462a3229a11898d9b71a108e0b4b6407b3b0dc6df7ad96b9a1d.js","roles/admin.css":"/assets/v_20190821111955/roles/admin-d46fca5a4dac6ddcbcf1000b68d7636f8a9b709c2d57b1f0a9a4a0e2e4b83a70.css","roles/manager.css":"/assets/v_20190821111955/roles/manager-d971f613dff1666653588660e0f333aaed9efbcc70059bb7fcd3768cf202a156.css","roles/trusted.css":"/assets/v_20190821111955/roles/trusted-a915f65440063cdd87982f9f7ded267d86d23459c43d9dfc8ff87f18e5e4f303.css"},window.asset_path=function(e){return window.project_assets[e]},function(){var e,a,s;if("development"===playerfm.env)for(e in a=window.project_assets)s=a[e],window.project_assets[e]=s.replace(/\-[^-]+\./,".")}.call(this),function(){var e;e=function(){return Math.trunc(1e16*Math.random())},window.api={directSubsPageURL:"/me/subs/private",minimalUserURL:"/me/private.json?membership_detail=full&v="+e(),fullUserURL:"/me/private.json?channel_detail=full&fixed_channels=play-later,bookmarks,plays,likes&favorite_detail=full&subscription_detail=raw&channel_inclusion_detail=raw&membership_detail=full&setting_detail=full&series_setting_detail=full&v="+e(),bootUserURL:"/me/private.json?channel_detail=full&fixed_channels=play-later,bookmarks,plays,likes&subscription_detail=raw&channel_inclusion_detail=raw&membership_detail=full&series_setting_detail=full&v="+e(),userFavoritesURL:"/me/private.json?detail=id&favorite_detail=full&v="+e()}}.call(this),function(){window.ajaxy={pageHandlers:{},pageDestroyers:{}},ajaxy.handler=function(e,a){var s;if(((s=ajaxy.pageHandlers)[e]||(s[e]=[])).push(a),"undefined"!=typeof $&&null!==$&&$(".page[data-page='"+e+"']").data("handled"))return a()},ajaxy.destroyer=function(e,a){var s;return a=arguments[arguments.length-1],((s=ajaxy.pageDestroyers)[e]||(s[e]=[])).push(a)}}.call(this),function(){window.store={},localStorage.pageCount=1,window.store.getPageCount=function(){return parseInt(localStorage.pageCount||"0")}}.call(this),function(){window.U={present:function(e){return!U.blank(e)},assetURL:function(e){return""+asset_path(e)},delay:function(e,a){return setTimeout(a,e)},el:function(e){return document.querySelector(e)},removeEl:function(e){var a;if(a=document.querySelector(e))return a.remove()},addStyle:function(e,a,s){var t,n;return null==s&&(s={}),n="util-style-"+e,(t=U.el("#"+n))||((t=document.createElement("style")).setAttribute("id",n),s["transient"]&&t.setAttribute("class","transient"),document.head.appendChild(t)),t.textContent=a},removeStyle:function(e){return U.removeEl("#util-style-"+e)},viewportWidth:function(){return Math.max(document.documentElement.clientWidth,window.innerWidth||0)},cleanImage:function(e){var a,s,t,n,o,c;for(c=[],a=0,s=(o=(n=e.parentNode).childNodes).length;a<s;a++)(t=o[a])&&t!==e?c.push(n.removeChild(t)):c.push(void 0);return c},log:function(e,a){if(window.logging="true"===U.getParameterByName("logging")||"development"===playerfm.env,"undefined"!=typeof console&&null!==console&&console&&window.logging)return console[e].apply(console,a)},getParameterByName:function(e){var a;return e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]"),null==(a=new RegExp("[\\?&]"+e+"=([^&#]*)").exec(location.search))?"":decodeURIComponent(a[1].replace(/\+/g," "))}},["log","debug","info","warn","trace","error"].forEach(function(e){return window[e]=function(){return U.log(e,Array.prototype.slice.call(arguments,0))}})}.call(this),function(){window.boot=bootLoader,window.playerBoot=function(e){var a,s;for(a in e)s=e[a],/^.+\.js$/.test(s)&&(s=U.assetURL(s)),boot.resource(a,s);return boot.run()},boot.sequence("minimalUser",["minimalUserJSON","minimalUserScript"],function(){var e;return window.eval(boot.resources.minimalUserScript.state),e=boot.resources.minimalUserJSON.state,window.currentUser=new User(JSON.parse(e)),userDOMUpdater.update()}),boot.sequence("app",["minimalUser","fullUserJSON","appScript","dom"],function(){var e;return window.eval(boot.resources.appScript.state),radio("currentUser").durable().subscribe(function(){return userDOMUpdater.update()}),e=boot.resources.fullUserJSON.state,userSyncer.sync({userJSON:e}),ajaxy.onScriptsLoaded()})}.call(this);var cssua=function(e,a,s){"use strict";var t=" ua-",n=/\s*([\-\w ]+)[\s\/\:]([\d_]+\b(?:[\-\._\/]\w+)*)/,o=/([\w\-\.]+[\s\/][v]?[\d_]+\b(?:[\-\._\/]\w+)*)/g,c=/\b(?:(blackberry\w*|bb10)|(rim tablet os))(?:\/(\d+\.\d+(?:\.\w+)*))?/,i=/\bsilk-accelerated=true\b/,r=/\bfluidapp\b/,d=/(\bwindows\b|\bmacintosh\b|\blinux\b|\bunix\b)/,f=/(\bandroid\b|\bipad\b|\bipod\b|\bwindows phone\b|\bwpdesktop\b|\bxblwp7\b|\bzunewp7\b|\bwindows ce\b|\bblackberry\w*|\bbb10\b|\brim tablet os\b|\bmeego|\bwebos\b|\bpalm|\bsymbian|\bj2me\b|\bdocomo\b|\bpda\b|\bchtml\b|\bmidp\b|\bcldc\b|\w*?mobile\w*?|\w*?phone\w*?)/,l=/(\bxbox\b|\bplaystation\b|\bnintendo\s+\w+)/,b={parse:function(e,a){var s={};if(a&&(s.standalone=a),!(e=(""+e).toLowerCase()))return s;for(var t,b,u=e.split(/[()]/),p=0,g=u.length;p<g;p++)if(p%2){var h=u[p].split(";");for(t=0,b=h.length;t<b;t++)if(n.exec(h[t])){var v=RegExp.$1.split(" ").join("_"),m=RegExp.$2;(!s[v]||parseFloat(s[v])<parseFloat(m))&&(s[v]=m)}}else{var y=u[p].match(o);if(y)for(t=0,b=y.length;t<b;t++){var _=y[t].split(/[\/\s]+/);_.length&&"mozilla"!==_[0]&&(s[_[0].split(" ").join("_")]=_.slice(1).join("-"))}}if(f.exec(e))s.mobile=RegExp.$1,c.exec(e)&&(delete s[s.mobile],s.blackberry=s.version||RegExp.$3||RegExp.$2||RegExp.$1,RegExp.$1?s.mobile="blackberry":"0.0.1"===s.version&&(s.blackberry="7.1.0.0"));else if(d.exec(e))s.desktop=RegExp.$1;else if(l.exec(e)){s.game=RegExp.$1;var w=s.game.split(" ").join("_");s.version&&!s[w]&&(s[w]=s.version)}return s.intel_mac_os_x?(s.mac_os_x=s.intel_mac_os_x.split("_").join("."),delete s.intel_mac_os_x):s.cpu_iphone_os?(s.ios=s.cpu_iphone_os.split("_").join("."),delete s.cpu_iphone_os):s.cpu_os?(s.ios=s.cpu_os.split("_").join("."),delete s.cpu_os):"iphone"!==s.mobile||s.ios||(s.ios="1"),s.opera&&s.version?(s.opera=s.version,delete s.blackberry):i.exec(e)?s.silk_accelerated=!0:r.exec(e)&&(s.fluidapp=s.version),s.applewebkit?(s.webkit=s.applewebkit,delete s.applewebkit,s.opr&&(s.opera=s.opr,delete s.opr,delete s.chrome),s.safari&&(s.chrome||s.crios||s.opera||s.silk||s.fluidapp||s.phantomjs||s.mobile&&!s.ios?delete s.safari:s.version&&!s.rim_tablet_os?s.safari=s.version:s.safari={419:"2.0.4",417:"2.0.3",416:"2.0.2",412:"2.0",312:"1.3",125:"1.2",85:"1.0"}[parseInt(s.safari,10)]||s.safari)):s.msie||s.trident?(s.opera||(s.ie=s.msie||s.rv),delete s.msie,s.windows_phone_os?(s.windows_phone=s.windows_phone_os,delete s.windows_phone_os):"wpdesktop"!==s.mobile&&"xblwp7"!==s.mobile&&"zunewp7"!==s.mobile||(s.mobile="windows desktop",s.windows_phone=+s.ie<9?"7.0":+s.ie<10?"7.5":"8.0",delete s.windows_nt)):(s.gecko||s.firefox)&&(s.gecko=s.rv),s.rv&&delete s.rv,s.version&&delete s.version,s},format:function(e){function a(e,a){e=e.split(".").join("-");var s=t+e;if("string"==typeof a){for(var n=(a=a.split(" ").join("_").split(".").join("-")).indexOf("-");n>0;)s+=t+e+"-"+a.substring(0,n),n=a.indexOf("-",n+1);s+=t+e+"-"+a}return s}var s="";for(var n in e)n&&e.hasOwnProperty(n)&&(s+=a(n,e[n]));return s},encode:function(e){var a="";for(var s in e)s&&e.hasOwnProperty(s)&&(a&&(a+="&"),a+=encodeURIComponent(s)+"="+encodeURIComponent(e[s]));return a}};b.userAgent=b.ua=b.parse(a,s);var u=b.format(b.ua)+" js";return e.className?e.className=e.className.replace(/\bno-js\b/g,"")+u:e.className=u.substr(1),b}(document.documentElement,navigator.userAgent,navigator.standalone);!function(e){"use strict";function a(){this.nodes=[],this.eqsLength=0,this.widths=[],this.points=[],this.callback=void 0}function s(e,a,s){e.addEventListener?e.addEventListener(a,s,!1):e.attachEvent("on"+a,function(){return s.call(e,window.event)})}function t(e){return window.getComputedStyle(e,":before").getPropertyValue("content").slice(1,-1)}var n=function(e,a){return[].slice.call(e).concat([].slice.call(a))};a.prototype.query=function(a,s){var n,o=Object.getPrototypeOf(e);s&&"function"==typeof s&&(o.callback=s),a&&"number"!=typeof a?n=a.length:(a=o.nodes,n=o.nodesLength);var c,i=[],r=[];for(c=0;n>c;c++){var d=a[c].getBoundingClientRect(),f=d.width;void 0===f&&(f=d.right-d.left),i.push(f);try{r.push(o.sortObj(a[c].getAttribute("data-eq-pts")))}catch(l){try{r.push(o.sortObj(t(a[c])))}catch(b){r.push([{key:"",value:0}])}}}o.widths=i,o.points=r,a&&"number"!=typeof a?o.nodeWrites(a,i,r):s&&"function"!=typeof s?o.nodeWrites():window.requestAnimationFrame(o.nodeWrites)},a.prototype.nodeWrites=function(a){var s,t,n,o,c,i,r,d=Object.getPrototypeOf(e),f=d.widths,l=d.points
+;for(a&&"number"!=typeof a?o=a.length:(a=d.nodes,o=d.nodesLength),s=0;o>s;s++){var b=f[s],u=a[s],p=l[s],g=[],h=p.length;if(b<p[0].value)r=null;else if(b>=p[h-1].value){for(n=0;h>n;n++)g.push(p[n].key);r=g.join(" ")}else for(t=0;h>t;t++){var v=p[t],m=p[t+1];if(g.push(v.key),0===t&&b<v.value){r=null;break}if(void 0!==m&&void 0===m.value){g.push(m.key),r=g.join(" ");break}if(b>=v.value&&b<m.value){r=g.join(" ");break}}null===r?u.removeAttribute("data-eq-state"):u.setAttribute("data-eq-state",r),i=new CustomEvent("eqResize",{detail:r,bubbles:!0}),u.dispatchEvent(i)}d.callback&&(c=d.callback,d.callback=void 0,c(a))},a.prototype.refreshNodes=function(){var a=Object.getPrototypeOf(e);a.nodes=document.querySelectorAll("[data-eq-pts]"),t(document.querySelector("html")).split(", ").forEach(function(e){""!==e&&(a.nodes=n(a.nodes,document.querySelectorAll(e)))}),a.nodesLength=a.nodes.length},a.prototype.sortObj=function(e){for(var a=[],s=e.split(","),t=0;t<s.length;t++){var n=s[t].split(":");a.push({key:n[0].replace(/^\s+|\s+$/g,""),value:parseFloat(n[1])})}return a.sort(function(e,a){return e.value-a.value})},a.prototype.definePts=function(e,a){return a=a||{},a=(a=(a=(a=(a=JSON.stringify(a)).substring(1,a.length-1)).replace(/:/g,": ")).replace(/,/g,", ")).replace(/"/g,""),e.setAttribute("data-eq-pts",a),a},a.prototype.all=function(a){var s=Object.getPrototypeOf(e),t=!!a;s.refreshNodes(),t?s.query(void 0,a):window.requestAnimationFrame(s.query)},e=e||new a,s(window,"DOMContentLoaded",function(){e.all(!1)}),s(window,"load",function(){e.all(!0)}),s(window,"resize",function(){e.all(!0)}),"undefined"!=typeof module&&module.exports?module.exports=e:"function"==typeof define&&define.amd?define("eqjs",function(){return e}):window.eqjs=e}(window.eqjs),function(){var e,a=function(e,a){return function(){return e.apply(a,arguments)}};e=function(){function e(){this.rgbArray=a(this.rgbArray,this),this.perceivedBrightness=a(this.perceivedBrightness,this),this.safeForWhiteContrastColor=a(this.safeForWhiteContrastColor,this),this.shadeColor=a(this.shadeColor,this),this.tooLightForWhiteText=a(this.tooLightForWhiteText,this)}return e.prototype.tooLightForWhiteText=function(e){return this.perceivedBrightness(e)>200},e.prototype.shadeColor=function(e,a){var s,t,n,o,c,i;return i=a<0?0:255,o=a<0?-1*a:a,n=(c=this.rgbArray(e))[0],t=c[1],s=c[2],"#"+(16777216+65536*(Math.round((i-n)*o)+n)+256*(Math.round((i-t)*o)+t)+(Math.round((i-s)*o)+s)).toString(16).slice(1)},e.prototype.safeForWhiteContrastColor=function(e){var a;for(a=3;;){if(this.perceivedBrightness(e)<220||a--<=0)return e;e=this.shadeColor(e,-.1)}},e.prototype.perceivedBrightness=function(e){var a;return(299*(a=this.rgbArray(e))[0]+587*a[1]+114*a[2])/1e3},e.prototype.rgbArray=function(e){var a;return[(a=parseInt(e.slice(1),16))>>16,a>>8&255,255&a]},e}(),window.colorUtil=new e}.call(this),function(){([].indexOf||function(e){for(var a=0,s=this.length;a<s;a++)if(a in this&&this[a]===e)return a;return-1}).call(Element.prototype,"remove")<0&&(Element.prototype.remove=function(){if(this.parentNode)return this.parentNode.removeChild(this)})}.call(this),function(){var e,a=function(e,a){return function(){return e.apply(a,arguments)}};window.GRAY3="#999999",window.PRIMARY_RED="#D81422",e=colorUtil,window.Theme=function(){function s(s){this.themeColor=s,this.apply=a(this.apply,this),this.css=a(this.css,this),this.calculateColors=a(this.calculateColors,this),document.documentElement.classList.contains("part-bleed")||(this.themeColor||(this.themeColor=PRIMARY_RED),e.tooLightForWhiteText(this.themeColor)&&(this.themeColor=e.shadeColor(this.themeColor,-.15)),this.calculateColors())}return s.prototype.calculateColors=function(){return this.hoverColor=e.shadeColor(this.themeColor,-.3),this.textColor=e.shadeColor(this.themeColor,.993),this.cardHoverColor=e.shadeColor(this.themeColor,.9),this.quickNavColor=e.shadeColor(this.themeColor,-.2),this.quickAllColor=e.shadeColor(this.themeColor,.3)},s.prototype.css=function(){return".top, nav.top .search-control .popover a.selected, .text-list-popover-control + .popover.bottom a:hover { background-color: "+this.themeColor+"; color: "+this.textColor+"; }\n.top[data-popover-is-open='false'] .quick-nav-row { background-color: "+this.quickNavColor+"; color: "+this.textColor+"; }\ncurrent-page-marker:after { background-color: "+this.textColor+"; }\n.search-input input.query { border-color: "+this.textColor+"; }\n.records-list.pseudolinks-list .micro:hover { background-color: "+this.cardHoverColor+" !important; }\n.top { box-shadow: 0 0.2em 0.2em rgba(35, 22, 22, 0.5); }"},s.prototype.apply=function(){return U.el('meta[name="theme-color"]').setAttribute("content",this.themeColor||PRIMARY_RED),"transparent"===this.themeColor?U.removeStyle("page-theme"):U.addStyle("page-theme",this.css())},s}()}.call(this),function(){var e=function(e,a){return function(){return e.apply(a,arguments)}};(new(function(){function a(){this.setup=e(this.setup,this)}return a.prototype.setup=function(){var e;return e=null!=cssua.ua.mobile?"":"no-",document.documentElement.classList.add(e+"touch")},a}())).setup()}.call(this);
+  playerBoot({"minimalUserJSON":"/me/private.json?membership_detail=full&v=1566727751","minimalUserScript":"minimal-user.js","fullUserJSON":"/me/private.json?channel_detail=full&fixed_channels=play-later,bookmarks,plays,likes&favorite_detail=full&subscription_detail=raw&channel_inclusion_detail=raw&membership_detail=full&setting_detail=full&series_setting_detail=full&v=1566727751","appScript":"app.js"})
+</script>
+<link rel="stylesheet" media="screen" href="/assets/v_20190821111955/app-918aea9f4447ac958d12b164046c59eaf5f03a9a68e53241054c0b79e5bb3eca.css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='yes' name='apple-mobile-web-app-capable'>
+<meta content='Player FM' name='author'>
+<meta content='black-translucent' name='apple-mobile-web-app-status-bar-style'>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='292059804171098' property='fb:app_id'>
+<link href='/favicon.ico' rel='icon' type='image/x-icon'>
+<link rel="apple-touch-icon-precomposed" href="/assets/v_20190821111955/logos/v3/apple-touch-icon-precomposed-2ae4a784af9f17bec82ee8ec801c0b3efd8c9c6dca50b0f5228170d7d31be3bf.png" />
+<link rel="apple-touch-icon-precomposed" size="72x72" href="/assets/v_20190821111955/logos/v3/icon72x72-464199da83d1300ad3fa0e84b10fdeb3a54d46bfe7377672402ba8f73f65f3a5.png" />
+<link rel="apple-touch-icon-precomposed" size="76x76" href="/assets/v_20190821111955/logos/v3/icon76x76-d38cb4ee1a0642edc9ae76ced20189e70e1e376c58c58785bd621713a0605e33.png" />
+<link rel="apple-touch-icon-precomposed" size="114x114" href="/assets/v_20190821111955/logos/v3/icon114x114-dc4ae0d327f50008736607b4b8c05a1cf3d5b5dde6d94ddb161e65ffde3edaa4.png" />
+<link rel="apple-touch-icon-precomposed" size="120x120" href="/assets/v_20190821111955/logos/v3/icon120x120-62c08f345d0ac93714eef780bc647e7b5eb7c1f648eb141f59162fb8404ff44d.png" />
+<link rel="apple-touch-icon-precomposed" size="144x144" href="/assets/v_20190821111955/logos/v3/icon144x144-ec0f3737afbade2917f3cc97aff99eb0130332b17fcdb04691ff9104173d501e.png" />
+<link rel="apple-touch-icon-precomposed" size="152x152" href="/assets/v_20190821111955/logos/v3/icon152x152-c6a2cee14a2c6007d15c3a5a9908bd22495bb12f8fd962127cd2bd48ac8c9965.png" />
+<link rel="apple-touch-icon-precomposed" size="180x180" href="/assets/v_20190821111955/logos/v3/icon180x180-3d4fb22c2f5d09c8f1725379e5385dcef82ebfc0267441eb465849a50c396e5a.png" />
+<title>Chapo Trap House podcast</title>
+<meta content='Listen to Chapo Trap House with 318 episodes. No signup or install required.' name='description'>
+<meta app-argument='https://player.fm/series/chapo-trap-house' content='app-id=940568467' name='apple-itunes-app'>
+<link rel="alternate" href="android-app://fm.player/https/player.fm/series/chapo-trap-house" />
+<link rel="alternate" href="android-app://fm.player.debug/https/player.fm/series/chapo-trap-house" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="XDb3/5S2F5rHX+LuhjBja6solavgciw61ilE4FgiVcdTO9HMkMSoyJazmvYD60Ev2hmvzg/aT/y66g4vDrz/Vg==" />
+
+</head>
+<body>
+<nav class='top' data-data-menu-is-open='false' data-popover-is-open='false'>
+<div class='page-load-progress'></div>
+<div class='container'>
+<div class='top-main-row row'>
+<div class='col-md-12 mobile-padded'>
+<div class='top-main'>
+<section class='top-side top-left'>
+<a data-remote='true' data-type='html' href='/'>
+<img src="/assets/v_20190821111955/logos/playerfm-logo-32x32-7997850a076ef11aafac4844abf97f3a975c86a76810d6a4643889273be4341e.png" alt="Playerfm logo 32x32" />
+<i class='icon-player-fm-logo-text when-fat inlined'></i>
+</a>
+<span class='plan-name'></span>
+</section>
+
+<section class='top-mid'><div class='top-mid-controls when-member'><div class='inlined'><a class='discovery-control expandable control btn btn-danger' data-remote='true' data-type='html' href='/discovery' id='discovery-link'><span class='expando'>▾</span>
+<span class='text-label when-fat'>
+Discover
+<div class='expansion-pointer'></div>
+</span>
+<span class='when-thin icon-label'>
+<i class="fa fa-star"></i>
+<div class='expansion-pointer'></div>
+</span></a><a class='subscriptions-control expandable control btn btn-danger' data-remote='true' data-type='html' href='/subs' id='subscriptions-link'><span class='expando'>▾</span>
+<span class='text-label when-fat'>
+Subscriptions
+<div class='expansion-pointer'></div>
+</span>
+<span class='when-thin icon-label'>
+<i class="fa fa-home"></i>
+<div class='expansion-pointer'></div>
+</span></a><a class='playlists-control expandable inlined-block control btn btn-danger' data-remote='true' data-type='html' href='/play-later' id='playlists-link'><span class='expando'>▾</span>
+<span class='text-label when-fat'>
+Playlists
+<div class='expansion-pointer'></div>
+</span>
+<span class='when-thin icon-label'>
+<i class="fa fa-thumb-tack"></i>
+<div class='expansion-pointer'></div>
+</span></a></div><div class='top-expansion-wrapper'></div></div><div class='top-mid-controls when-guest'><div class='inlined'><a class='discovery-control expandable control btn btn-danger' data-remote='true' data-type='html' href='/featured/topics' id='discovery-link'><span class='expando'>▾</span>
+<span class='text-label'>
+Discover
+<div class='expansion-pointer'></div>
+</span>
+</a><span class='btn btn-danger text-label launch-signup control launches-connect' data-handled='true'>
+<span>Signup</span>
+</span>
+<span class='btn btn-danger text-label launch-login control launches-connect' data-handled='true'>
+<span>Login</span>
+</span></div><div class='top-expansion-wrapper'></div></div></section>
+
+<section class='top-side top-right'>
+<a class="control btn inlined when-free upgrade" data-type="html" data-remote="true" href="/upgrade"><i class="fa fa-star"></i><span class='upgrade-label when-medium-or-big'>Upgrade</span></a>
+<span class='when-small'></span>
+<a class='search-control icon-label text-list-popover-control control btn btn-danger' href='#' title='Search'>
+<i class="fa fa-search"></i>
+<div class='search-input'>
+<input class='query'>
+<span class='cancel'>&times;</span>
+</div>
+</a>
+<div class='menu-launcher control btn btn-danger icon-label inline-blocked'>
+<i class="fa fa-bars"></i>
+<div class='menu'>
+<div class='tail'>&nbsp;</div>
+<a class="when-free upgrade top-replacement" data-type="html" data-remote="true" href="/upgrade"><i class="fa fa-star"></i> Upgrade</a>
+<a class="user-settings when-member" data-type="html" data-remote="true" href="/users/edit_current"><i class="fa fa-gear"></i> Settings</a>
+<a class="user-profile when-member" data-type="html" data-remote="true" href="/profile"><i class="fa fa-user"></i> Profile</a>
+<a target="_blank" href="/faq"><i class="fa fa-info"></i> Help/FAQ</a>
+<a data-type="html" data-remote="true" href="/legal"><i class="fa fa-handshake-o"></i> Terms of use</a>
+<a data-type="html" data-remote="true" href="/contact"><i class="fa fa-comments"></i> Contact</a>
+<a class="when-member logout-link" data-type="html" data-remote="true" rel="nofollow" data-method="delete" href="/users/sign_out"><i class="fa fa-power-off"></i> Logout</a>
+</div>
+</div>
+</section>
+
+</div>
+</div>
+</div>
+<div class='search-popover-fixed-template template'>
+<a class='full-search-option selected' data-remote='true' href="#">Search&nbsp;<span class='query'>a title or topic</span></a>
+</div>
+
+</div>
+</nav>
+
+<div class='base-overlay'></div>
+<div class='main'>
+<div class="empty-page-heading page-heading"> </div>
+<div class='series page' data-access='public' data-active data-fetch-status='ok' data-id='132414' data-kind='series' data-page='series' data-slug='chapo-trap-house' itemscope='itemscope' itemstype='http://schema.org/Blog'>
+<div class='container'>
+<div class='row'>
+<meta content='Chapo Trap House' itemprop='name'>
+<meta content='https://player.fm/series/132414' itemprop='url'>
+<div class='col-md-3 series-summary'>
+<div>
+<div class='visual'>
+<a data-type="html" data-remote="true" href="/series/chapo-trap-house"><div class="image placeholdered without-image" style="background-color: #8d6e63;" title="Chapo Trap House"><div class="initial">C</div><div class="title">Chapo Trap House</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/32.jpg 32w, https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/64.jpg 64w, https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/128.jpg 128w, https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/256.jpg 256w, https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/512.jpg 512w" class="lazyload without-image" onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/256pixel.png" /></div></a>
+<meta content='https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/1024.jpg' height='512' itemprop='image' width='512'>
+<meta content='https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/64.jpg' height='64' itemprop='thumbnail' width='64'>
+</div>
+</div>
+<p>
+<div class='tags'><span class='tag-wrapper'><a data-remote='true' class='tag' href='/podcasts/News'><i class="fa fa-tag"></i>News</a></span> <span class='tag-wrapper'><a data-remote='true' class='tag' href='/podcasts/Politics'><i class="fa fa-tag"></i>Politics</a></span></div>
+
+<div class='series-channels-wrapper'>
+<section class='box series-channels' data-url='/series/chapo-trap-house/channels'></section>
+</div>
+
+</p>
+
+</div>
+<div class='col-md-6 span-main series-main'>
+<div class='main-content episodes'>
+<div class='header-wrapper'>
+<div class='header'>
+<h2>
+<a class="title" data-type="html" data-remote="true" href="/series/chapo-trap-house">Chapo Trap House&nbsp;<span class='explicitness'><i class="fa fa-exclamation-triangle"></i>explicit</span></a>
+<i class="fa fa-pencil edit-series pointer when-owned when-manager-rights"></i>
+</h2>
+<div class='main-buttons'>
+<div class='subscribe button primary-button'>
+<span class='when-not-subscribed'>
+<span class='when-medium-or-big'>➕ Subscribe</span>
+<span class='when-small'>➕ Sub</span>
+</span>
+<span class='when-subscribed'>
+<span class='when-medium-or-big'>✔ Subscribed</span>
+<span class='when-small'>✔ Sub'd</span>
+</span>
+</div>
+<div class='episode paused' data-color='#4e9bba' data-explicit data-id='240132901' data-series-access='public' data-series-id='132414' data-series-slug='chapo-trap-house' data-slug='ep-342-the-cuts-stay-in-the-podcast-82019' data-title='342 - The Cuts Stay In The Podcast (8/20/19)'>
+<a class='play-prompt playable button' data-handled='true' href='https://dts.podtrac.com/redirect.mp3/feeds.soundcloud.com/stream/668347529-chapo-trap-house-342-the-cuts-stay-in-the-podcast-82019.mp3'>
+<div class='when-paused'>
+<i class="fa fa-play"></i>
+<span>Play</span>
+</div>
+<div class='when-playing'>
+<i class="fa fa-pause"></i>
+<span>Playing</span>
+</div>
+</a>
+</div>
+<share-button class='button'>
+<div class='button-label'>
+<i class="fa fa-share"></i>
+<span>Share</span>
+</div>
+</share-button>
+<div class='clearance'>&nbsp;</div>
+</div>
+<div class='user-actions'>
+<span class='mark-all-played underlined pseudolink'>Mark all (un-)played</span>
+</div>
+<br>
+
+<div class='links'><a class="blatant" href="https://www.patreon.com/chapotraphouse">Series home</a>&bullet;<a class="blatant" href="http://feeds.soundcloud.com/users/soundcloud:users:211911700/sounds.rss">Public Feed</a></div>
+<div class='source'>
+<div class='when-manager-rights manage-wrapper'>
+<details>
+<summary>
+Manage  series 132414
+</summary>
+<div class='manage' data-url='/series/chapo-trap-house/manage'></div>
+</details>
+</div>
+<div class='attribution'>
+By
+<span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+<span itemprop='name'>Chapo Trap House.</span>
+</span>
+Discovered by Player FM and our community &mdash; copyright is owned by the publisher, not Player FM, and audio streamed directly from their servers.
+</div>
+
+</div>
+<div class='story cleanslate'>
+<div class='description prose' itemprop='description' property='og:description'>Podcast by Chapo Trap House</div>
+<p class='stats'>
+324 episodes available.
+A new episode about every
+3 days
+averaging 54 mins duration
+<span>.</span></p>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<section class='series-episodes-list records-list episodes-list loading' data-active='true' data-container-record-type='series' data-eq-state='medium' data-limit='50' data-offset='0' data-order='newest' data-orderable data-record-type='episode' data-records-type='episodes' data-renderer='client' data-size='0' data-styleable data-thin-style='list' data-total-size='0' data-url='/series/132414.json?detail=minimal&amp;episode_detail=full&amp;episode_offset=0&amp;episode_order=newest&amp;at=1566740302' id='9Y0s0gLOqvNGac7L'>
+<style class='dynamic-list-style'></style>
+<script>
+  var listEl = document.getElementById('9Y0s0gLOqvNGac7L');
+  var listStyle = document.documentElement.clientWidth <= 480 ? 'list' : 'list';
+  listEl.setAttribute('data-style', listStyle);
+  if (typeof(eqjs)!='undefined' && listEl.hasAttribute('data-eq-pts'))
+    eqjs.query([listEl]);
+</script>
+<header>
+<div class='content'>
+<span class='header-controls'>
+<span class="stylizes control-group"><i data-style="cards" title="Cards" class="fa fa-align-left stylize control"></i><i data-style="list" title="List" class="fa fa-th-list stylize control active"></i></span>
+<select name="episodes-order" id="episodes-order" class="control records-order episodes-order sort"><option selected="selected" value="newest">Newest</option>
+<option value="oldest">Oldest</option>
+<option value="longest">Longest</option>
+<option value="shortest">Shortest</option>
+<option value="random">Random</option></select>
+<span class='query-wrapper'>
+<span class='control launch-query'><i class="fa fa-search"></i></span>
+<input class='query' type='search'>
+<span class='cancel'>&times;</span>
+</span>
+<span class='resizes'>
+<i class="fa fa-expand grow resize control"></i>
+<i class="fa fa-compress shrink resize control"></i>
+</span>
+</span>
+<span class='title-options when-thin'>
+</span>
+</div>
+</header>
+<main>
+<div class='content'>
+<div class='clearance'>&nbsp;</div>
+</div>
+</main>
+<footer>
+<div class='content'>Loading &hellip;</div>
+</footer>
+</section>
+
+
+
+</div>
+<div class='col-md-3 span-extra'>
+<div class='content-fallback'>
+<div class='when-fat'>
+<h3>Welcome to Player FM</h3>
+<p>What if radio played only the shows you care about, when you want? Player FM is scanning the web for high-quality podcast content right now. Try us out on any web browser &mdash; desktop, mobile, or tablet.</p>
+</div>
+<div class='when-thin'>
+<p>&nbsp;</p>
+</div>
+</div>
+<div class='when-guest'>
+<section class='box box-em mobile-promo when-medium-or-big'>
+<h3>Take it with you</h3>
+<div class='app-install-links'>
+<a class="app-badge app-store-badge" href="https://itunes.apple.com/us/app/podcast-app-by-player-fm/id940568467?mt=8"><img alt="Get it on App Store" class="badge-image" src="/assets/v_20190821111955/promos/darkappstore-a26fc5b38380272c92e9019a2eb8b45542a66814b3e2b203772db8904b9fb99f.svg" /></a>
+<a class="app-badge play-store-badge" href="https://play.google.com/store/apps/details?id=fm.player"><img alt="Get it on Google Play" class="badge-image" src="/assets/v_20190821111955/promos/darkplay-49e6ea4ba78ca19b1246873b3369891cb6e289515c11418f1fce4cb3a694c18a.svg" /></a>
+</div>
+<p class='action-text'>
+Start listening to Chapo Trap House on your phone right now with Player FM's free mobile app, the best podcasting experience on both iPhone and Android. Your subcriptions will sync with your account on this website too. Podcast smart and easy with the app that refuses to compromise.
+</p>
+<hr>
+<div class='app-reviews'>
+<div class='app-review'>
+<div class='quote'>Guides you to smart, interesting podcasts based on category, channel, or even specific topics</div>
+<a href='http://lifehacker.com/player-fm-finds-great-new-podcasts-on-almost-any-topic-493101906'>
+<img alt="Lifehacker" class="logo" src="/assets/v_20190821111955/logos/others/lifehacker-d4d6a4039c044fc350e69b3b54129aadcc948979782a9b4d2f8eae70f661148a.png" />
+</a>
+</div>
+<p></p>
+<div class='app-review'>
+<div class='quote'>Right from the start, I found the experience of using Player FM enjoyable &hellip; I’m actually rather surprised this app is free.</div>
+<a href='http://www.tested.com/tech/android/455298-google-play-app-roundup-draft/'>
+<img alt="Tested" class="logo" src="/assets/v_20190821111955/logos/others/tested-82e1bb00ec952755cf30380838402bc0abb273bf6cf9777ac58b060d6927b148.png" />
+</a>
+</div>
+<p></p>
+<div class='app-review'>
+<div class='quote'>Looking for a high-quality podcasts app on Android? Player FM might just be it.</div>
+<a href='http://www.guardian.co.uk/technology/appsblog/2013/may/03/best-android-apps-angry-birds-friends'>
+<img alt="Guardian" class="logo" src="/assets/v_20190821111955/logos/others/guardian-720dab061f00ab3dd99648d44943aaf14f990da1b075c7022928406ae263ad69.png" />
+</a>
+</div>
+<p></p>
+<div class='app-review'>
+<div class='quote'>Player FM isn’t just about looks: What sets the app apart from other podcasting applications is its emphasis on discovery.</div>
+<a href='http://gigaom.com/2013/04/28/android-podcast-app-review-player-fm/'>
+<img alt="GigaOM" class="logo" src="/assets/v_20190821111955/logos/others/gigaom-44f441131638761341a9f5f2bf20d4992d6ddb50c946cbb6d9bd1a9875663331.png" />
+</a>
+</div>
+<p></p>
+<hr>
+<p>Google Play reviews:</p>
+<div class='play-reviews'>
+<span class='play-review'><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <em>&quot;THE best podcast/netcast app. Brilliantly useful, fantastically intuitive, beautiful UI. Developers constantly update and improve. No other podcast/netcast app comes close.&quot;</span></em><br/><br/>
+<span class='play-review'><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <em>&quot;Excellent app. Easy and intuitive to use. New features frequently added. Just what you need. Not what you don't. Programmer gives this app a lot of love and attention and it shows.&quot;</span></em><br/><br/>
+<span class='play-review'><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <em>&quot;Store house of knowledge&quot;</span></em><br/><br/>
+<span class='play-review'><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <em>&quot;Thank you for giving me a beautiful, podcast streaming app with a great library&quot;</span></em><br/><br/>
+<span class='play-review'><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <em>&quot;Love the offline function&quot;</span></em><br/><br/>
+<span class='play-review'><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <em>&quot;This is "the" way to handle your podcast subscriptions. It's also a great way to discover new podcasts.&quot;</span></em><br/><br/>
+<span class='play-review'><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <em>&quot;It's perfect. So easy to find shows to follow. Six stars for Chromecast support.&quot;</span></em><br/><br/>
+</div>
+</div>
+</hr>
+</section>
+
+<p></p>
+</div>
+<section class='related-series-list gridded records-list series-list' data-active='true' data-container-record-type='related_to_channel' data-eq-pts='small: 0, medium: 500, big: 1000, huge: 1600' data-eq-state='medium' data-limit='10' data-live='false' data-offset='0' data-order='popular' data-record-type='series' data-records-type='series' data-renderer='server' data-size='10' data-thin-style='cards' data-total-size='10' data-url='/mu/related-to/chapo-trap-house/series?active=true&amp;limit=10&amp;offset=0&amp;order=popular&amp;query=&amp;style=images' id='MgSUqrAGxc4jV1ps'>
+<style class='dynamic-list-style'></style>
+<script>
+  var listEl = document.getElementById('MgSUqrAGxc4jV1ps');
+  var listStyle = document.documentElement.clientWidth <= 480 ? 'cards' : 'images';
+  listEl.setAttribute('data-style', listStyle);
+  if (typeof(eqjs)!='undefined' && listEl.hasAttribute('data-eq-pts'))
+    eqjs.query([listEl]);
+</script>
+<header>
+<div class='content'>
+<span class='header-controls'>
+
+
+<span class='resizes'>
+<i class="fa fa-expand grow resize control"></i>
+<i class="fa fa-compress shrink resize control"></i>
+</span>
+</span>
+<span class='title-options when-thin'>
+</span>
+</div>
+</header>
+<main>
+<div class='content'>
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='1423621' data-remote='true' data-slug='talking-politics-1423621' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/1423621"><div class="image placeholdered " style="background-color: #42a5f5;"><div class="initial">T</div><div class="title">TALKING POLITICS</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/12770146/series/khzrAaVPm6FuE2Q2/32.jpg 32w, https://cdn1.player.fm/images/12770146/series/khzrAaVPm6FuE2Q2/64.jpg 64w, https://cdn1.player.fm/images/12770146/series/khzrAaVPm6FuE2Q2/128.jpg 128w, https://cdn1.player.fm/images/12770146/series/khzrAaVPm6FuE2Q2/256.jpg 256w, https://cdn1.player.fm/images/12770146/series/khzrAaVPm6FuE2Q2/512.jpg 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/talking-politics-1423621">TALKING POLITICS</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-25T00:00:00Z'>14h ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-25T00:00:00Z'>14h ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Weekly+</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>Corbyn! Trump! Brexit! Politics has never been more unpredictable, more alarming or more interesting. TALKING POLITICS is the podcast that tries to make sense of it all. Each Thursday, in Cambridge, David Runciman will talk to his regular panel along with novelists, comedians, historians, philosophers - and even a few politicians - and ask them what they think is going on... Democracy is feeling the strain everywhere. What might happen next? How bad could it get? As it unfolds, TALKING POLIT ...</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/talking-politics-1423621 0.04ms ID:yahQwweO -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='56794' data-remote='true' data-slug='the-lawfare-podcast' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/56794"><div class="image placeholdered " style="background-color: #9ccc65;"><div class="initial">T</div><div class="title">The Lawfare Podcast</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/187270/series/nRg2Tdc4wQ0kr7GM/32.png 32w, https://cdn1.player.fm/images/187270/series/nRg2Tdc4wQ0kr7GM/64.png 64w, https://cdn1.player.fm/images/187270/series/nRg2Tdc4wQ0kr7GM/128.png 128w, https://cdn1.player.fm/images/187270/series/nRg2Tdc4wQ0kr7GM/256.png 256w, https://cdn1.player.fm/images/187270/series/nRg2Tdc4wQ0kr7GM/512.png 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/the-lawfare-podcast">The Lawfare Podcast</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-24T05:05:58Z'>1d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-24T05:05:58Z'>1d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Weekly+</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>This is the podcast series from Lawfare, the web&#39;s leading multimedia web site devoted to national security law and policy. Visit us at www.lawfareblog.com.</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/the-lawfare-podcast 0.01ms ID:oAsHxQmI -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='1313933' data-remote='true' data-slug='democracy-now-audio-1313933' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/1313933"><div class="image placeholdered " style="background-color: #ff7043;"><div class="initial">D</div><div class="title">Democracy Now! Audio</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/7484021/series/HV32XYk23P0ThydE/32.jpg 32w, https://cdn1.player.fm/images/7484021/series/HV32XYk23P0ThydE/64.jpg 64w, https://cdn1.player.fm/images/7484021/series/HV32XYk23P0ThydE/128.jpg 128w, https://cdn1.player.fm/images/7484021/series/HV32XYk23P0ThydE/256.jpg 256w, https://cdn1.player.fm/images/7484021/series/HV32XYk23P0ThydE/512.jpg 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/democracy-now-audio-1313933">Democracy Now! Audio</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-23T12:00:00Z'>2d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-23T12:00:00Z'>2d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Daily</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>Democracy Now! is an independent daily TV &amp; radio news program, hosted by award-winning journalists Amy Goodman and Juan González. We provide daily global news headlines, in-depth interviews and investigative reports without any advertisements or government funding. Our programming shines a spotlight on corporate and government abuses of power and lifts up the stories of ordinary people working to make change in extraordinary times. Democracy Now! is live weekdays at 8am ET and available 24/ ...</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/democracy-now-audio-1313933 0.03ms ID:GnW9juXh -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='2394556' data-remote='true' data-slug='economic-update-with-richard-d-wolff-2394556' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/2394556"><div class="image placeholdered " style="background-color: #ffa726;"><div class="initial">E</div><div class="title">Economic Update with Richard D. Wolff</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/21758432/series/gHOYIwGwUqCJMWlW/32.png 32w, https://cdn1.player.fm/images/21758432/series/gHOYIwGwUqCJMWlW/64.png 64w, https://cdn1.player.fm/images/21758432/series/gHOYIwGwUqCJMWlW/128.png 128w, https://cdn1.player.fm/images/21758432/series/gHOYIwGwUqCJMWlW/256.png 256w, https://cdn1.player.fm/images/21758432/series/gHOYIwGwUqCJMWlW/512.png 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/economic-update-with-richard-d-wolff-2394556">Economic Update with Richard D. Wolff</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-22T07:38:51Z'>3d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-22T07:38:51Z'>3d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Rare</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>Economic Update is a weekly nationally syndicated radio program produced by Democracy at Work and hosted by Richard D. Wolff. The program explores complex economic issues and empowers listeners with information to analyze their own financial situation as well as the economy at large. By focusing on the economic dimensions of everyday life - wages, jobs, taxes, debts, and profits - the program explores alternative ways to organize markets and government policies.</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/economic-update-with-richard-d-wolff-2394556 0.01ms ID:fo0MVE6q -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='2355377' data-remote='true' data-slug='series-2355377' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/2355377"><div class="image placeholdered " style="background-color: #ec407a;"><div class="initial">T</div><div class="title">Trumpcast</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/21633260/series/PmPoLsbtxjVCw69c/32.jpg 32w, https://cdn1.player.fm/images/21633260/series/PmPoLsbtxjVCw69c/64.jpg 64w, https://cdn1.player.fm/images/21633260/series/PmPoLsbtxjVCw69c/128.jpg 128w, https://cdn1.player.fm/images/21633260/series/PmPoLsbtxjVCw69c/256.jpg 256w, https://cdn1.player.fm/images/21633260/series/PmPoLsbtxjVCw69c/512.jpg 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/series-2355377">Trumpcast</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-23T06:00:00Z'>2d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-23T06:00:00Z'>2d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Weekly+</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>A quasi-daily podcast from Slate chronicling Donald Trump&#39;s rise to the presidency and his current administration. Journalists Virginia Heffernan, León Krauze, and Yascha Mounk talk to reporters, historians, psychiatrists, and other experts to help explain who this man is and why this is happening, right now, in the United States of America.</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/series-2355377 0.0ms ID:8wC13oEe -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='2455957' data-remote='true' data-slug='today-in-focus' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/2455957"><div class="image placeholdered " style="background-color: #42a5f5;"><div class="initial">T</div><div class="title">Today in Focus</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/22472584/series/yhzDrb3Y9nCyL6wi/32.jpg 32w, https://cdn1.player.fm/images/22472584/series/yhzDrb3Y9nCyL6wi/64.jpg 64w, https://cdn1.player.fm/images/22472584/series/yhzDrb3Y9nCyL6wi/128.jpg 128w, https://cdn1.player.fm/images/22472584/series/yhzDrb3Y9nCyL6wi/256.jpg 256w, https://cdn1.player.fm/images/22472584/series/yhzDrb3Y9nCyL6wi/512.jpg 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/today-in-focus">Today in Focus</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-16T02:00:01Z'>9d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-16T02:00:01Z'>1w ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Daily</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>Hosted by Anushka Asthana, Today in Focus brings you closer to Guardian journalism. Combining personal storytelling with insightful analysis, Today in Focus is The Guardian&#39;s daily podcast that takes you behind the headlines for a deeper understanding of the news, every weekday.</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/today-in-focus 0.0ms ID:SLdnFEQ4 -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='1816' data-remote='true' data-slug='the-majority-report-with-sam-seder' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/1816"><div class="image placeholdered " style="background-color: #26a69a;"><div class="initial">T</div><div class="title">The Majority Report with Sam Seder</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/4697/series/mJXfRfHWmNTaRQFa/32.jpg 32w, https://cdn1.player.fm/images/4697/series/mJXfRfHWmNTaRQFa/64.jpg 64w, https://cdn1.player.fm/images/4697/series/mJXfRfHWmNTaRQFa/128.jpg 128w, https://cdn1.player.fm/images/4697/series/mJXfRfHWmNTaRQFa/256.jpg 256w, https://cdn1.player.fm/images/4697/series/mJXfRfHWmNTaRQFa/512.jpg 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/the-majority-report-with-sam-seder">The Majority Report with Sam Seder</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-23T18:46:47Z'>2d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-23T18:46:47Z'>2d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Daily</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>Entertaining Daily Politics, Award Winning Long-Form Interviews and Irreverent, Independent Analysis. For more info see Majority.FM</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/the-majority-report-with-sam-seder 0.17ms ID:VYiqeLa6 -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='1352306' data-remote='true' data-slug='pod-save-the-world' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/1352306"><div class="image placeholdered " style="background-color: #ab47bc;"><div class="initial">P</div><div class="title">Pod Save the World</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/11159952/series/LcDf746luYn9k33V/32.jpg 32w, https://cdn1.player.fm/images/11159952/series/LcDf746luYn9k33V/64.jpg 64w, https://cdn1.player.fm/images/11159952/series/LcDf746luYn9k33V/128.jpg 128w, https://cdn1.player.fm/images/11159952/series/LcDf746luYn9k33V/256.jpg 256w, https://cdn1.player.fm/images/11159952/series/LcDf746luYn9k33V/512.jpg 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/pod-save-the-world">Pod Save the World</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-21T07:00:00Z'>4d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-21T07:00:00Z'>4d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Weekly</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>“Pod Save America” cohost Tommy Vietor thought foreign policy was boring and complicated until he got the education of a lifetime working for President Obama’s National Security Council. His new show “Pod Save the World” will bring you behind the scenes into White House Situation Room meetings and secret negotiations through a series of conversations with people who were there.</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/pod-save-the-world 0.0ms ID:OIKxJOzH -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='2355376' data-remote='true' data-slug='political-gabfest-2355376' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/2355376"><div class="image placeholdered " style="background-color: #ef5350;"><div class="initial">P</div><div class="title">Political Gabfest</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/21633259/series/0oRcq4xV24n7YjJQ/32.jpg 32w, https://cdn1.player.fm/images/21633259/series/0oRcq4xV24n7YjJQ/64.jpg 64w, https://cdn1.player.fm/images/21633259/series/0oRcq4xV24n7YjJQ/128.jpg 128w, https://cdn1.player.fm/images/21633259/series/0oRcq4xV24n7YjJQ/256.jpg 256w, https://cdn1.player.fm/images/21633259/series/0oRcq4xV24n7YjJQ/512.jpg 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/political-gabfest-2355376">Political Gabfest</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-23T00:08:00Z'>3d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-23T00:08:00Z'>3d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Weekly</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>Voted “Favorite Political Podcast” by Apple Podcasts listeners. Stephen Colbert says &quot;Everybody should listen to the Slate Political Gabfest.&quot; The Gabfest, featuring Emily Bazelon, John Dickerson, and David Plotz, is the kind of informal and irreverent discussion Washington journalists have after hours over drinks.</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:39+00:00] [frag micro] MISS /series/political-gabfest-2355376 0.1ms ID:GgHGXNvh -->
+<div class='active micro record series' data-access='public' data-fetch-status='ok' data-id='1203967' data-remote='true' data-slug='fivethirtyeight-politics' data-type='html'>
+<div class='divider'>&nbsp;</div>
+<div class='headline'>
+<a data-type="html" data-remote="true" href="/series/1203967"><div class="image placeholdered " style="background-color: #78909c;"><div class="initial">F</div><div class="title">FiveThirtyEight Politics</div><i class="fa fa-microphone icon"></i><img data-sizes="auto" data-srcset="https://cdn1.player.fm/images/2272815/series/4PgG24HhBA3A38bX/32.png 32w, https://cdn1.player.fm/images/2272815/series/4PgG24HhBA3A38bX/64.png 64w, https://cdn1.player.fm/images/2272815/series/4PgG24HhBA3A38bX/128.png 128w, https://cdn1.player.fm/images/2272815/series/4PgG24HhBA3A38bX/256.png 256w, https://cdn1.player.fm/images/2272815/series/4PgG24HhBA3A38bX/512.png 512w" class="lazyload " onload="U.cleanImage(this)" onerror="this.parentNode.removeChild(this);" /><img src="/static/images/128pixel.png" /></div></a>
+<div class='info' data-remote='true' data-type='html'>
+<div class='info-top'>
+<div class='title'>
+<div class='span index'>1</div><span><a data-type="html" data-remote="true" href="/series/fivethirtyeight-politics">FiveThirtyEight Politics</a></span>
+</div>
+<a class='action info-right normal round-button subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+</div>
+<div class='info-bottom'>
+<span class='info-left'>
+<span class="latest_at factoid"><time class='timeago' datetime='2019-08-22T15:04:00Z'>3d ago</time></span><span class="short_latest_at shadow factoid"><time class='short-timeago timeago' data-locale='en_abbrev' datetime='2019-08-22T15:04:00Z'>3d ago</time></span>
+<span class='actions'>
+<a class='action normal primary-action round-button shadow subscribable' data-action='toggle-subscription' data-handled='true' href='#'>
+<div class='shape'></div>
+<i class="fa fa-plus subscribe-icon icon"></i>
+<i class="fa fa-check unsubscribe-icon icon"></i>
+</a>
+
+
+<span class='menu-launcher' data-handled='true'><i></i><i></i><i></i></span>
+</span>
+</span>
+<span class='info-right'>
+<span class="average_interval">Weekly+</span>
+</span>
+</div>
+</div>
+<div class='rank-handle' data-handled='true'>
+<i class="fa fa-bars"></i>
+</div>
+<div class='headline-divider'>&nbsp;</div>
+</div>
+<div class='description prose'>
+<div class='content'>
+<div class='content-main'>Nate Silver and the FiveThirtyEight team cover the latest in politics, tracking the issues and &quot;game-changers&quot; every week.</div>
+</div>
+</div>
+</div>
+<!-- [2019-08-25T13:53:40+00:00] [frag micro] MISS /series/fivethirtyeight-politics 0.02ms ID:bd77AhCl -->
+
+
+<div class='clearance'>&nbsp;</div>
+</div>
+</main>
+<footer>
+<div class='content'>Loading &hellip;</div>
+</footer>
+</section>
+
+
+<div class='content-extra'>
+<a class="normal blatant" data-type="html" data-remote="true" href="/">Listen to 300+ topics</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<script class='series-model' type='x-deferred-script'>{"type":"series","id":132414,"slug":"chapo-trap-house","access":"public","currentURL":"http://feeds.soundcloud.com/users/soundcloud:users:211911700/sounds.rss","url":"http://feeds.soundcloud.com/users/soundcloud:users:211911700/sounds.rss","author":"Chapo Trap House","updatedAt":1566740302,"fingerprint":"wmZ,lSYPqnmM1Om8kTNCq5zUJgnyGS,ToHQL8zqZhKs","descriptionFingerprint":"Yt9cIUXe,gSR4bYNZPMrT54ZEVOerwiChjm2qTLK_90","title":"Chapo Trap House","home":"https://www.patreon.com/chapotraphouse","language":"en","imageURL":"http://i1.sndcdn.com/avatars-000230770726-ib4tc4-original.jpg","fetch":{"status":"ok","confidence":9},"fetchStatus":"ok","lookup":"https://player.fm/series/132414.json","latestLookup":"https://player.fm/series/132414/at/1566740302.json","relatedLookup":"https://player.fm/related-to/chapo-trap-house.json","share":"https://player.fm/series/chapo-trap-house","stats":{"numberOfSubscriptions":6113,"numberOfEpisodes":318,"averageDuration":3259,"averageInterval":284084,"earliestPublishedAt":1457913600,"latestPublishedAt":1566273856,"manualSubscriptionsCentile":0.99,"shortTrendCentile":0.586,"longTrendCentile":0.99},"tags":[{"type":"tag","title":"Politics","rawTitle":"polit","language":"en","polar":0.5,"topic":{"id":40951449,"owner":{"id":17208971},"title":"Politics"},"ancestors":["News"],"series":{"amount":7228,"centile":0.991},"sources":["featured"]},{"type":"tag","title":"News","rawTitle":"news","language":"en","polar":0.7,"topic":{"id":932158,"owner":{"id":3},"title":"News"},"ancestors":[],"series":{"amount":33383,"centile":0.994},"sources":["categories"]}],"image":{"type":"image","id":1786176,"url":"http://i1.sndcdn.com/avatars-000230770726-ib4tc4-original.jpg","urlBase":"https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m","palette":["4e9bba","243055"],"suffix":"jpg"},"description":"Podcast by Chapo Trap House","backgroundColor":"#8d6e63","network":{"name":"Chapo Trap House"},"versionInfo":"1.1.0"}</script>
+<meta content='playerfm:podcast' property='og:type'>
+<meta content='https://unicorn_server/series/chapo-trap-house' property='og:url'>
+<meta content='Chapo Trap House' property='og:title'>
+<meta content='https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/128.jpg' property='og:image'>
+<meta content='https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/512.jpg' property='og:image'>
+<meta content='https://cdn1.player.fm/images/1786176/series/jDmg6xKSdtK2Zz5m/1024.jpg' property='og:image'>
+<meta content='Chapo Trap House' property='og:site_name'>
+<meta content='Podcast by Chapo Trap House' property='og:description'>
+<meta content='https://www.patreon.com/chapotraphouse' property='og:see_also'>
+
+
+<!-- [2019-08-25T14:55:42+00:00] [frag series] HIT /series/chapo-trap-house 0.19ms ID:LthVVHhf -->
+
+</div>
+<div class='sidebar'></div>
+<div class='footer'>
+<div class='miniplayer-wrapper'>
+<div class='miniplayer episode'>
+<div class='progress-wrapper'>
+<div class='progress-base'>
+<div class='progress-played'></div>
+<div class='progress-handle'></div>
+<div class='progress-buffer'></div>
+<div class='progress-preview'></div>
+</div>
+</div>
+<a class='thumb' data-remote='true' href='#'>
+<img src=''>
+</a>
+<span class='play-controls'>
+<div class='playpause'>
+<div class='left-divider'></div>
+<button class='control pause'><i class="fa fa-pause"></i></button>
+<button class='control play'><i class="fa fa-play"></i></button>
+</div>
+<div class='main-controls'>
+<div class='left-divider'></div>
+<span class='control-pair skipping-pair'>
+<button class='control fast-backward'><i class="fa fa-fast-backward"></i></button>
+<button class='control fast-forward'><i class="fa fa-fast-forward"></i></button>
+</span>
+<span class='control-pair jumping-pair'>
+<button class='control backward'><i class="fa fa-undo"></i></button>
+<button class='control forward'><i class="fa fa-undo fa-flip-horizontal"></i></button>
+</span>
+<span class='overflow'>
+<span class='control'><i class="fa fa-ellipsis-h"></i></span>
+<div class='miniplayer-overflow'>
+<div class='tail'></div>
+<section class='settings'>
+<div class='tabs'>
+<div class='global-tab tab active' data-tab='global'>
+<div class='title'>Speed</div>
+</div>
+<div class='series-tab tab' data-tab='series'>
+<div class='title'><i class="fa fa-check-circle"></i> Series preference</div>
+</div>
+</div>
+<div class='panes'>
+<div class='active global-pane incrementable pane speed'>
+<div class='dec'><i class="fa fa-minus"></i></div>
+<div class='inc'><i class="fa fa-plus"></i></div>
+<div class='current'>
+<i class="fa fa-tachometer"></i>
+<span class='val'>1</span><span>x</span></div>
+</div>
+
+<div class='incrementable pane series-pane speed'>
+<div class='dec'><i class="fa fa-minus"></i></div>
+<div class='inc'><i class="fa fa-plus"></i></div>
+<div class='current'>
+<i class="fa fa-tachometer"></i>
+<span class='val'>1</span><span>x</span></div>
+</div>
+
+</div>
+</section>
+<section class='volume'>
+<div class='tabs'>
+<div class='volume tab active'>
+<div class='title'>Volume</div>
+</div>
+</div>
+<div class='volume incrementable pane active'>
+<div class='dec'><i class="fa fa-minus"></i></div>
+<div class='inc'><i class="fa fa-plus"></i></div>
+<div class='current'>
+<i class="fa fa-volume-up volume-on"></i>
+<i class="fa fa-volume-off volume-off"></i>
+<span class='val'>100%</span>
+</div>
+</div>
+</section>
+<section class='actions'>
+<span class='share action' title='Share'><i class="fa fa-share"></i></span>
+<span class='like action'><i class="fa fa-heart-o"></i></span>
+<span class='un-like action'><i class="fa fa-heart"></i></span>
+<span class='add-bookmark action' title='Add to bookmark'><i class="fa fa-bookmark-o"></i></span>
+<span class='add-to-playlist action' title='Add to playlist'><i class="fa fa-list"></i></span>
+<span class='mark-played action' title='Mark played'>
+<i class="fa fa-check"></i>
+<i class="fa fa-forward"></i>
+</span>
+</section>
+</div>
+
+</span>
+</div>
+<span class='time-wrapper'>
+<div class='left-divider'></div>
+<span class='time'>
+<span class='time-elapsed'></span>
+<span class='time-divider'>/</span>
+<span class='time-remaining'></span>
+</span>
+</span>
+</span>
+<span class='link info' href='/docs/seek_problem'><i class="fa fa-info-sign"></i></span>
+
+<div class='title'>
+<a class='current-series-link' data-remote='true' href='#'></a>
+<br>
+<a class='current-episode-link' data-remote='true' href='#'></a>
+</div>
+</div>
+</div>
+
+<div class='bottom-promo open-in-app-promo'>
+<button>
+<div class='icon'>★</div>
+<span class='button-label'>Continue</span>
+</button>
+<div class='tagline when-android'>
+Player FM for Android &mdash; Download podcasts free
+</div>
+<div class='tagline when-ios'>
+Player FM for iPhone &mdash; Download podcasts free
+</div>
+<div class='close-wrapper'>
+<div class='close-promo'>
+&times;
+</div>
+</div>
+</div>
+
+</div>
+<div class='popup-menu-wrapper'>
+<div class='popup-menu'></div>
+</div>
+
+<script type='x-template' id='subscriptionTemplate'>
+  <div class='btns'></div>
+  <div class='channel-chooser'></div>
+</script>
+
+<script type='x-template' id='guestSubscriptionTemplate'>
+  <div class='when-before-action subscribe btn btn-default iconized'>
+    <span class='btn-label'><i class="fa fa-plus"></i><span class='action'><span class='when-small action'>Sub</span><span class='when-medium-or-big action'>Subscribe</span></span></span>
+  </div>
+  <div class='launches-connect when-hovered subscribe btn btn-default iconized' title='Signup or log in to build your own customized channel'>
+    <span class='btn-label'><i class="fa fa-key"></i><span class='action'>Sign Up</span></span>
+  </div>
+</script>
+
+<script type='x-template' id='subscribedButtonsTemplate'>
+  <div class='when-after-action btn btn-info'><i class="fa fa-check"></i><span class='action'>Now subscribed</span></div>
+  <div class='when-before-action btn btn-subscribed'><i class="fa fa-check"></i><span class='when-small action'>Sub</span><span class='when-medium-or-big action'>Subscribed</span></div>
+  <div class='when-hovered unsubscribe btn btn-subscription-hovered iconized' title='Remove <%= seriesTitle %> from <%= currentUser.primeChannel.title %>'>
+    <% if (currentUser.subscriptionChannels.length > 1) { %>
+        <div class='choose-channel'><i class="fa fa-chevron-down"></i></div>
+    <% } %>
+        <span class='btn-label'><i class="fa fa-times"></i><span class='action'>Remove</span></span>
+  </div>
+</script>
+
+<script type='x-template' id='unsubscribedButtonsTemplate'>
+  <div class='when-after-action btn btn-default'>Now unsubscribed</div>
+  <div class='when-before-action subscribe btn btn-default iconized'>
+    <% if (currentUser.subscriptionChannels.length > 1) { %>
+        <div class='choose-channel'><i class="fa fa-chevron-down"></i></div>
+    <% } %>
+    <span class='btn-label'><i class="fa fa-plus"></i><i class="fa fa-exclamation-sign"></i><span class='when-small action'>Sub</span><span class='when-medium-or-big action'>Subscribe</span></span>
+  </div>
+  <div class='when-hovered subscribe btn iconized btn-subscription-hovered' title='Add <%= seriesTitle %> to <%= currentUser.primeChannel.title %>'>
+    <% if (currentUser.subscriptionChannels.length > 1) { %>
+        <div class='choose-channel'><i class="fa fa-chevron-down"></i></div>
+    <% } %>
+  <span class='btn-label'><i class="fa fa-plus"></i><i class="fa fa-exclamation-sign"></i><span class='action'><span class='when-small action'>Sub</span><span class='when-medium-or-big action'>Subscribe</span></span></span>
+  </div>
+</script>
+
+<script type='x-template' id='channelChooserTemplate'>
+  <div class='channels'>
+    <% _(channels).each(function(channel) { %>
+      <div class='channel-option' data-id='<%= channel.id %>'><%= channel.title %></div>
+    <% }); %>
+  </div>
+</script>
+
+<script type='x-template' id='unfavoritedTemplate'>
+  <span class='when-before-action'><i class="fa fa-star-o"></i><span class='prompt'>Favorite</span></span>
+  <span class='when-hovered when-left-aligned'><i class="fa fa-star-o"></i><span class='prompt'>Favorite</span></span>
+  <span class='when-hovered when-right-aligned'><span class='prompt'>Favorite</span> <i class='fa fa-star-o pseudobutton'></i></span>
+</script>
+
+<script type='x-template' id='favoritedTemplate'>
+  <span class='when-before-action'><i class="fa fa-star"></i><span class='prompt'>Favorited</span></span>
+  <span class='when-hovered when-left-aligned'><i class='fa fa-star pseudobutton'></i><span class='prompt'>Favorited</span></span>
+  <span class='when-hovered when-right-aligned'><span class='prompt'>Favorite</span><i class='fa fa-star pseudobutton'></i></span>
+</script>
+
+<script type='x-template' id='guestStarredTemplate'>
+  <span class='when-before-action'><i class="fa fa-star-o"></i><span class='prompt'>Favorite</span></span>
+  <span class='when-hovered when-left-aligned'><i class='fa fa-star-o pseudobutton'></i><span class='prompt' data->Signup to favorite</span></span>
+  <span class='when-hovered when-right-aligned'><span class='prompt'>Signup to favorite</span><i class='fa fa-star-o pseudobutton'></i></span>
+</script>
+
+<script type='x-template' id='channelListTemplate'>
+  <% if (typeof(title)!='undefined') { %>
+    <h3><%= title %></h3>
+  <% } %>
+  <% if (channels.length) { %>
+    <div class='channelList inlined'>
+      <% _(channels).each(function(channel) { %>
+        <div class='channel mini article with-link data-id='<%= channel.id %>'>
+          <a href='/<%= channel.owner.name %>/<%= channel.slug %>' data-remote='true' data-type='html' class='link channel-title'><%= channel.title.replace(' ','&nbsp;') %></a>
+        </div>
+      <% }); %>
+    </div>
+  <% } else if (typeof(emptyMessage)!='undefined') { %>
+    <%= "<p>" + emptyMessage + "</p>" %>
+  <% } %>
+</script>
+
+<script type='x-template' id='pretend404Template'>
+  <div class='container'><div class='row'><div class='col-md-12'><p>&nbsp;</p><div class='card'>
+    <h2>Page Not Found</h2>
+    <p>
+      Sorry, an error occurred on our end. We've logged the error and we'll look into it.
+    </p>
+    <p>
+      <a class='blatant history-back' href="<%= currentURL %>" data-type='html' data-remote='true'>Back to previous page</a>
+    </p>
+    <p>
+      <a class='blatant' href="/" data-type='html' data-remote='true'>Player FM Home</a>
+    </p>
+  </div></div></div></div>
+</script>
+
+<script class='template' id='miniloginRootTemplate' type='x-template'>
+<div class='minilogin-root'>
+<div class='signup-prompt when-minilogin-is-for-new'>
+<%= typeof(signupPrompt)!='undefined' ? signupPrompt : '' %>
+</div>
+<div class='login-prompt when-minilogin-is-for-existing'>
+<%= typeof(loginPrompt)!='undefined' ? loginPrompt : '' %>
+</div>
+<div class='google connect btn btn-block btn-social btn-google'>
+<span class='connect-icon'>
+<img class="fa" src="/assets/v_20190821111955/social-icons/login/google-login-2016-babbdf3b633a028be99e61c9334dc1e79e652322cecfce64838f5f07c6e57a56.svg" alt="Google login 2016" />
+</span>
+<span class='label'>Connect with Google</span>
+</div>
+<div class='classic non-btn connect when-minilogin-is-for-new'>
+<span>Or <span class='pointer underlined'>create an account with your email</span></span>
+</div>
+<div class='classic connect btn btn-block btn-social btn-envelope-o when-minilogin-is-for-existing'>
+<span class='connect-icon fa fa-envelope-o'></span>
+<span class='label'>Connect with password</span>
+</div>
+</div>
+</script>
+<script class='template' id='socialConnectingTemplate' type='x-template'>
+<h3>Connecting to <%= socialNetwork %> &hellip;</h3>
+<div class='social-connecting'>
+<p>
+Please open the popup window. You might need to first allow your browser to pop up windows from this site.
+</p>
+<br>
+</div>
+</script>
+<script class='template' id='classicLoginTemplate' type='x-template'>
+<div class='header-title'>Sign up via email and password</div>
+<form data-new-action="/users" data-existing-action="/users/sign_in" novalidate="novalidate" class="simple_form user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="upCzQluQJ1p6PgLTF7+vKmRRf0S7w5V7O7+N9In0vVJICksQAIIQFKfSNV6saGsndxKWpQmt74GfKmvb3VK20A==" /><div class='error general-errors'></div>
+<section>
+<div class="form-group email required user_login"><label class="control-label email required login-label email" for="user_login"><abbr title="required">*</abbr> Email</label><input class="form-control string email required" tabindex="2" placeholder="me@example.com" type="email" name="user[login]" id="user_login" /></div>
+<div class="form-group password required user_password"><label class="control-label password required" for="user_password"><abbr title="required">*</abbr> Password</label><input value="" class="form-control password required" tabindex="2" placeholder="password" type="password" name="user[password]" id="user_password" /></div>
+</section>
+<div class='submission'>
+<button name="button" type="submit" tabindex="4" class="btn btn-danger"><i class="fa fa-play"></i> Let's Play!
+</button></div>
+<div class='aux-links'>
+<a target="_blank" class="pseudolink blatant when-existing-user" href="/users/password/new">Forgot password?</a>
+<div class='when-minilogin-is-for-new'>
+<span class='pseudolink underlined switch-newness' data-requested-newness='false'>Switch to login</span>
+</div>
+<div class='when-minilogin-is-for-existing'>
+<span class='pseudolink underlined switch-newness' data-requested-newness='true'>Switch to signup</span>
+if you're new to Player FM
+</div>
+</div>
+</form></script>
+<script class='template' id='loggingInTemplate' type='x-template'>
+<h3>Logging in to Player&nbsp;FM&nbsp;&hellip;</h3>
+<p>&nbsp;</p>
+</script>
+<script class='template' id='signingUpTemplate' type='x-template'>
+<h3>Welcome to Player FM!</h3>
+<p>Let's do this &hellip;</p>
+</script>
+<script class='template' id='socialLoginErrorTemplate' type='x-template'>
+<h3>Login Problem</h3>
+<p>Sorry about this. There was an unexpected error logging in. Please try later.</p>
+</script>
+<script class='template' id='closeButtonFooterTemplate' type='x-template'>
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</script>
+<div class='preload'>
+<img src="/assets/v_20190821111955/social-icons/login/google-login-02d279ec6bbf27adc3bfdba5fc0942b9b721aa8a024f556c1a649123df98ecf4.gif" alt="Google login" />
+<img src="/assets/v_20190821111955/social-icons/login/twitter-login-26b2465120583c823c81c8a87f93748b902d8809a93a4b7602e84b5cc42b8d55.gif" alt="Twitter login" />
+<img src="/assets/v_20190821111955/social-icons/login/classic-login-210ec635cc1a706c1592e1ca62e88ec339ef274bea3e38ca1ca68ebbd87c4abc.gif" alt="Classic login" />
+</div>
+
+<script type='x-template' id='super-channeller-modal-body' />
+<div class='sub-channel' id='<%= subChannel.id %>'>
+  <% _(superChannels).chain().sortBy(function(c) { return } ).each(function(superchan) { %>
+    <% inclusion = superchan.findInclusion(subChannel.id) %>
+    <div class='super-channel <%= inclusion ? 'included' : '' %>' id='<%= superchan.id %>'>
+
+      <h4>
+        <% checkedStr = inclusion ? 'checked=checked' : '' %>
+        <input type='checkbox' class='inclusion' <%= checkedStr %> />
+        <label class='title'><%= superchan.title %></label>
+      </h4>
+
+      <div class='properties'>
+        <span class='property'>
+          <label>Public:</label>
+          <input type='checkbox' class='publicSubChannel' <%= inclusion && inclusion.publicSubChannel ? 'checked' : ''%>/>
+        </span>
+        <span class='property'>
+          <label>Content source:</label>
+          <input type='checkbox' class='contentSource' <%= inclusion && inclusion.contentSource ? 'checked' : ''%> />
+        </span>
+      </div>
+
+    </div>
+
+  <% }); %>
+</div>
+</script>
+
+<script id='searchSuggestionsTemplate' type='x-template'>
+<% if (series.length) { %>
+  <!-- <h5>Series</h5> -->
+  <% _(series).each(function(series) { %>
+    <a class='series' data-remote='true' href="/series/<%= series.id %>?readable_path=true">
+      <img onerror="this.parentNode.removeChild(this);" width='64' height='64' src='<%= api.seriesImageURL(series.image, 64) %>' />
+      <span class='title'><%= series.title %></span>
+    </a>
+  <% }) %>
+<% } %>
+
+<% if (typeof(subChannels)!='undefined' && subChannels.length) { %>
+  <!-- <h5>Topics</h5> -->
+  <% _(subChannels).each(function(channel) { %>
+    <a class='channel' data-remote='true' href="/podcasts/<%= channel.slug %>">
+      <span class='title'><span class='icon'>#</span><%= channel.title %></span>
+    </a>
+  <% }) %>
+<% } %>
+
+<% if (typeof(episodes)!='undefined' && episodes.length) { %>
+  <!-- <h5>Episodes</h5> -->
+  <% _(episodes).each(function(episode) { %>
+    <a class='episode' data-remote='true' href="/episodes/<%= episode.id %>?readable_path=true">
+      <!-- <img src='<%= api.seriesImageURL(episode.imageBaseURL, 32)  %>' /> -->
+      <span class='title'><span class='icon'><i class='fa fa-play-o'></i></span><%= episode.title %></span>
+    </a>
+  <% }) %>
+<% } %>
+</script>
+
+
+<script>
+
+</script>
+
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>window.___gcfg = { parsetags: 'explicit' };</script>
+<script>
+  function prepareGoogleLogin() {
+    gapi.load('auth2', function() {
+      auth2 = gapi.auth2.init({
+        client_id: '889688296761.apps.googleusercontent.com'
+      });
+    });
+  };
+</script>
+<script src="https://apis.google.com/js/client:platform.js?onload=prepareGoogleLogin" async="async" defer="defer"></script>
+
+
+<script class='flashes' type='x-flashes'>
+{}
+</script>
+<!-- / no intent -->
+
+<script id="IntercomSettingsScriptTag">window.intercomSettings = {"created_at":1325376000,"user_id":0,"user_hash":"099c2893df54eb8be580c9b39779d5fd8030ce289eb6dd925ed3701feef2ffc8","app_id":"bqm10q34"};(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/bqm10q34';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}};})()</script>
+</body>
+</html>

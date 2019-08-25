@@ -496,4 +496,12 @@ DESCRIPTION
       expect(object.og.description).to be_nil
     end
   end
+
+  describe "just_other_prefix" do
+    it "parses" do
+      expect {
+        object = OpenGraphReader.parse! fixture_html "real_world/just_other_prefix"
+      }.to raise_error OpenGraphReader::NoOpenGraphDataError
+    end
+  end
 end

@@ -14,11 +14,12 @@ module OpenGraphReader
         # @return [Node, nil]
         attr_accessor :parent
 
-        # @!method empty?
-        #   Does this node have any children?
+        # Does this node have any content or non-empty children?
         #
-        #   @return [Bool]
-        def_delegators :children, :empty?
+        # @return [Bool]
+        def empty?
+          content.nil? && (children.empty? || children.all?(&:empty?))
+        end
 
         # Children of this node.
         def children
@@ -64,6 +65,11 @@ module OpenGraphReader
           @fullname ||= [namespace, name].compact.join(":")
           @fullname unless @fullname.empty?
         end
+
+        def inspect
+          "#{super.chop} children=#{children.inspect}>"
+        end
+        alias to_s inspect
       end
 
       extend Forwardable
@@ -92,6 +98,21 @@ module OpenGraphReader
         root.each do |child|
           yield child if child.content
         end
+      end
+
+      # Whether the property exists in the graph. <tt>property</tt> doesn't have to
+      # be a leave node but is only considered existing when there's a leaf node
+      # with content below it.
+      #
+      # @param [String] property The fully qualified name, for example <tt>og:type</tt>
+      #  or <tt>og</tt>.
+      # @return [Bool] Whether the given property exists in the graph.
+      def exist? property
+        path = property.split(":")
+        child = path.inject(root) {|node, name|
+          node.children.find {|child| child.name == name } || break
+        }
+        !child.nil? && !child.empty?
       end
 
       # Fetch first node's value.

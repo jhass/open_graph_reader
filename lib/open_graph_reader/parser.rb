@@ -34,7 +34,7 @@ module OpenGraphReader
     #
     # @return [Bool]
     def any_tags?
-      !graph.empty?
+      graph.exist?("og")
     end
 
     # Build and return the {Graph}.
