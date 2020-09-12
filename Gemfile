@@ -10,6 +10,7 @@ group :dev do
   gem "guard-yard"
   gem "guard-rubocop"
   gem "rubocop", require: false
+  gem "rubocop-packaging", require: false
 end
 
 # Specify your gem's dependencies in opengraph_reader.gemspec
