@@ -2,7 +2,7 @@ require:
   - rubocop-packaging
 
 # Commonly used screens these days easily fit more than 80 characters.
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 # Too short methods lead to extraction of single-use methods, which can make
@@ -16,7 +16,7 @@ Metrics/ClassLength:
 
 # No space makes the method definition shorter and differentiates
 # from a regular assignment.
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 # Single quotes being faster is hardly measurable and only affects parse time.
@@ -71,7 +71,7 @@ Style/SignalException:
 Lint/SuppressedException:
   Enabled: false
 
-Style/SpaceInsideBlockBraces:
+Layout/SpaceInsideBlockBraces:
   # The space here provides no real gain in readability while consuming
   # horizontal space in that could be used for a better parameter name.
   # Also {| differentiates better from a hash than { | does.
@@ -79,7 +79,7 @@ Style/SpaceInsideBlockBraces:
 
 # No trailing space differentiates better from the block:
 # foo} means hash, foo } means block.
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
 # { ... } for multi-line blocks is okay, follow Weirichs rule instead:
