@@ -1,4 +1,3 @@
-require "bundler/setup"
 require "webmock/rspec"
 
 require "open_graph_reader"
