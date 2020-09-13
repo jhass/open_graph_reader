@@ -21,6 +21,6 @@ jobs:
       with:
         ruby-version: ${{matrix.ruby}}
     - name: Install dependencies
-      run: bundle install --without dev
+      run: bundle install --without dev lint
     - name: Run tests
       run: bundle exec rake
