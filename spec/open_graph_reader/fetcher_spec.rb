@@ -1,14 +1,15 @@
 require "spec_helper"
 
 RSpec.describe OpenGraphReader::Fetcher do
-  let(:uri) { URI("http://example.org") }
+  let(:host) { "example.org" }
+  let(:uri) { URI("http://#{host}") }
   let(:fetcher) { described_class.new uri }
   let(:good_response) { {status: 200, body: "", headers: {"Content-Type" => "text/html"}} }
 
   context "error during body fetch" do
     before do
-      stub_request(:head, uri).to_return(good_response)
-      stub_request(:get, uri).to_raise(Faraday::ConnectionFailed.new("execution expired"))
+      stub_request(:head, host).to_return(good_response)
+      stub_request(:get, host).to_raise(Faraday::ConnectionFailed.new("execution expired"))
     end
 
     describe "#body" do
