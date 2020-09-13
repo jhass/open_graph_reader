@@ -1,3 +1,8 @@
+# 0.7.1
+
+* General project maintenance
+* Adhere to Debian Ruby packaging guidelines [#7](https://github.com/jhass/open_graph_reader/pull/7)
+
 # 0.7.0
 
 * Consider documents with no actual og tags but just tags from other namespaces as having no open graph data
