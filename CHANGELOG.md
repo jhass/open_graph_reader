@@ -1,3 +1,7 @@
+# 0.7.2
+
+* Fix bug when trying to parse page without title tag with title synthesization turned on
+
 # 0.7.1
 
 * General project maintenance

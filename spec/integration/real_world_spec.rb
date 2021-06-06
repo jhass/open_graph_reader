@@ -504,4 +504,31 @@ DESCRIPTION
       }.to raise_error OpenGraphReader::NoOpenGraphDataError
     end
   end
+
+  describe "twitter profile" do
+    it "does not parse" do
+      expect {
+        OpenGraphReader.parse! fixture_html "real_world/twitter_profile"
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
+    end
+
+    it "does not parse due to missing image" do
+      OpenGraphReader.config.synthesize_title = true
+
+      expect {
+        OpenGraphReader.parse! fixture_html "real_world/twitter_profile"
+      }.to raise_error OpenGraphReader::InvalidObjectError, /Missing required/
+    end
+
+    it "does parse when not validating required attributes" do
+      OpenGraphReader.config.validate_required = false
+
+      object = OpenGraphReader.parse! fixture_html "real_world/twitter_profile"
+
+      expect(object.og.type).to eq "website"
+      expect(object.og.title).to be_nil
+      expect(object.og.url).to be_nil
+      expect(object.og.site_name).to eq "Twitter"
+    end
+  end
 end

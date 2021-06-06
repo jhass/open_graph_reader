@@ -48,7 +48,7 @@ module OpenGraphReader
     #
     # @return [String]
     def title
-      @doc.xpath("/html/head/title").first.text
+      @doc.xpath("/html/head/title").first&.text
     end
 
     private

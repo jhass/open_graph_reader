@@ -11,6 +11,8 @@ jobs:
       - run: git fetch --no-tags --prune --depth=10 origin +refs/heads/*:refs/remotes/origin/*
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
       - name: Install dependencies
         run: bundle install --without dev development default
       - name: Run pronto
