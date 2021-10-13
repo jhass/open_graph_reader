@@ -17,7 +17,7 @@ A library to fetch and parse OpenGraph properties from an URL or a given string.
 * Objects and their properties are defined in code, not by parsing the response at the namespace identifier.
 
 
-Ruby 2.0 and later are supported.
+Ruby 2.5 and later are supported.
 
 ## Installation
 
