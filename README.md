@@ -1,4 +1,4 @@
-# OpenGraphReader [![Gem Version](https://badge.fury.io/rb/open_graph_reader.svg)](http://badge.fury.io/rb/open_graph_reader) [![Build Status](https://travis-ci.org/jhass/open_graph_reader.svg?branch=master)](https://travis-ci.org/jhass/open_graph_reader)
+# OpenGraphReader [![Gem Version](https://badge.fury.io/rb/open_graph_reader.svg)](http://badge.fury.io/rb/open_graph_reader)
 
 A library to fetch and parse OpenGraph properties from an URL or a given string.
 
