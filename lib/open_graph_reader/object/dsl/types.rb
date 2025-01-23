@@ -40,8 +40,8 @@ module OpenGraphReader
           rescue
             next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
             raise InvalidObjectError,
-                  "URL #{value.inspect} does not start with http:// or https:// and failed to "\
-                  "synthesize a full URL"
+              "URL #{value.inspect} does not start with http:// or https:// and failed to " \
+              "synthesize a full URL"
           end
         elsif options.has_key?(:to) && OpenGraphReader.config.validate_references
           next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
@@ -67,32 +67,28 @@ module OpenGraphReader
       end
 
       # @see http://ogp.me/#integer
-      define_type :integer do  |value, options|
-        begin
-          Integer(value)
-        rescue ArgumentError
-          next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
-          raise InvalidObjectError, "Integer expected, but was #{value.inspect}"
-        end
+      define_type :integer do |value, options|
+        Integer(value)
+      rescue ArgumentError
+        next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
+        raise InvalidObjectError, "Integer expected, but was #{value.inspect}"
       end
 
       # @see http://ogp.me/#datetime
       define_type :datetime do |value, options|
-        begin
-          if OpenGraphReader.config.guess_datetime_format
-            DateTime.parse value
-          else
-            DateTime.iso8601 value
-          end
-        rescue ArgumentError
-          next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
-          raise InvalidObjectError, "ISO8601 datetime expected, but was #{value.inspect}"
+        if OpenGraphReader.config.guess_datetime_format
+          DateTime.parse value
+        else
+          DateTime.iso8601 value
         end
+      rescue ArgumentError
+        next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
+        raise InvalidObjectError, "ISO8601 datetime expected, but was #{value.inspect}"
       end
 
       # @see http://ogp.me/#bool
       define_type :boolean do |value, options|
-        {"true" => true, "false" => false, "1" => true, "0" => false}[value].tap {|bool|
+        {"true" => true, "false" => false, "1" => true, "0" => false}[value].tap { |bool|
           if bool.nil?
             next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
             raise InvalidObjectError, "Boolean expected, but was #{value.inspect}"
@@ -102,12 +98,10 @@ module OpenGraphReader
 
       # @see http://ogp.me/#float
       define_type :float do |value, options|
-        begin
-          Float(value)
-        rescue ArgumentError
-          next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
-          raise InvalidObjectError, "Float expected, but was #{value.inspect}"
-        end
+        Float(value)
+      rescue ArgumentError
+        next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
+        raise InvalidObjectError, "Float expected, but was #{value.inspect}"
       end
     end
   end

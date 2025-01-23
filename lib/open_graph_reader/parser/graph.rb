@@ -48,7 +48,7 @@ module OpenGraphReader
         #
         # @return [String]
         def namespace
-          parent.fullname if parent
+          parent&.fullname
         end
 
         # Get node's namespace as array.
@@ -69,7 +69,7 @@ module OpenGraphReader
         def inspect
           "#{super.chop} children=#{children.inspect}>"
         end
-        alias to_s inspect
+        alias_method :to_s, :inspect
       end
 
       extend Forwardable
@@ -109,8 +109,8 @@ module OpenGraphReader
       # @return [Bool] Whether the given property exists in the graph.
       def exist? property
         path = property.split(":")
-        child = path.inject(root) {|node, name|
-          node.children.find {|child| child.name == name } || break
+        child = path.inject(root) { |node, name|
+          node.children.find { |child| child.name == name } || break
         }
         !child.nil? && !child.empty?
       end
@@ -121,7 +121,7 @@ module OpenGraphReader
       # @param [String] default The default in case the a value is not found.
       # @yield Return a default in case the value is not found. Supersedes the default parameter.
       # @return [String, Bool, Integer, Float, DateTime, nil]
-      def fetch property, default=nil
+      def fetch property, default = nil
         node = find_by(property)
         return yield if node.nil? && block_given?
         return default if node.nil?
@@ -134,7 +134,7 @@ module OpenGraphReader
       # @return [Node, nil]
       def find_by property
         property = normalize_property property
-        find {|node| node.fullname == property }
+        find { |node| node.fullname == property }
       end
 
       # Fetch all nodes
@@ -143,12 +143,12 @@ module OpenGraphReader
       # @return [Array<Node>]
       def select_by property
         property = normalize_property property
-        select {|node| node.fullname == property }
+        select { |node| node.fullname == property }
       end
 
       def find_or_create_path path
-        path.inject(root) {|node, name|
-          child = node.children.reverse.find {|child| child.name == name }
+        path.inject(root) { |node, name|
+          child = node.children.reverse.find { |child| child.name == name }
 
           unless child
             child = Node.new name

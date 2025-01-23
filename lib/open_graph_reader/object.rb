@@ -39,7 +39,7 @@ module OpenGraphReader
     # Create a new object. If your class overrides this don't forget to call <tt>super</tt>.
     def initialize
       @properties = {}
-      @children = Hash.new {|h, k| h[k] = [] }
+      @children = Hash.new { |h, k| h[k] = [] }
     end
 
     # Whether this object has the given property

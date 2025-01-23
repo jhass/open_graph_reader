@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe "valid examples" do
-  %w(
+  %w[
     article-offset
     article-utc
     audio-array
@@ -21,12 +21,12 @@ RSpec.describe "valid examples" do
     video-array
     video-movie
     video
-  ).each do |example|
+  ].each do |example|
     describe example do
       it "parses" do
         expect {
           OpenGraphReader.parse! example_html example
-        }.to_not raise_error
+        }.not_to raise_error
       end
     end
   end
@@ -37,7 +37,7 @@ RSpec.describe "valid examples" do
     it "parses" do
       expect {
         object
-      }.to_not raise_error
+      }.not_to raise_error
     end
 
     it "allows access to the first tag" do
@@ -70,7 +70,7 @@ RSpec.describe "valid examples" do
     it "parses" do
       expect {
         OpenGraphReader.parse! example_html "errors/book"
-      }.to_not raise_error
+      }.not_to raise_error
     end
   end
 end

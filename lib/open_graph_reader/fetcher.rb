@@ -52,7 +52,7 @@ module OpenGraphReader
     rescue Faraday::Error
       @fetch_failed = true
     end
-    alias fetch_body fetch
+    alias_method :fetch_body, :fetch
 
     # Fetch just the headers
     #
@@ -96,7 +96,7 @@ module OpenGraphReader
     def fetched?
       fetch_failed? || !@get_response.nil?
     end
-    alias fetched_body? fetched?
+    alias_method :fetched_body?, :fetched?
 
     # Whether the headers of the target URI were fetched.
     #

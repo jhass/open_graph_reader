@@ -7,6 +7,9 @@ group :lint do
   gem "pronto", require: false
   gem "pronto-rubocop", require: false
   gem "rubocop-packaging", require: false
+  gem "standard", require: false
+  gem "rubocop-rspec", require: false
+  gem "rubocop-rake", require: false
 end
 
 group :dev do

@@ -72,7 +72,7 @@ module OpenGraphReader
         define_method(name) do
           value = children[name.to_s].first
           # @todo figure out a sane way to distinguish subobject properties
-          value.content if value && value.is_a?(Object)
+          value.content if value&.is_a?(Object)
           value || options[:default]
         end
       end
@@ -130,7 +130,7 @@ module OpenGraphReader
         options = args.pop if args.last.is_a? Hash
         options ||= {}
 
-        @content_processor = proc {|value|
+        @content_processor = proc { |value|
           value.downcase! if options[:downcase]
           options[:to] ||= self
           DSL.processors[type].call(value, *args, options)
@@ -164,7 +164,7 @@ module OpenGraphReader
       # @api private
       # @return [{String => Array<Strin>}]
       def verticals
-        @verticals ||= Hash.new {|h, k| h[k] = [] }
+        @verticals ||= Hash.new { |h, k| h[k] = [] }
       end
     end
   end

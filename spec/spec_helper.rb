@@ -25,7 +25,7 @@ RSpec.configure do |config|
   config.order = :random
   Kernel.srand config.seed
 
-  config.after(:each) do
+  config.after do
     OpenGraphReader.config.reset_to_defaults!
   end
 end

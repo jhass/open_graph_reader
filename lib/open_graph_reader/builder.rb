@@ -7,7 +7,7 @@ module OpenGraphReader
     # Well-known types from
     #
     # @see http://ogp.me
-    KNOWN_TYPES = %w(website article book profile).freeze
+    KNOWN_TYPES = %w[website article book profile].freeze
 
     # Create a new builder.
     #
@@ -188,7 +188,7 @@ module OpenGraphReader
 
     def extra_properties object, type, verticals
       valid_properties = verticals[type]
-      set_properties   = object.class.available_properties.select {|property| object[property] }
+      set_properties = object.class.available_properties.select { |property| object[property] }
 
       set_properties - valid_properties
     end

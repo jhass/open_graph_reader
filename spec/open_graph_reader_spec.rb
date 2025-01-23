@@ -8,7 +8,7 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Fetcher).to receive(:new).and_return(double(html?: false))
 
       expect {
-        OpenGraphReader.fetch! "http://example.org"
+        described_class.fetch! "http://example.org"
       }.to raise_error OpenGraphReader::NoOpenGraphDataError
     end
 
@@ -17,7 +17,7 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Fetcher).to receive(:new).and_return(fetcher)
       allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
       expect {
-        OpenGraphReader.fetch! "http://example.org"
+        described_class.fetch! "http://example.org"
       }.to raise_error OpenGraphReader::NoOpenGraphDataError
     end
 
@@ -26,7 +26,7 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Fetcher).to receive(:new).and_return(fetcher)
 
       expect {
-        OpenGraphReader.fetch! "http://example.org"
+        described_class.fetch! "http://example.org"
       }.to raise_error OpenGraphReader::InvalidObjectError
     end
   end
@@ -36,8 +36,8 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Fetcher).to receive(:new).and_return(double(html?: false))
 
       expect {
-        OpenGraphReader.fetch "http://example.org"
-      }.to_not raise_error
+        described_class.fetch "http://example.org"
+      }.not_to raise_error
     end
 
     it "does not raise if there are no tags" do
@@ -46,8 +46,8 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
 
       expect {
-        OpenGraphReader.fetch "http://example.org"
-      }.to_not raise_error
+        described_class.fetch "http://example.org"
+      }.not_to raise_error
     end
 
     it "does not raise if there's an invalid object" do
@@ -55,8 +55,8 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Fetcher).to receive(:new).and_return(fetcher)
 
       expect {
-        OpenGraphReader.fetch "http://example.org"
-      }.to_not raise_error
+        described_class.fetch "http://example.org"
+      }.not_to raise_error
     end
   end
 
@@ -65,13 +65,13 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
 
       expect {
-        OpenGraphReader.parse! ""
+        described_class.parse! ""
       }.to raise_error OpenGraphReader::NoOpenGraphDataError
     end
 
     it "raises if there's an invalid object" do
       expect {
-        OpenGraphReader.parse! invalid_object
+        described_class.parse! invalid_object
       }.to raise_error OpenGraphReader::InvalidObjectError
     end
   end
@@ -81,14 +81,14 @@ RSpec.describe OpenGraphReader do
       allow(OpenGraphReader::Parser).to receive(:new).and_return(double(any_tags?: false))
 
       expect {
-        OpenGraphReader.parse ""
-      }.to_not raise_error
+        described_class.parse ""
+      }.not_to raise_error
     end
 
     it "does not raise if there's an invalid object" do
       expect {
-        OpenGraphReader.parse invalid_object
-      }.to_not raise_error
+        described_class.parse invalid_object
+      }.not_to raise_error
     end
   end
 end

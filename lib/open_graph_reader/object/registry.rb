@@ -1,6 +1,5 @@
 require "singleton"
 require "forwardable"
-require "set"
 
 module OpenGraphReader
   module Object
@@ -44,7 +43,7 @@ module OpenGraphReader
 
       def_delegators :@namespaces, :[]=, :has_key?
       alias_method :register, :[]=
-      alias_method :registered?,  :has_key?
+      alias_method :registered?, :has_key?
 
       # @see Registry.verticals
       attr_reader :verticals

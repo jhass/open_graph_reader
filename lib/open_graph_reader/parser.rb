@@ -11,7 +11,7 @@ module OpenGraphReader
     module XPathHelpers
       # Helper to lowercase all given properties
       def self.ci_starts_with node_set, string
-        node_set.select {|node|
+        node_set.select { |node|
           node.to_s.downcase.start_with? string.downcase
         }
       end
@@ -80,7 +80,7 @@ module OpenGraphReader
 
       if head["prefix"]
         @additional_namespaces = head["prefix"].scan(/(\w+):\s*([^ ]+)/)
-        @additional_namespaces.map! {|prefix, _| prefix.downcase }
+        @additional_namespaces.map! { |prefix, _| prefix.downcase }
         @additional_namespaces.each do |additional_namespace|
           next if additional_namespace == "og"
           condition << " or ci_starts_with(@property, '#{additional_namespace}')"

@@ -98,15 +98,15 @@ module OpenGraphReader
 
     # Reset configuration to their defaults
     def reset_to_defaults!
-      @strict                              = false
-      @validate_required                   = true
-      @validate_references                 = true
+      @strict = false
+      @validate_required = true
+      @validate_references = true
       @discard_invalid_optional_properties = false
-      @synthesize_title                    = false
-      @synthesize_url                      = false
-      @synthesize_full_url                 = false
-      @synthesize_image_url                = false
-      @guess_datetime_format               = false
+      @synthesize_title = false
+      @synthesize_url = false
+      @synthesize_full_url = false
+      @synthesize_image_url = false
+      @guess_datetime_format = false
     end
   end
 end

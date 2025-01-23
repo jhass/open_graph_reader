@@ -52,18 +52,18 @@ module OpenGraphReader
     end
 
     # @private
-    def respond_to_missing?(method, _include_private=false)
+    def respond_to_missing?(method, _include_private = false)
       @bases.has_key? method.to_s
     end
 
     # Makes the found root objects available.
     # @return [Object]
-    def method_missing(method, *args, &block)
+    def method_missing(method, *, &)
       name = method.to_s
       if respond_to_missing? name
         @bases[name]
       else
-        super(method, *args, &block)
+        super(method, *, &)
       end
     end
   end

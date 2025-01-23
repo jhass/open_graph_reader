@@ -37,11 +37,11 @@ module OpenGraphReader
   # @return [Base] The base object from which you can obtain the root objects.
   # @raise [NoOpenGraphDataError] {include:NoOpenGraphDataError}
   # @raise [InvalidObjectError] {include:InvalidObjectError}
-  def self.parse! html, origin=nil
+  def self.parse! html, origin = nil
     self.current_origin = origin
     parser = Parser.new html
     raise NoOpenGraphDataError, "#{origin || html} does not contain any OpenGraph tags" unless parser.any_tags?
-    Builder.new(parser).base.tap {|base|
+    Builder.new(parser).base.tap { |base|
       base.origin = origin.to_s if origin
       self.current_origin = nil
     }
@@ -65,7 +65,7 @@ module OpenGraphReader
   # @param [#to_s] origin The source from where the given document was fetched.
   # @return [Base, nil] The base object from which you can obtain the root objects.
   # @see OpenGraphReader.parse!
-  def self.parse html, origin=nil
+  def self.parse html, origin = nil
     parse! html, origin
   rescue NoOpenGraphDataError, InvalidObjectError
   end
