@@ -1,7 +1,7 @@
 require "faraday"
 
 begin
-  require "faraday_middleware/response/follow_redirects"
+  require "faraday/follow_redirects"
 rescue LoadError; end
 
 begin
@@ -16,7 +16,7 @@ module OpenGraphReader
   # @api private
   class Fetcher
     HEADERS = {
-      "Accept"     => "text/html",
+      "Accept" => "text/html",
       "User-Agent" => "OpenGraphReader/#{OpenGraphReader::VERSION} (+https://github.com/jhass/open_graph_reader)"
     }.freeze
 
@@ -25,6 +25,7 @@ module OpenGraphReader
     # @param [URI] uri the URI to fetch.
     def initialize uri
       raise ArgumentError, "url needs to be an instance of URI" unless uri.is_a? URI
+
       @uri = uri
       @fetch_failed = false
       @connection = Faraday.default_connection.dup
@@ -33,7 +34,7 @@ module OpenGraphReader
       @get_response = nil
 
       prepend_middleware Faraday::CookieJar if defined? Faraday::CookieJar
-      prepend_middleware FaradayMiddleware::FollowRedirects if defined? FaradayMiddleware
+      prepend_middleware Faraday::FollowRedirects::Middleware if defined? Faraday::FollowRedirects
     end
 
     # The URL to fetch
@@ -51,7 +52,7 @@ module OpenGraphReader
     rescue Faraday::Error
       @fetch_failed = true
     end
-    alias_method :fetch_body, :fetch
+    alias fetch_body fetch
 
     # Fetch just the headers
     #
@@ -71,6 +72,7 @@ module OpenGraphReader
       fetch_body unless fetched?
       raise NoOpenGraphDataError, "No response body received for #{@uri}" if fetch_failed?
       raise NoOpenGraphDataError, "Did not receive a HTML site at #{@uri}" unless html?
+
       @get_response.body
     end
 
@@ -84,6 +86,7 @@ module OpenGraphReader
       return false unless response
       return false unless response.success?
       return false unless response["content-type"]
+
       response["content-type"].include? "text/html"
     end
 
@@ -93,7 +96,7 @@ module OpenGraphReader
     def fetched?
       fetch_failed? || !@get_response.nil?
     end
-    alias_method :fetched_body?, :fetched?
+    alias fetched_body? fetched?
 
     # Whether the headers of the target URI were fetched.
     #

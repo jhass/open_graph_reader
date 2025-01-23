@@ -1,11 +1,11 @@
 source "https://rubygems.org"
 
-gem "faraday_middleware", require: false
 gem "faraday-cookie_jar", require: false
+gem "faraday-follow_redirects", require: false
 
 group :lint do
-  gem 'pronto', require: false
-  gem 'pronto-rubocop', require: false
+  gem "pronto", require: false
+  gem "pronto-rubocop", require: false
   gem "rubocop-packaging", require: false
 end
 

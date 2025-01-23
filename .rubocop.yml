@@ -123,3 +123,9 @@ Lint/Debugger:
 # Style preference
 Style/MethodDefParentheses:
   Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false

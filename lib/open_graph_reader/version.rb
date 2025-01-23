@@ -1,4 +1,4 @@
 module OpenGraphReader
-  # Tbe library version
-  VERSION = "0.7.2"
+  # The library version
+  VERSION = "0.8.0".freeze
 end

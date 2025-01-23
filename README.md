@@ -24,7 +24,7 @@ Ruby 2.5 and later are supported.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'open_graph_reader'
+gem "open_graph_reader"
 ```
 
 And then execute:
@@ -38,13 +38,13 @@ Or install it yourself as:
 
 Install the following gems the same way for a higher success rate at fetching websites:
 
-* [faraday_middleware](https://github.com/lostisland/faraday_middleware)
+* [faraday-follow_redirects](https://github.com/tisba/faraday-follow-redirects)
 * [faraday-cookie_jar](https://github.com/miyagawa/faraday-cookie_jar)
 
 ## Usage
 
 ```ruby
-require 'open_graph_reader'
+require "open_graph_reader"
 
 # Returns nil if anything on the object is invalid
 object = OpenGraphReader.fetch("http://examples.opengraphprotocol.us/article.html")
