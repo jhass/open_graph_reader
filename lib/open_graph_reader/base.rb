@@ -58,12 +58,12 @@ module OpenGraphReader
 
     # Makes the found root objects available.
     # @return [Object]
-    def method_missing(method, *, &)
+    def method_missing(method, ...)
       name = method.to_s
       if respond_to_missing? name
         @bases[name]
       else
-        super(method, *, &)
+        super
       end
     end
   end

@@ -6,7 +6,7 @@ RSpec.describe OpenGraphReader::Fetcher do
   let(:fetcher) { described_class.new uri }
   let(:good_response) { {status: 200, body: "", headers: {"Content-Type" => "text/html"}} }
 
-  context "error during body fetch" do
+  context "with an error during body fetch" do
     before do
       stub_request(:head, host).to_return(good_response)
       stub_request(:get, host).to_raise(Faraday::ConnectionFailed.new("execution expired"))
