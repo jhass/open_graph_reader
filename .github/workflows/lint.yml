@@ -7,12 +7,12 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: git fetch --no-tags --prune --depth=10 origin +refs/heads/*:refs/remotes/origin/*
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
+          ruby-version: 3.4
       - name: Install dependencies
         run: bundle install --without dev development default
       - name: Run pronto
