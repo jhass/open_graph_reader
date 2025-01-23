@@ -56,7 +56,7 @@ module OpenGraphReader
     def build_graph
       graph = Graph.new
 
-      meta_tags.each do |tag|
+      sorted_meta_tags.each do |tag|
         *path, leaf = tag["property"].downcase.split(":")
         node = graph.find_or_create_path path
 
@@ -65,6 +65,11 @@ module OpenGraphReader
       end
 
       graph
+    end
+
+    # Ensure the tags are sorted by their hierarchy, that is sort a:b before a:b:c.
+    def sorted_meta_tags
+      meta_tags.sort_by { |tag| tag["property"] }
     end
 
     def meta_tags

@@ -74,6 +74,10 @@ module OpenGraphReader
       # @return [Integer, nil]
       integer :height
 
+      # @!macro property
+      # @return [String, nil]
+      string :alt
+
       # @return [String, nil]
       def url
         secure_url || properties[:url] || content
