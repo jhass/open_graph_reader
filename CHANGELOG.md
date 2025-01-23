@@ -3,6 +3,7 @@
 * Drop Ruby 2.5, 2.6, 2.7, 3.0 support
 * Support Ruby 3.1, 3.2, 3.3, 3.4
 * Switch from loading faraday_middleware to individual gems (faraday-follow_redirects)
+* Fix bug when parsing object hierarchies where child nodes come before parent nodes in document order [#12](https://github.com/jhass/open_graph_reader/issues/12)
 
 # 0.7.2
 
