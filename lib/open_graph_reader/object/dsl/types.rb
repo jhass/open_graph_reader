@@ -13,7 +13,7 @@ module OpenGraphReader
 
       # @!method url(name, options={})
       #   @option options [Bool] :image (false) Mark attribute as image to be eligible
-      #     for URL synthesization. See {Configuration#synthesize_image_url}.
+      #     for URL synthesization. See {Configuration#synthesize_full_image_url}.
       #   @!macro define_type_description
       #   @see http://ogp.me/#url
       define_type_no_doc :url do |value, options|
@@ -21,7 +21,7 @@ module OpenGraphReader
 
         next value if value.start_with?("http://") || value.start_with?("https://")
 
-        if options[:image] && OpenGraphReader.config.synthesize_image_url || OpenGraphReader.config.synthesize_full_url
+        if options[:image] && OpenGraphReader.config.synthesize_full_image_url || OpenGraphReader.config.synthesize_full_url
           unless OpenGraphReader.current_origin
             next unless options[:required] || !OpenGraphReader.config.discard_invalid_optional_properties
 

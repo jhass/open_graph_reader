@@ -80,7 +80,7 @@ module OpenGraphReader
 
       # @return [String, nil]
       def url
-        secure_url || properties[:url] || content
+        secure_url || properties["url"] || content
       end
     end
 

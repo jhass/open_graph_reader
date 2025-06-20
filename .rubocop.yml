@@ -1,6 +1,6 @@
 inherit_gem:
   standard: config/base.yml
-require:
+plugins:
   - rubocop-rspec
   - rubocop-rake
   - rubocop-packaging

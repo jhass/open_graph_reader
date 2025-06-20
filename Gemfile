@@ -15,6 +15,7 @@ end
 group :dev do
   gem "pry"
   gem "yard", "~> 0.9.0"
+  gem "debug"
 end
 
 # Specify your gem's dependencies in opengraph_reader.gemspec

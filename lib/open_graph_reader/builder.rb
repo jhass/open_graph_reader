@@ -122,6 +122,7 @@ module OpenGraphReader
     def synthesize_required_properties base
       synthesize_url base
       synthesize_title base
+      synthesize_image_content base
     end
 
     def synthesize_url base
@@ -136,6 +137,14 @@ module OpenGraphReader
       return if base.og.title
 
       base.og["title"] = @parser.title
+    end
+
+    def synthesize_image_content base
+      return unless OpenGraphReader.config.synthesize_image_content
+      return unless base.og.image
+      return if base.og.image.content || base.og.image.url.nil?
+
+      base.og.image.content = base.og.image.url
     end
 
     def drop_empty_children base

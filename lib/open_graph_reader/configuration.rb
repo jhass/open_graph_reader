@@ -80,7 +80,16 @@ module OpenGraphReader
     # See {#synthesize_full_url}
     #
     # @return [Bool]
-    attr_accessor :synthesize_image_url
+    attr_accessor :synthesize_full_image_url
+
+    # Guess the og:image content when it's missing and og:image:url is present (default: <tt>false</tt>).
+    #
+    # The spec requires the og:image property to be present, however not all sites provide it, as they might see it
+    # redundant to og:image:url. This option enables a fallback that sets the og:image content to the og:image:url
+    # when the former is missing.
+    #
+    # @return [Bool]
+    attr_accessor :synthesize_image_content
 
     # Parse non ISO8601 datetimes (default: <tt>false</tt>).
     #
@@ -105,7 +114,8 @@ module OpenGraphReader
       @synthesize_title = false
       @synthesize_url = false
       @synthesize_full_url = false
-      @synthesize_image_url = false
+      @synthesize_full_image_url = false
+      @synthesize_image_content = false
       @guess_datetime_format = false
     end
   end

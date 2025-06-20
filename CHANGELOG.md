@@ -1,3 +1,10 @@
+# 0.9.1
+
+* Breaking: Renamed synthesize_image_url setting to synthesize_full_image_url
+* Add new synthesize_image_content setting: With this setting set to true,
+  return og:image:url as the og:image content when og:image is absent.
+* Fix returning og:image:url of og:image is absent
+
 # 0.8.0
 
 * Drop Ruby 2.5, 2.6, 2.7, 3.0 support
@@ -31,8 +38,8 @@
 
 # 0.6.0
 
-* Renamed synthesize_url setting to synthesize_full_url
-* Add new synthesize_url setting with a different meaning: With this setting
+* Breaking: Renamed synthesize_url setting to synthesize_full_url
+* Breaking: Add new synthesize_url setting with a different meaning: With this setting
   set to true, return the URL the document originated from, if available for
   og:url if it's missing.
 
